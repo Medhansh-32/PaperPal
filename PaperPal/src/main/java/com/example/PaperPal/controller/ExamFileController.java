@@ -1,6 +1,7 @@
 package com.example.PaperPal.controller;
 
 import com.example.PaperPal.entity.ExamFile;
+import com.example.PaperPal.repository.UserResponseRepository;
 import com.example.PaperPal.service.ExamFileService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,11 @@ public class ExamFileController {
 
     private final ExamFileService examFileService;
 
+
     @Autowired
-    ExamFileController(ExamFileService examFileService) {
+    ExamFileController(ExamFileService examFileService, UserResponseRepository userResponseRepository) {
         this.examFileService = examFileService;
+
     }
 
     @PostMapping
@@ -46,6 +49,10 @@ public class ExamFileController {
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteExamFile(@PathVariable ObjectId id) throws IOException {
+         return new ResponseEntity<>(examFileService.deleteExamFile(id).getStatusCode());
     }
 
 }

@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 public class ExamFile {
     @Id
     private ObjectId examId;
-    private UserResponse userResponse;
     private String fileName;
     private String filePath;
     private String downloadLink;

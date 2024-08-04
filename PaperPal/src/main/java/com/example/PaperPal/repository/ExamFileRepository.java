@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ExamFileRepository extends MongoRepository<ExamFile, ObjectId> {
 
+    ExamFile deleteExamFileByExamId(ObjectId id);
+
 }

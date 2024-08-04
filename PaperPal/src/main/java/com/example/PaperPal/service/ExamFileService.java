@@ -4,7 +4,7 @@ import com.example.PaperPal.entity.ExamFile;
 import com.example.PaperPal.repository.ExamFileRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,17 +18,17 @@ import java.io.IOException;
 @Service
 @Slf4j
 public class ExamFileService {
-    private static final String filePath="C:\\Users\\Medhansh Sharma\\Desktop\\";
-    private ExamFile examFile;
+
+    @Value("${filepath}")
+    private String filePath;
     private ExamFileRepository examFileRepository;
 
-    @Autowired
-    ExamFileService(ExamFile examFile, ExamFileRepository examFileRepository) {
-        this.examFile = examFile;
-        this.examFileRepository=examFileRepository;
 
+    ExamFileService(ExamFileRepository examFileRepository) {
+        this.examFileRepository=examFileRepository;
     }
     public ExamFile uploadExamFile(MultipartFile file) throws IOException {
+        ExamFile examFile=new ExamFile();
         examFile.setFileName(file.getOriginalFilename());
         examFile.setFilePath(filePath+file.getOriginalFilename());
         examFile.setContentType(file.getContentType());
@@ -41,9 +41,11 @@ public class ExamFileService {
 
     public ResponseEntity<byte[]> downloadExamFile(ObjectId id) throws IOException {
         ExamFile examFile = examFileRepository.findById(id).orElse(null);
-
-        return new ResponseEntity<>(examFile.getFileData(),HttpStatus.OK);
-
+        if(examFile!=null) {
+            return new ResponseEntity<>(examFile.getFileData(), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
     public String createDownloadLink(ExamFile examFile) {
 
@@ -52,5 +54,12 @@ public class ExamFileService {
                 .path(examFile.getExamId().toString())  // Convert the examId to string and append it to the path
                 .toUriString();
 
+    }
+    public ResponseEntity<?> deleteExamFile(ObjectId id) {
+       ExamFile examFile= examFileRepository.deleteExamFileByExamId(id);
+       if(examFile!=null) {
+           return new ResponseEntity<>(HttpStatus.OK);
+       }
+    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }
