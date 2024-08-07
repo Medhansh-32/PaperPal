@@ -1,0 +1,276 @@
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Dark background for body */
+    color: #e0e0e0; /* Light text color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure body takes up at least full viewport height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme changes */
+}
+
+/* Container */
+.container {
+    width: 100%; /* Ensure container does not exceed viewport width */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #1e1e1e; /* Darker container background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+    overflow: hidden;
+    flex: 1;
+    transition: background-color 0.3s; /* Smooth transition for container background */
+}
+
+/* Headings */
+h1 {
+    color: #ffffff; /* White heading color */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #3498db; /* Bright accent color */
+    padding-bottom: 10px;
+    transition: color 0.3s, border-bottom-color 0.3s; /* Smooth transition */
+}
+
+/* Form */
+form {
+    background-color: #2c2c2c; /* Darker form background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6); /* Deep shadow for form */
+    transition: background-color 0.3s; /* Smooth transition for form background */
+}
+
+/* Form Elements */
+label {
+    display: block;
+    margin: 15px 0 5px;
+    font-weight: bold;
+    color: #b0b0b0; /* Lighter text color */
+}
+
+select, input[type="text"], input[type="number"], input[type="file"] {
+    width: calc(100% - 24px); /* Adjust width to account for padding and border */
+    padding: 12px;
+    margin-bottom: 20px; /* Increased margin between elements */
+    border: 1px solid #444; /* Darker border color */
+    border-radius: 6px;
+    background-color: #333; /* Darker input background */
+    color: #e0e0e0; /* Light text color */
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+input[type="file"] {
+    padding: 0;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #333;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 25px;
+    background-color: #1db954; /* Vibrant green button */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Button shadow for depth */
+}
+
+button:hover {
+    background-color: #1ed760; /* Lighter green on hover */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+#linksResult {
+    margin-top: 20px;
+}
+
+/* Header */
+header {
+    background-color: #1c1c1c; /* Darker header background */
+    color: #e0e0e0; /* Light text color */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #333; /* Dark border for header */
+    transition: background-color 0.3s, border-bottom-color 0.3s; /* Smooth transition */
+}
+
+.header-content p {
+    margin: 10px 0;
+}
+
+.header-content strong {
+    font-weight: bold;
+}
+
+.linkedin-link {
+    color: #1db954; /* Green color for LinkedIn */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.linkedin-link:hover {
+    text-decoration: underline;
+}
+
+/* Buttons */
+a.button {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #3498db; /* Blue button */
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Button shadow for depth */
+}
+
+a.button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Footer */
+
+footer {
+    background-color: #1c1c1c; /* Darker footer background */
+    color: #e0e0e0; /* Light text color */
+    text-align: center;
+    padding: 20px;
+    border-top: 4px solid #333; /* Dark border for footer */
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    margin-top: auto; /* Push footer to the bottom of the page */
+    transition: background-color 0.3s, border-top-color 0.3s; /* Smooth transition */
+}
+#link{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+#succes{
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Custom Alert Box */
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+    animation: slideIn 0.3s ease-out; /* Slide-in animation */
+}
+
+.custom-alert-success {
+    border-color: #1db954; /* Green border for success */
+    background-color: #2c2c2c; /* Slightly lighter dark background */
+}
+
+.custom-alert-error {
+    border-color: #e74c3c; /* Red border for error */
+    background-color: #2c2c2c; /* Slightly lighter dark background */
+}
+
+.custom-alert button {
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: color 0.3s; /* Smooth transition */
+}
+
+.custom-alert button:hover {
+    color: #fff;
+}
+
+/* Alert Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    a.button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    select, input[type="text"], input[type="number"], input[type="file"] {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    a.button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+}

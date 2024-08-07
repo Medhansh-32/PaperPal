@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload User Response</title>
+    <link rel="icon" href="/SRM_University,_Haryana_logo.png">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <h1>Upload User Response</h1>
+    <form id="uploadForm" action="/userresponse" method="post" enctype="multipart/form-data">
+        <label for="getCourse">Course:</label>
+        <select id="getCourse" name="course" required>
+            <option value="" disabled selected>Select your course</option>
+            <option value="Bachelor of Technology">Bachelor of Technology</option>
+            <option value="Bachelor of Laws or Bachelor of Legislative Laws">Bachelor of Laws or Bachelor of Legislative Laws</option>
+            <option value="Bachelor of Business Administration">Bachelor of Business Administration</option>
+            <option value="Bachelor of Arts">Bachelor of Arts</option>
+            <option value="Bachelor of Science">Bachelor of Science</option>
+        </select>
+        <br>
+        <label for="getBranch">Branch:</label>
+        <select id="getBranch" name="branch" required>
+            <option value="" disabled selected>Select your branch</option>
+            <!-- Branch options will be populated based on selected course -->
+        </select>
+        <br>
+        <label for="getsemester">Semester:</label>
+        <select id="getSemester" name="semester" required>
+            <option value="" disabled selected>Select your semester</option>
+            <!-- Semester options will be populated based on selected course -->
+        </select>
+        <br>
+        <label for="file">File:</label>
+        <input type="file" id="file" name="file" required>
+        <br>
+        <button type="submit">Upload</button>
+    </form>
+    <div id="message" class="message"></div>
+    <a href="/home" class="button">Back to Home</a>
+</div>
+<footer>
+    <div class="footer-content">
+        <p>Developed By - <strong>Medhansh Sharma</strong></p>
+        <p>
+            <a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">Connect with me on LinkedIn</a>
+        </p>
+        <p>
+            Upload papers if you have and contribute in helping juniors.
+        </p>
+    </div>
+</footer>
+</body>
+</html>

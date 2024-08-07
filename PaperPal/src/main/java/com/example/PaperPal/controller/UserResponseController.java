@@ -2,12 +2,10 @@ package com.example.PaperPal.controller;
 
 import com.example.PaperPal.entity.ExamFile;
 import com.example.PaperPal.entity.UserResponse;
-
 import com.example.PaperPal.service.UserResponseService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,9 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@RestController
-@RequestMapping("user")
+@Controller
+@RequestMapping("userresponse")
 public class UserResponseController {
 
     private final UserResponseService userResponseService;
@@ -25,46 +22,94 @@ public class UserResponseController {
     public UserResponseController(UserResponseService userResponseService) {
         this.userResponseService = userResponseService;
     }
+
     @PostMapping
-    public ResponseEntity<List<ExamFile>> sendData(@RequestParam("userResponse")  String data, @RequestParam("file") MultipartFile file) throws IOException {
+    public String sendData(
+            @RequestParam("course") String course,
+            @RequestParam("branch") String branch,
+            @RequestParam("semester") String semester,
+            @RequestParam("file") MultipartFile file
+    )  {
+        try {
+            UserResponse userResponse = new UserResponse();
+            userResponse.setCourse(course);
+            userResponse.setBranch(branch);
+            userResponse.setSemester(Integer.parseInt(semester));
+            if(userResponseService.getExamLinkByUserResponse(userResponse)==null){
+                List<ExamFile> examFiles = userResponseService.saveUserResponse(userResponse, file).getExamFile();
+                if(examFiles.size() > 0) {
+                    return "succesfull";
+                }else{
+                    return "unsuccesfull";
+                }
 
-        ObjectMapper objectMapper=new ObjectMapper();
-       UserResponse userResponse=objectMapper.readValue(data , UserResponse.class);
-        List<ExamFile> examFiles= userResponseService.saveUserResponse(userResponse,file)
-                .getExamFile();
-        return  new ResponseEntity<>(examFiles, HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<String>> getExamFileLink(@RequestBody  UserResponse userResponse) {
-        List<ExamFile> examFiles=userResponseService.getExamLinkByUserResponse(userResponse);
-        if(examFiles!=null) {
-            List<String> links=new ArrayList<>();
-            for(int i=0;i<examFiles.size();i++){
-                links.add(examFiles.get(i).getDownloadLink());
+            }else{
+                userResponseService.addFileToUser(userResponse,file);
+                return "succesfull";
             }
-            return new ResponseEntity<>(links,HttpStatus.FOUND);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+        }catch (Exception e){
+            return "unsuccesfull";
         }
+
     }
 
+
+    @GetMapping("/getlinks")
+    public String getExamFileLink(
+            @RequestParam("course") String course,
+            @RequestParam("branch") String branch,
+            @RequestParam("semester") String semester,
+            Model model
+    ) {
+        UserResponse userResponse = new UserResponse();
+        userResponse.setCourse(course);
+        userResponse.setBranch(branch);
+        userResponse.setSemester(Integer.parseInt(semester));
+        List<ExamFile> examFiles = userResponseService.getExamLinkByUserResponse(userResponse);
+        List<String> links = new ArrayList<>();
+        if (examFiles != null) {
+            for (ExamFile examFile : examFiles) {
+                links.add(examFile.getDownloadLink());
+            }
+        }
+        model.addAttribute("links", links);
+        return "links-exam";
+    }
     @PostMapping("/addfile")
-    public ResponseEntity<UserResponse> addFileToUserResponse(@RequestParam("userResponse")  String userResponse,@RequestParam("file") MultipartFile file) throws IOException {
-        ObjectMapper objectMapper=new ObjectMapper();
-        UserResponse userResponse1=objectMapper.readValue(userResponse,UserResponse.class);
-        userResponse1=userResponseService.addFileToUser(userResponse1,file);
-        if (userResponse1!=null){
-            return new ResponseEntity<>(userResponse1,HttpStatus.OK);
+    public String addFileToUserResponse(
+            @RequestParam("course") String course,
+            @RequestParam("branch") String branch,
+            @RequestParam("semester") String semester,
+            @RequestParam("file") MultipartFile file
+    ) throws IOException {
+        UserResponse userResponse = new UserResponse();
+        userResponse.setCourse(course);
+        userResponse.setBranch(branch);
+        userResponse.setSemester(Integer.parseInt(semester));
+        userResponse = userResponseService.addFileToUser(userResponse, file);
+        if (userResponse != null) {
+            return "succesfull";
         }else{
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return "unsuccesfull";
         }
-
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> deleteUserResponse(@RequestBody  UserResponse userResponse) throws JsonProcessingException {
-       return new ResponseEntity<>(userResponseService.deleteByUserResponse(userResponse).getStatusCode());
+    @PostMapping("/delete")
+    public String deleteUserResponse(
+            @RequestParam("course") String course,
+            @RequestParam("branch") String branch,
+            @RequestParam("semester") String semester
+    ) throws JsonProcessingException {
+        try {
 
+            UserResponse userResponse = new UserResponse();
+            userResponse.setCourse(course);
+            userResponse.setBranch(branch);
+            userResponse.setSemester(Integer.parseInt(semester));
+            return "succesfull";
+        }catch (Exception e){
+            return "unsuccesfull";
+        }
     }
 }
