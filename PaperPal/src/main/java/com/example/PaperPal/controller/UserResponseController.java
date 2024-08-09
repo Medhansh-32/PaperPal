@@ -49,11 +49,11 @@ public class UserResponseController {
             }
 
         }catch (Exception e){
+            System.out.println(e.getMessage());
             return "unsuccesfull";
         }
 
     }
-
 
     @GetMapping("/getlinks")
     public String getExamFileLink(
@@ -72,8 +72,9 @@ public class UserResponseController {
             for (ExamFile examFile : examFiles) {
                 links.add(examFile.getDownloadLink());
             }
+            model.addAttribute("links", links);
+            return "links-exam";
         }
-        model.addAttribute("links", links);
         return "links-exam";
     }
     @PostMapping("/addfile")

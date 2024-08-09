@@ -1,28 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <title>Success</title>
-    <link rel="icon" href="SRM_University,_Haryana_logo.png">
-<link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensure viewport is set -->
+    <title>Done</title>
+    <link rel="icon" href="/SRM_University,_Haryana_logo.png">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div id="succes">
-    <h2>Successfully done !!!</h2>
-    <a id="link" href="/home"><button>Home</button></a>
+<h2>Successful, Thank You :)</h2>
+<div id="unsuccess">
+    <button onclick="function goBack() {
+    window.history.back();
+       setTimeout(function() {
+        window.location.reload(); // Refresh the page after going back
+    }, 1000);
+    }
+    goBack()" class="back-button">Go Back</button>
+    <br>
+    <br/>
+    <a href="/home">
+    <button id="home">Home</button>
+    </a>
 </div>
-
 <footer>
     <div class="footer-content">
         <p>Developed By - <strong>Medhansh Sharma</strong></p>
         <p>
-            <a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link"><button>Connect with me on LinkedIn</button></a>
+            <a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">
+                Connect with me on LinkedIn
+            </a>
         </p>
         <p>
-            Upload papers if you have and contribute in helping juniors.
+            Upload papers if you have and contribute to helping juniors.
         </p>
     </div>
 </footer>
+<script src="/script.js"></script>
 </body>
 </html>
