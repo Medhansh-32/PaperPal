@@ -14,7 +14,8 @@
         <div th:if="${not #lists.isEmpty(links)}">
             <div class="links-container">
                 <br>
-                <a th:each="link, stat : ${links}" th:href="${link}" class="button" target="_blank">Download PDF [[${stat.index} + 1]]</a>
+                <a th:each="link, stat : ${links}" th:href="${link}" class="button" target="_blank" style="display: block; margin-bottom: 1.2rem;height: 3rem;width: 12rem">Download PDF [[${stat.index} + 1]]</a>
+
                 <br>
             </div>
         </div>

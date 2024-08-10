@@ -11,7 +11,7 @@ html, body {
     height: 100%;
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background: #1c1c1c;
+    background: linear-gradient(135deg, #1c1c1c, #333);
     color: #eaeaea;
     text-decoration: none; /* Removed underline from all elements by default */
 }
@@ -30,8 +30,9 @@ body {
     margin: 20px auto;
     padding: 20px;
     background: rgba(30, 30, 30, 0.9);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px); /* Adds a glassmorphism effect */
 }
 
 /* Typography */
@@ -39,24 +40,28 @@ h1, h2, h3 {
     color: #f5a623;
     margin-bottom: 20px;
     text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 2.25rem;
 }
 
 h3 {
-    font-size: 1.75rem;
+    font-size: 1.9rem;
 }
 
 p {
     margin-bottom: 15px;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
 /* Form Elements */
@@ -75,10 +80,10 @@ input[type="text"],
 input[type="file"],
 select {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #666;
-    border-radius: 4px;
+    border-radius: 6px;
     background: rgba(50, 50, 50, 0.8);
     color: #eaeaea;
     font-size: 1rem;
@@ -88,22 +93,24 @@ select {
 button, .button, a.button {
     display: inline-block; /* Ensure buttons and links styled as buttons are inline-block */
     width: auto; /* Adjust width to fit content */
-    padding: 12px 24px; /* Consistent padding */
-    font-size: 1rem; /* Consistent font size */
+    padding: 14px 28px; /* Consistent padding */
+    font-size: 1.1rem; /* Consistent font size */
     color: #fff;
     background: linear-gradient(45deg, #ff0081, #ff8c00);
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     text-align: center; /* Center text inside button */
     text-decoration: none; /* Ensure no underline */
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin-bottom: 10px; /* Space between buttons */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 button:hover, .button:hover, a.button:hover {
     background: linear-gradient(45deg, #ff8c00, #ff0081);
-    transform: scale(1.05);
+    transform: scale(1.07);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Footer */
@@ -116,7 +123,6 @@ footer {
     width: 100%;
 }
 
-/* Footer Text */
 footer p {
     margin-bottom: 10px;
 }
@@ -130,6 +136,38 @@ footer a:hover {
     text-decoration: underline; /* Underline on hover */
 }
 
+/* Additional Styling */
+.main-content {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.links-container a.button {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+}
+
+#unsuccess {
+    margin-top: 40px;
+}
+
+.back-button {
+    background: #555;
+    color: #fff;
+}
+
+.back-button:hover {
+    background: #444;
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
     .container {
@@ -137,15 +175,15 @@ footer a:hover {
     }
 
     h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
     }
 
     h2 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     h3 {
-        font-size: 1.6rem;
+        font-size: 1.75rem;
     }
 }
 
@@ -155,20 +193,20 @@ footer a:hover {
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     h2 {
-        font-size: 1.75rem;
+        font-size: 1.9rem;
     }
 
     h3 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 
     button, .button, a.button {
-        padding: 10px 20px;
-        font-size: 0.875rem;
+        padding: 12px 24px;
+        font-size: 0.9rem;
     }
 }
 
@@ -178,19 +216,19 @@ footer a:hover {
     }
 
     h1 {
-        font-size: 1.75rem; /* Adjusted font size for small screens */
+        font-size: 1.9rem; /* Adjusted font size for small screens */
     }
 
     h2 {
-        font-size: 1.5rem; /* Adjusted font size for small screens */
+        font-size: 1.7rem; /* Adjusted font size for small screens */
     }
 
     h3 {
-        font-size: 1.5rem; /* Adjusted font size for small screens */
+        font-size: 1.6rem; /* Adjusted font size for small screens */
     }
 
     button, .button, a.button {
-        padding: 8px 16px; /* Reduced padding for small screens */
-        font-size: 0.75rem; /* Adjusted font size for small screens */
+        padding: 10px 20px; /* Reduced padding for small screens */
+        font-size: 0.8rem; /* Adjusted font size for small screens */
     }
 }
