@@ -14,6 +14,7 @@ html, body {
     background: linear-gradient(135deg, #1c1c1c, #333);
     color: #eaeaea;
     text-decoration: none; /* Removed underline from all elements by default */
+
 }
 
 /* Layout */
@@ -33,6 +34,23 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px); /* Adds a glassmorphism effect */
+
+}
+
+/* CSS for the image with ID 'logo' */
+#logo {
+    display: block; /* Ensures the image is treated as a block element */
+    margin: 0 auto; /* Centers the image horizontally */
+    opacity: 0.3; /* Adjust the opacity (0 is fully transparent, 1 is fully opaque) */
+    max-width: 30rem; /* Increase the maximum width of the image */
+    height: auto; /* Maintains the aspect ratio */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    #logo {
+        max-width: 20rem; /* Adjust the maximum width on smaller screens */
+    }
 }
 
 /* Typography */
