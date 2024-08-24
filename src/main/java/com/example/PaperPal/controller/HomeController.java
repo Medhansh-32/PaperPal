@@ -3,6 +3,7 @@ package com.example.PaperPal.controller;
 import com.example.PaperPal.entity.ExamFile;
 import com.example.PaperPal.entity.UserResponse;
 import com.example.PaperPal.service.UserResponseService;
+import jakarta.servlet.http.HttpServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class HomeController {
+public class HomeController extends HttpServlet {
 
     @Autowired
     private UserResponseService userResponseService;
