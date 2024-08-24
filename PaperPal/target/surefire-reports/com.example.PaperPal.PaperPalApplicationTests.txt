@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.PaperPal.PaperPalApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.06 s -- in com.example.PaperPal.PaperPalApplicationTests
