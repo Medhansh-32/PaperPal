@@ -1,0 +1,252 @@
+/* Base Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #1c1c1c, #333);
+    color: #eaeaea;
+    text-decoration: none; /* Removed underline from all elements by default */
+
+}
+
+/* Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures body takes up at least full viewport height */
+}
+
+.container {
+    flex: 1; /* Allows the container to take up remaining space */
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px); /* Adds a glassmorphism effect */
+
+}
+
+/* CSS for the image with ID 'logo' */
+#logo {
+    display: block; /* Ensures the image is treated as a block element */
+    margin: 0 auto; /* Centers the image horizontally */
+    opacity: 0.3; /* Adjust the opacity (0 is fully transparent, 1 is fully opaque) */
+    max-width: 30rem; /* Increase the maximum width of the image */
+    height: auto; /* Maintains the aspect ratio */
+}
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    #logo {
+        max-width: 20rem; /* Adjust the maximum width on smaller screens */
+    }
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: #f5a623;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    font-size: 2.75rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 1.9rem;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+/* Form Elements */
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #dcdcdc;
+}
+
+input[type="text"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #666;
+    border-radius: 6px;
+    background: rgba(50, 50, 50, 0.8);
+    color: #eaeaea;
+    font-size: 1rem;
+}
+
+/* Button Styling */
+button, .button, a.button {
+    display: inline-block; /* Ensure buttons and links styled as buttons are inline-block */
+    width: auto; /* Adjust width to fit content */
+    padding: 14px 28px; /* Consistent padding */
+    font-size: 1.1rem; /* Consistent font size */
+    color: #fff;
+    background: linear-gradient(45deg, #ff0081, #ff8c00);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center; /* Center text inside button */
+    text-decoration: none; /* Ensure no underline */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 10px; /* Space between buttons */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+button:hover, .button:hover, a.button:hover {
+    background: linear-gradient(45deg, #ff8c00, #ff0081);
+    transform: scale(1.07);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Footer */
+footer {
+    background: rgba(30, 30, 30, 0.8);
+    color: #eaeaea;
+    padding: 20px;
+    text-align: center;
+    border-top: 4px solid #444;
+    width: 100%;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+footer a {
+    color: #00bfff;
+    text-decoration: none; /* Removed underline from links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Additional Styling */
+.main-content {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.links-container a.button {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+}
+
+#unsuccess {
+    margin-top: 40px;
+}
+
+.back-button {
+    background: #555;
+    color: #fff;
+}
+
+.back-button:hover {
+    background: #444;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.9rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    button, .button, a.button {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.9rem; /* Adjusted font size for small screens */
+    }
+
+    h2 {
+        font-size: 1.7rem; /* Adjusted font size for small screens */
+    }
+
+    h3 {
+        font-size: 1.6rem; /* Adjusted font size for small screens */
+    }
+
+    button, .button, a.button {
+        padding: 10px 20px; /* Reduced padding for small screens */
+        font-size: 0.8rem; /* Adjusted font size for small screens */
+    }
+}
