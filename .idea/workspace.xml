@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ccc40272-6986-400e-90da-d0a7a3985f85" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="Class" />
+        <option value="JavaScript File" />
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2k5pszNCK0f9xuHGX0VHPw8Cn64" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="flattenModules" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.Dropbox.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.PaperPalApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Medhansh Sharma/Downloads/PaperPal/PaperPal",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Medhansh Sharma\Downloads\PaperPal" />
+      <recent name="C:\Users\Medhansh Sharma\Downloads\PaperPal\PaperPal\src\main\resources\static" />
+      <recent name="C:\Users\Medhansh Sharma\Downloads\PaperPal\PaperPal\src\main\resources\images" />
+      <recent name="C:\Users\Medhansh Sharma\Downloads\PaperPal\PaperPal\src\main\resources\templates" />
+      <recent name="C:\Users\Medhansh Sharma\Downloads\PaperPal\PaperPal\src\main\webapp" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.PaperPalApplication">
+    <configuration name="Dropbox" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PaperPal" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.PaperPal.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.PaperPal" />
+      <option name="MAIN_CLASS_NAME" value="com.example.PaperPal.Dropbox" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PaperPalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <module name="PaperPal" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.PaperPal.PaperPalApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.Dropbox" />
+      <item itemvalue="Spring Boot.PaperPalApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.Dropbox" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ccc40272-6986-400e-90da-d0a7a3985f85" name="Changes" comment="" />
+      <created>1722583504578</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1722583504578</updated>
+      <workItem from="1722583505835" duration="38053000" />
+      <workItem from="1722664467374" duration="2517000" />
+      <workItem from="1722713714244" duration="850000" />
+      <workItem from="1722721295920" duration="13957000" />
+      <workItem from="1722807541681" duration="1388000" />
+      <workItem from="1722820090957" duration="825000" />
+      <workItem from="1722838925764" duration="42000" />
+      <workItem from="1722925406586" duration="11419000" />
+      <workItem from="1722938051287" duration="2123000" />
+      <workItem from="1722985162236" duration="19355000" />
+      <workItem from="1723019350111" duration="5148000" />
+      <workItem from="1723043808228" duration="2084000" />
+      <workItem from="1723111465268" duration="493000" />
+      <workItem from="1723111991533" duration="6226000" />
+      <workItem from="1723125343731" duration="4807000" />
+      <workItem from="1723130410407" duration="255000" />
+      <workItem from="1723139187708" duration="5363000" />
+      <workItem from="1723196551465" duration="6701000" />
+      <workItem from="1723203685893" duration="4405000" />
+      <workItem from="1723212017882" duration="7039000" />
+      <workItem from="1723271069233" duration="5354000" />
+      <workItem from="1723286743497" duration="665000" />
+      <workItem from="1723294970943" duration="2161000" />
+      <workItem from="1723353448709" duration="1822000" />
+      <workItem from="1723355323073" duration="1580000" />
+      <workItem from="1723361072614" duration="2163000" />
+      <workItem from="1723883935073" duration="3172000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
