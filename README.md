@@ -4,13 +4,13 @@ Welcome to the PaperPal application! This project is designed to manage and inte
 
 ## Table of Contents
 
-- [Project Overview](#project-overview)
-- [Controllers](#controllers)
-  - [HomeController](#homecontroller)
-  - [ExamFileController](#examfilecontroller)
-  - [UserResponseController](#userresponsecontroller)
-- [Running the Application](#running-the-application)
-- [Contributing](#contributing)
+- [Project Overview]
+- [Controllers]
+  - [HomeController]
+  - [ExamFileController]
+  - [UserResponseController]
+- [Running the Application]
+- [Contributing]
 
 ## Project Overview 🏠
 
