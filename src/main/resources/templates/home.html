@@ -6,26 +6,62 @@
     <title>Home</title>
     <link rel="icon" href="/images/SRM_University,_Haryana_logo.png" alt="University Logo">
     <link rel="stylesheet" href="/style.css">
+    <script>
+        // JavaScript function to handle form submission
+        async function getAiResponse(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const prompt = document.getElementById('prompt').value;
+            const loadingMessage = document.getElementById('loading-message');
+            const aiResponse = document.getElementById('ai-response');
+
+            // Show the loading message and clear the previous response
+            loadingMessage.textContent = 'Generating...'; // You can change this to "Fetching..." or "Analyzing..."
+            aiResponse.textContent = '';
+
+            try {
+                const response = await fetch(`/ai/generateStream?prompt=${encodeURIComponent(prompt)}`);
+                const data = await response.text(); // Assuming the response is plain text
+
+                // Hide the loading message and display the response
+                loadingMessage.textContent = ''; // Clear the loading message
+                aiResponse.textContent = data;
+            } catch (error) {
+                console.error('Error fetching AI response:', error);
+
+                // Hide the loading message and show the error
+                loadingMessage.textContent = ''; // Clear the loading message
+                aiResponse.textContent = 'An error occurred while fetching the response.';
+            }
+        }
+    </script>
 </head>
 <body>
 <div class="container">
     <h1>Home</h1>
     <div class="button-group">
-       <a href="/upload" class="button">Upload Question Paper</a>
-        <br>
+        <a href="/upload" class="button">Upload Question Paper</a>
         <br><br>
         <a href="/getlinks" class="button">Get Exam File Links</a>
     </div>
-
-
-
-
 </div>
+
 <div>
     <h2>Get AI Assistance :</h2>
-    <input type="text" id="prompt" name="ai">
-    <a href="/ai"><button>Get</button></a>
+
+    <!-- AI response will be displayed here, now moved above the input -->
+    <div id="ai-response" style="margin-bottom: 10px;"></div>
+
+    <!-- Loading message will be displayed here -->
+    <div id="loading-message" style="font-style: italic; color: gray;"></div>
+
+    <!-- Form input section -->
+    <form id="ai-form" onsubmit="getAiResponse(event)">
+        <input type="text" id="prompt" name="prompt" required>
+        <button type="submit">Get</button>
+    </form>
 </div>
+
 <footer>
     <div class="footer-content">
         <p>Developed By - <strong>Medhansh Sharma</strong></p>

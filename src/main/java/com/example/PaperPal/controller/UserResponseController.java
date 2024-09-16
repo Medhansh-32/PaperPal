@@ -113,8 +113,5 @@ public class UserResponseController {
             return "unsuccesfull";
         }
     }
-    @GetMapping("/ai")
-    public void getAi(@RequestBody String ai){
 
-    }
 }
