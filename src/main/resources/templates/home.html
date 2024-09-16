@@ -3,51 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="icon" href="/images/SRM_University,_Haryana_logo.png" alt="University Logo">
+    <title>PaperPal</title> <!-- Changed the title -->
+    <link rel="icon" href="/images/SRM_University,_Haryana_logo.png" alt="PaperPal Logo">
     <link rel="stylesheet" href="/style.css">
-    <script>
-        // JavaScript function to handle form submission
-        async function getAiResponse(event) {
-            event.preventDefault(); // Prevent default form submission
-
-            const prompt = document.getElementById('prompt').value;
-            const loadingMessage = document.getElementById('loading-message');
-            const aiResponse = document.getElementById('ai-response');
-
-            // Show the loading message and clear the previous response
-            loadingMessage.textContent = 'Generating...'; // You can change this to "Fetching..." or "Analyzing..."
-            aiResponse.textContent = '';
-
-            try {
-                const response = await fetch(`/ai/generateStream?prompt=${encodeURIComponent(prompt)}`);
-                const data = await response.text(); // Assuming the response is plain text
-
-                // Hide the loading message and display the response
-                loadingMessage.textContent = ''; // Clear the loading message
-                aiResponse.textContent = data;
-            } catch (error) {
-                console.error('Error fetching AI response:', error);
-
-                // Hide the loading message and show the error
-                loadingMessage.textContent = ''; // Clear the loading message
-                aiResponse.textContent = 'An error occurred while fetching the response.';
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
+<!-- Centered PaperPal Heading at the top -->
+<h1 id="paperpal-heading">PaperPal</h1>
+
 <div class="container">
-    <h1>Home</h1>
+    <h1>Home</h1> <!-- Kept Home inside the container -->
+    <hr class="styled-hr">
+
     <div class="button-group">
-        <a href="/upload" class="button">Upload Question Paper</a>
+        <a href="/upload" class="button">Upload Question Paper <i class="fa-solid fa-file-arrow-up"></i></a>
         <br><br>
-        <a href="/getlinks" class="button">Get Exam File Links</a>
+        <a href="/getlinks" class="button">Get Exam File Links <i class="fa-sharp fa-solid fa-file-arrow-down"></i></a>
     </div>
 </div>
 
-<div>
-    <h2>Get AI Assistance :</h2>
+<div class="container">
+    <h2>Ask AI </h2>
+    <hr class="styled-hr">
+
 
     <!-- AI response will be displayed here, now moved above the input -->
     <div id="ai-response" style="margin-bottom: 10px;"></div>
@@ -57,7 +37,7 @@
 
     <!-- Form input section -->
     <form id="ai-form" onsubmit="getAiResponse(event)">
-        <input type="text" id="prompt" name="prompt" required>
+        <i id="prompt-logo" class="fa-brands fa-rocketchat"></i> <input type="text" id="prompt" name="prompt" placeholder="Enter the prompt..." required>
         <button type="submit">Get</button>
     </form>
 </div>
@@ -66,12 +46,13 @@
     <div class="footer-content">
         <p>Developed By - <strong>Medhansh Sharma</strong></p>
         <p>
-            <button><a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">Connect with me on LinkedIn</a></button>
+            <button><a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">Connect with me on LinkedIn <i class="fa-brands fa-linkedin"></i></a></button>
         </p>
         <p>
             Upload papers if you have and contribute in helping juniors.
         </p>
     </div>
 </footer>
+<script src="/script3.js"></script>
 </body>
 </html>

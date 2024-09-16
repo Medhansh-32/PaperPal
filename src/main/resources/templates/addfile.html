@@ -7,6 +7,7 @@
     <title>Add File to User Response</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="icon" href="/images/SRM_University,_Haryana_logo.png" alt="University Logo">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="/script.js" defer></script>
 </head>
 <body>
@@ -24,11 +25,13 @@
             <!-- Add more courses as needed -->
         </select>
         <br>
+        <br>
         <label for="getbranch">Branch:</label>
         <select id="getBranch" name="branch" required>
             <option value="" disabled selected>Select your branch</option>
             <!-- Branch options will be populated based on selected course -->
         </select>
+        <br>
         <br>
         <label for="getsemester">Semester:</label>
         <select id="getSemester" name="semester" required>
@@ -36,18 +39,20 @@
             <!-- Semester options will be populated based on selected course -->
         </select>
         <br>
+        <br>
         <label for="addfile">File:(only .pdf)</label>
         <input type="file" id="addFile" name="file" required>
         <br>
+        <br>
         <button type="submit">Add File</button>
     </form>
-    <a href="/home" class="button">Back to Home</a>
+    <a href="/home" class="button">Back to Home <i class="fa-sharp fa-solid fa-house"></i></a>
 </div>
 <footer>
     <div class="footer-content">
         <p>Developed By - <strong>Medhansh Sharma</strong></p>
         <p>
-            <a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">Connect with me on LinkedIn</a>
+            <a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">Connect with me on LinkedIn <i class="fa-brands fa-linkedin"></i></a>
         </p>
         <p>
             Upload papers if you have and contribute in helping juniors.
