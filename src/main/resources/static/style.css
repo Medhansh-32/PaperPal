@@ -8,7 +8,7 @@
 }
 
 html, body {
-    height: 100%;
+    height: 100%; /* Ensures that the body takes full viewport height */
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     background: linear-gradient(135deg, #003366, #0066cc);
@@ -22,6 +22,7 @@ body {
     flex-direction: column;
     min-height: 100vh; /* Ensures body takes up at least full viewport height */
 }
+
 #paperpal-heading {
     text-align: center;
     font-size: 2.5rem; /* Adjusted font size to fit better */
@@ -39,16 +40,16 @@ body {
     margin-top: 20px; /* Margin on top for spacing */
     margin-bottom: 20px; /* Margin on bottom to ensure space between elements */
 }
+
 .styled-hr {
     border: 0.5px; /* Removes the default border */
     height: 1px; /* Sets the height */
     background: white; /* Sets the color */
     margin-bottom: 1px;
-
 }
 
-    .container {
-    flex: 1; /* Allows the container to take up remaining space */
+.container {
+    flex: 1; /* Ensures the container takes up the remaining space */
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
@@ -68,7 +69,6 @@ body {
     min-height: 50px;
     display: block; /* Ensure it's visible */
     margin-bottom: 10px;
-
 }
 
 #loading-message {
@@ -123,12 +123,15 @@ button:active {
 
 /* Footer Styling */
 footer {
+    position: sticky;
+    top: 100%;
     background: rgba(40, 40, 40, 0.9);
     color: #f0f0f0;
     padding: 20px;
     text-align: center;
     border-top: 4px solid #666;
     width: 100%;
+    margin-top: auto; /* Ensures footer sticks to the bottom when content is short */
 }
 
 footer p {
