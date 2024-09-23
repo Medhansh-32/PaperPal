@@ -9,12 +9,13 @@ Welcome to the PaperPal application! This project is designed to manage and inte
   - [HomeController]
   - [ExamFileController]
   - [UserResponseController]
+  - [Mistral AI]
 - [Running the Application]
 - [Contributing]
 
 ## Project Overview 🏠
 
-The PaperPal application is built using Spring Boot and provides a web interface for users to upload, manage, and download exam files. It also supports managing user responses and linking exam files to these responses.
+The PaperPal application is built using Spring Boot and provides a web interface for users to upload, manage, and download exam files. It also supports managing user responses and linking exam files to these responses. Additionally, users can interact with an AI feature on the home page, allowing them to ask questions similar to ChatGPT, enhancing their experience and providing instant support.
 
 ## Controllers 🕹️
 
@@ -27,6 +28,7 @@ The `HomeController` manages the main navigation of the application.
 - **GET /getlinks**: Returns the `getlinks` view for retrieving file links.
 - **GET /addfile**: Returns the `addfile` view for adding files.
 - **GET /delete**: Returns the `deleteresponse` view for deleting responses.
+
 
 ### ExamFileController 📄
 
@@ -50,7 +52,7 @@ The `UserResponseController` manages user responses and associated files.
 
 - **POST /userresponse**: Submits user response data and an exam file.
   - **Request Parameters**: `course`, `branch`, `semester`, `file`
-  - **Response**: Redirects to `succesfull` or `unsuccesfull` view based on the operation outcome.
+  - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
 
 - **GET /userresponse/getlinks**: Retrieves download links for exam files based on user response details.
   - **Request Parameters**: `course`, `branch`, `semester`
@@ -58,15 +60,17 @@ The `UserResponseController` manages user responses and associated files.
 
 - **POST /userresponse/addfile**: Adds an additional file to an existing user response.
   - **Request Parameters**: `course`, `branch`, `semester`, `file`
-  - **Response**: Redirects to `succesfull` or `unsuccesfull` view based on the operation outcome.
+  - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
 
 - **POST /userresponse/delete**: Deletes a user response.
   - **Request Parameters**: `course`, `branch`, `semester`
-  - **Response**: Redirects to `succesfull` or `unsuccesfull` view based on the operation outcome.
+  - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
 
-- **GET /userresponse/ai**: Placeholder endpoint for AI-related functionality.
-  - **Request Body**: `String ai`
-  - **Response**: No specific functionality defined.
+
+### AI Assistance 🤖
+
+The PaperPal application features a general AI capability powered by **Ollama Mistral** integrated with **Spring AI**. Users can interact with this AI directly on the home page, allowing them to ask a variety of questions and receive instant responses, similar to ChatGPT. This feature enhances user experience by providing immediate assistance and information on a wide range of topics.
+
 
 ## Running the Application 🚀
 
@@ -107,4 +111,3 @@ For any issues or feature requests, please create an issue in the GitHub reposit
 ---
 
 Thank you for using PaperPal! If you have any questions, feel free to reach out or open an issue on GitHub. 😊
-
