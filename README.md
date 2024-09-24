@@ -17,6 +17,20 @@ Welcome to the PaperPal application! This project is designed to manage and inte
 
 The PaperPal application is built using Spring Boot and provides a web interface for users to upload, manage, and download exam files. It also supports managing user responses and linking exam files to these responses. Additionally, users can interact with an AI feature on the home page, allowing them to ask questions similar to ChatGPT, enhancing their experience and providing instant support.
 
+# My Project
+
+Here are some images of my project! 🌟📸 :
+
+<div style="display: flex; justify-content: center; align-items: center;">
+    <img src="/src/main/resources/static/images/Home.png" alt="Home Image" width="500" style="margin-right: 10px;" />
+    <img src="/src/main/resources/static/images/DownloadingFile.png" alt="Downloading File Image" width="500" />
+    <img src="/src/main/resources/static/images/UploadingFile.png" alt="Uploading File" width="500" style="margin-right: 20px;" />
+    <img src="/src/main/resources/static/images/ExamFileDetail.png" alt="Exam File Detail" width="500" />
+    <img src="/src/main/resources/static/images/Ai.png" alt="Alt text" width="500" />
+</div>
+
+
+
 ## Controllers 🕹️
 
 ### HomeController 🏠
