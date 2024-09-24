@@ -3,18 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PaperPal</title> <!-- Changed the title -->
+    <title>PaperPal</title>
     <link rel="icon" href="/images/SRM_University,_Haryana_logo.png" alt="PaperPal Logo">
-    <link rel="stylesheet" href="/style.css">
+    <link id="themeStylesheet" rel="stylesheet" href="style-dark.css"> <!-- Default light theme -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
 <!-- Centered PaperPal Heading at the top -->
-<h1 id="paperpal-heading">PaperPal</h1>
+<nav class="navbar">
+    <a href="#" class="navbar-brand">PaperPal</a>
+    <div class="navbar-links">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <button id="theme-toggle" class="navbar-btn">Switch to Dark Theme</button>
+    <button class="navbar-btn" onclick="goBackToForm()">Back to Form</button>
+</nav>
 
 <div class="container">
-    <h1>Home</h1> <!-- Kept Home inside the container -->
+    <h1>Home</h1>
     <hr class="styled-hr">
 
     <div class="button-group">
@@ -25,19 +35,15 @@
 </div>
 
 <div class="container">
-    <h2>Ask AI </h2>
+    <h2>Ask AI</h2>
     <hr class="styled-hr">
 
-
-    <!-- AI response will be displayed here, now moved above the input -->
     <div id="ai-response" style="margin-bottom: 10px;"></div>
-
-    <!-- Loading message will be displayed here -->
     <div id="loading-message" style="font-style: italic; color: gray;"></div>
 
-    <!-- Form input section -->
     <form id="ai-form" onsubmit="getAiResponse(event)">
-        <i id="prompt-logo" class="fa-brands fa-rocketchat"></i> <input type="text" id="prompt" name="prompt" placeholder="Enter the prompt..." required>
+        <i id="prompt-logo" class="fa-brands fa-rocketchat"></i>
+        <input type="text" id="prompt" name="prompt" placeholder="Enter the prompt..." required>
         <button type="submit">Get</button>
     </form>
 </div>
@@ -48,11 +54,9 @@
         <p>
             <button><a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">Connect with me on LinkedIn <i class="fa-brands fa-linkedin"></i></a></button>
         </p>
-        <p>
-            Upload papers if you have and contribute in helping juniors.
-        </p>
+        <p>Upload papers if you have and contribute in helping juniors.</p>
     </div>
 </footer>
-<script src="/script3.js"></script>
+<script src="/script3.js"></script> <!-- Ensure the path is correct -->
 </body>
 </html>

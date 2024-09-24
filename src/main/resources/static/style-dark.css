@@ -11,8 +11,8 @@ html, body {
     height: 100%; /* Ensures that the body takes full viewport height */
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background-color: #f5f5f5; /* Light background color */
-    color: #333; /* Dark text for contrast */
+    background: linear-gradient(135deg, #003366, #0066cc);
+    color: #f0f0f0;
     text-decoration: none; /* Removed underline from all elements by default */
 }
 
@@ -26,7 +26,7 @@ body {
 .styled-hr {
     border: 0.5px; /* Removes the default border */
     height: 1px; /* Sets the height */
-    background: #ccc; /* Light gray for divider */
+    background: white; /* Sets the color */
     margin-bottom: 1px;
 }
 
@@ -36,15 +36,16 @@ body {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-    background: #ffffff; /* White background */
+    background: rgba(40, 40, 40, 0.9); /* Dark, semi-transparent background */
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Light shadow */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px); /* Slight glassmorphism effect */
 }
 
 /* AI Assistance Section */
 #ai-response {
     padding: 15px;
-    background-color: #f9f9f9; /* Light background for AI response */
+    background-color: rgba(40, 40, 40, 0.9); /* Matches the container background */
     font-size: 16px;
     border-radius: 4px;
     min-height: 50px;
@@ -55,17 +56,17 @@ body {
 #loading-message {
     font-size: 14px;
     text-align: center;
-    color: #555; /* Slightly darker text */
+    color: #bbb;
 }
 
 /* General Input Field */
 input[type="text"], input[type="file"], select {
     width: 100%; /* Full width of the form-group */
     padding: 10px;
-    border: 1px solid #ccc; /* Light gray border */
+    border: 1px solid #666;
     border-radius: 6px;
-    background: #ffffff; /* White background */
-    color: #333; /* Dark text */
+    background: rgba(60, 60, 60, 0.9); /* Slightly lighter background */
+    color: #f0f0f0;
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
@@ -81,8 +82,8 @@ input[type="text"], input[type="file"], select {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background: #ffffff; /* White background for navbar */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: rgba(40, 40, 40, 0.9); /* Dark background matching other sections */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
     position: sticky;
     top: 0;
     width: 100%;
@@ -93,7 +94,7 @@ input[type="text"], input[type="file"], select {
 .navbar-brand {
     font-family: 'Lobster', cursive; /* Beautiful cursive font for the logo */
     font-size: 2.5rem;
-    color: #333; /* Dark text for visibility */
+    color: #f0f0f0; /* White text for visibility */
     text-decoration: none;
 }
 
@@ -104,7 +105,7 @@ input[type="text"], input[type="file"], select {
 }
 
 .navbar-links a {
-    color: #333; /* Dark text */
+    color: #f0f0f0; /* White text */
     font-size: 1.2rem;
     text-decoration: none;
     padding: 10px 15px;
@@ -113,13 +114,13 @@ input[type="text"], input[type="file"], select {
 }
 
 .navbar-links a:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Slightly darker on hover */
-    color: #007bff; /* Bootstrap blue on hover */
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white background on hover */
+    color: #ffeb3b; /* Bright yellow on hover */
 }
 
 /* Button Styling */
 .navbar-btn {
-    background-color: #007bff; /* Bootstrap primary color */
+    background-color: #ff6b6b; /* Coral background */
     color: #fff;
     font-size: 1rem;
     border: none;
@@ -130,7 +131,7 @@ input[type="text"], input[type="file"], select {
 }
 
 .navbar-btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #e55b5b; /* Darker coral on hover */
 }
 
 /* Responsive Design for Mobile */
@@ -156,7 +157,7 @@ button, .button, a.button {
     padding: 12px 24px;
     font-size: 1rem;
     color: #fff;
-    background: linear-gradient(45deg, #007bff, #66b3ff); /* Blue gradient */
+    background: linear-gradient(45deg, #009688, #80cbc4); /* Teal and light green */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -164,28 +165,28 @@ button, .button, a.button {
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
 
 button:hover, .button:hover, a.button:hover {
-    background: linear-gradient(45deg, #66b3ff, #007bff);
+    background: linear-gradient(45deg, #80cbc4, #009688);
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 button:active {
-    background-color: #0056b3;
+    background-color: #00796b;
 }
 
 /* Footer Styling */
 footer {
     position: sticky;
     top: 100%;
-    background: #ffffff; /* White footer */
-    color: #333; /* Dark text */
+    background: rgba(40, 40, 40, 0.9);
+    color: #f0f0f0;
     padding: 20px;
     text-align: center;
-    border-top: 4px solid #ccc; /* Light gray border */
+    border-top: 4px solid #666;
     width: 100%;
     margin-top: auto; /* Ensures footer sticks to the bottom when content is short */
 }
@@ -195,7 +196,7 @@ footer p {
 }
 
 footer a {
-    color: #007bff; /* Bootstrap primary color */
+    color: #4caf50;
     text-decoration: none;
 }
 
@@ -206,12 +207,12 @@ footer a:hover {
 /* LinkedIn Button Styling */
 footer button {
     padding: 10px 20px;
-    background: linear-gradient(45deg, #0072b1, #00aaff); /* LinkedIn colors */
+    background: linear-gradient(45deg, #0072b1, #00aaff);
     border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
 }
 
 footer button:hover {
