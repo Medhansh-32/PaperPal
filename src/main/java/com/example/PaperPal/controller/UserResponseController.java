@@ -29,32 +29,31 @@ public class UserResponseController {
             @RequestParam("branch") String branch,
             @RequestParam("semester") String semester,
             @RequestParam("file") MultipartFile file
-    )  {
+    ) {
         try {
             UserResponse userResponse = new UserResponse();
             userResponse.setCourse(course);
             userResponse.setBranch(branch);
             userResponse.setSemester(Integer.parseInt(semester));
-            if(userResponseService.getExamLinkByUserResponse(userResponse)==null){
+            if (userResponseService.getExamLinkByUserResponse(userResponse) == null) {
                 List<ExamFile> examFiles = userResponseService.saveUserResponse(userResponse, file).getExamFile();
-                if(examFiles.size() > 0) {
+                if (examFiles.size() > 0) {
                     return "succesfull";
-                }else{
+                } else {
                     return "unsuccesfull";
                 }
 
-            }else{
-                userResponseService.addFileToUser(userResponse,file);
+            } else {
+                userResponseService.addFileToUser(userResponse, file);
                 return "succesfull";
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return "unsuccesfull";
         }
 
     }
-
     @GetMapping("/getlinks")
     public String getExamFileLink(
             @RequestParam("course") String course,
