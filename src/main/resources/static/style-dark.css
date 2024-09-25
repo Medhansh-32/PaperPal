@@ -100,12 +100,14 @@ input[type="text"], input[type="file"], select {
 
 /* Navigation Links */
 .navbar-links {
+    text-decoration: none;
     display: flex;
     gap: 20px;
 }
 
 .navbar-links a {
     color: #f0f0f0; /* White text */
+    text-decoration: none;
     font-size: 1.2rem;
     text-decoration: none;
     padding: 10px 15px;
@@ -116,22 +118,26 @@ input[type="text"], input[type="file"], select {
 .navbar-links a:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white background on hover */
     color: #ffeb3b; /* Bright yellow on hover */
+    text-decoration: none;
 }
 
 /* Button Styling */
 .navbar-btn {
     background-color: #ff6b6b; /* Coral background */
+    text-decoration: none;
     color: #fff;
     font-size: 1rem;
     border: none;
     padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
+    text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
 .navbar-btn:hover {
     background-color: #e55b5b; /* Darker coral on hover */
+    text-decoration: none;
 }
 
 /* Responsive Design for Mobile */
@@ -148,6 +154,7 @@ input[type="text"], input[type="file"], select {
 
     .navbar-btn {
         margin-top: 10px;
+        text-decoration: none;
     }
 }
 
