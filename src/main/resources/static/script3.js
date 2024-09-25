@@ -25,5 +25,3 @@ async function getAiResponse(event) {
         aiResponse.textContent = 'An error occurred while fetching the response.';
     }
 }
-
-// T

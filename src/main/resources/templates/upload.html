@@ -5,11 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload User Response</title>
     <link rel="icon" href="/images/SRM_University,_Haryana_logo.png">
-    <link rel="stylesheet" href="/style.css">
+    <link id="theme-style" rel="stylesheet" href="style-dark.css"> <!-- Default light theme -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="/script2.js" defer></script>
 </head>
 <body>
+<nav class="navbar">
+    <a href="#" class="navbar-brand">PaperPal</a>
+    <div class="navbar-links">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <button id="theme-toggle" class="navbar-btn" >Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
+    <button class="navbar-btn" onclick="goBackToForm()">Back to Form</button>
+</nav>
+<script>
+    const toggleThemeBtn = document.getElementById('theme-toggle');
+    const themeLink = document.getElementById('theme-style');
+
+    // Function to switch between light and dark themes
+    function toggleTheme() {
+        // If the current theme is light (style.css), switch to dark (style-dark.css)
+        if (themeLink.getAttribute('href') === 'style.css') {
+            themeLink.setAttribute('href', 'style-dark.css');
+            localStorage.setItem('theme', 'dark'); // Save user preference
+        } else {
+            // Otherwise, switch back to the light theme (style.css)
+            themeLink.setAttribute('href', 'style.css');
+            localStorage.setItem('theme', 'light'); // Save user preference
+        }
+    }
+
+    // Event listener for the button
+    toggleThemeBtn.addEventListener('click', toggleTheme);
+
+    // Load saved theme from localStorage on page load
+    window.addEventListener('load', () => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            themeLink.setAttribute('href', 'style-dark.css');
+        }
+    });
+</script>
 <div class="container">
     <h1>Upload Question Paper</h1>
     <hr class="styled-hr">
