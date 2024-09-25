@@ -11,9 +11,9 @@ html, body {
     height: 100%; /* Ensures that the body takes full viewport height */
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background: linear-gradient(135deg, #f0f0f0, #ffffff); /* Light gradient background */
-    color: #333; /* Darker text color */
-    text-decoration: none; /* Removed underline from all elements */
+    background: linear-gradient(135deg, #e0e0e0, #c0c0c0); /* Lighter gradient */
+    color: #333; /* Darker text color for contrast */
+    text-decoration: none; /* Removed underline from all elements by default */
 }
 
 /* Layout */
@@ -24,10 +24,11 @@ body {
 }
 
 .styled-hr {
-    border: 0.5px;
-    height: 2px;
-    background: #666; /* Darker gray for contrast */
+    border: 0.5px; /* Removes the default border */
+    height: 2px; /* Sets the height */
+    background: black; /* Sets the color */
     margin-bottom: 1px;
+
 }
 
 .container {
@@ -36,9 +37,9 @@ body {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.9); /* Light background with slight transparency */
+    background: rgba(255, 255, 255, 0.9); /* Light, semi-transparent background */
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Lighter shadow */
     backdrop-filter: blur(8px); /* Slight glassmorphism effect */
 }
 
@@ -49,24 +50,24 @@ body {
     font-size: 16px;
     border-radius: 4px;
     min-height: 50px;
-    display: block;
+    display: block; /* Ensure it's visible */
     margin-bottom: 10px;
 }
 
 #loading-message {
     font-size: 14px;
     text-align: center;
-    color: #666;
+    color: #555; /* Lighter gray for loading message */
 }
 
 /* General Input Field */
 input[type="text"], input[type="file"], select {
     width: 100%; /* Full width of the form-group */
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc; /* Lighter border */
     border-radius: 6px;
-    background: #f0f0f0; /* Light gray background */
-    color: #333;
+    background: rgba(240, 240, 240, 0.9); /* Slightly lighter background */
+    color: #333; /* Darker text */
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
@@ -83,7 +84,7 @@ input[type="text"], input[type="file"], select {
     align-items: center;
     padding: 15px 30px;
     background: rgba(255, 255, 255, 0.9); /* Light background matching other sections */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Lighter shadow */
     position: sticky;
     top: 0;
     width: 100%;
@@ -94,78 +95,55 @@ input[type="text"], input[type="file"], select {
 .navbar-brand {
     font-family: 'Lobster', cursive; /* Beautiful cursive font for the logo */
     font-size: 2.5rem;
-    color: #333; /* Darker text color */
+    color: #333; /* Darker text for logo */
     text-decoration: none;
 }
 
 /* Navigation Links */
 .navbar-links {
-    display: flex;
     text-decoration: none;
+    display: flex;
     gap: 20px;
 }
 
 .navbar-links a {
-    color: #333; /* Darker text */
-    font-size: 1.2rem;
+    color: #333; /* Darker text for links */
     text-decoration: none;
+    font-size: 1.2rem;
     padding: 10px 15px;
     transition: background-color 0.3s, color 0.3s;
-    text-decoration: none;
     border-radius: 5px; /* Rounded corners */
 }
 
 .navbar-links a:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Light transparent hover effect */
-    color: #0066cc; /* Blue hover effect */
-    text-decoration: none;
+    background-color: rgba(200, 200, 200, 0.3); /* Light gray on hover */
+    color: #ffeb3b; /* Bright yellow on hover */
 }
 
-/* Button Styling */
+/* Button Styling for Navbar */
 .navbar-btn {
-    background-color: #0066cc; /* Blue background */
-    text-decoration: none;
-    color: #fff;
+    background-color: #ffab91; /* Darker coral background for light theme */
+    color: #fff; /* Text color remains white */
     font-size: 1rem;
     border: none;
     padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
+    text-decoration: none;
     transition: background-color 0.3s ease;
 }
 
 .navbar-btn:hover {
-    background-color: #005bb5; /* Darker blue on hover */
-    text-decoration: none;
+    background-color: #ff8a65; /* Darker coral on hover */
 }
 
-/* Responsive Design for Mobile */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        padding: 10px 20px;
-    }
-
-    .navbar-links {
-        flex-direction: column;
-        gap: 15px;
-        text-decoration: none;
-    }
-
-    .navbar-btn {
-        margin-top: 10px;
-        text-decoration: none;
-    }
-
-}
-
-/* Button Styling */
+/* General Button Styling */
 button, .button, a.button {
     display: inline-block;
     padding: 12px 24px;
     font-size: 1rem;
-    color: #fff;
-    background: linear-gradient(45deg, #4caf50, #8bc34a); /* Green gradient */
+    color: #fff; /* Text color remains white */
+    background: linear-gradient(45deg, #80deea, #4fc3f7); /* Darker gradient */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -173,28 +151,28 @@ button, .button, a.button {
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Lighter shadow */
 }
 
 button:hover, .button:hover, a.button:hover {
-    background: linear-gradient(45deg, #8bc34a, #4caf50); /* Reversed gradient on hover */
+    background: linear-gradient(45deg, #4fc3f7, #80deea); /* Slightly darker gradient on hover */
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 button:active {
-    background-color: #388e3c;
+    background-color: #00796b; /* Darker teal for active state */
 }
 
 /* Footer Styling */
 footer {
     position: sticky;
     top: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
+    background: rgba(255, 255, 255, 0.9); /* Light background for footer */
+    color: #333; /* Darker text */
     padding: 20px;
     text-align: center;
-    border-top: 4px solid #ccc;
+    border-top: 4px solid #ccc; /* Lighter border */
     width: 100%;
     margin-top: auto; /* Ensures footer sticks to the bottom when content is short */
 }
@@ -204,7 +182,7 @@ footer p {
 }
 
 footer a {
-    color: #0066cc; /* Blue links */
+    color: #4caf50; /* Keep link color green */
     text-decoration: none;
 }
 
@@ -215,17 +193,16 @@ footer a:hover {
 /* LinkedIn Button Styling */
 footer button {
     padding: 10px 20px;
-    background:  linear-gradient(45deg, #4caf50, #8bc34a); /* Lighter LinkedIn colors */
+    background: linear-gradient(45deg, #4fc3f7, #81d4fa); /* Lighter LinkedIn colors */
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Lighter shadow */
 }
 
 footer button:hover {
-    background:linear-gradient(45deg, #8bc34a, #4caf50); /* Reversed gradient for hover effect */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
+    background: linear-gradient(45deg, #81d4fa, #4fc3f7); /* Reverse gradient on hover */
 }
 
 footer button a {

@@ -7,8 +7,8 @@ async function getAiResponse(event) {
     const aiResponse = document.getElementById('ai-response');
 
     // Show the loading message in the aiResponse div and clear the previous response
-    aiResponse.textContent = ''; // Clear previous response
-    loadingMessage.textContent = 'Generating...'; // Display the loading message
+    aiResponse.textContent = 'Generating...'; // Clear previous response
+    // loadingMessage.textContent = 'Generating...'; // Display the loading message
 
     try {
         const response = await fetch(`/ai/generateStream?prompt=${encodeURIComponent(prompt)}`);

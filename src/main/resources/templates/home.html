@@ -47,6 +47,8 @@
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'dark') {
             themeLink.setAttribute('href', 'style-dark.css');
+        }else{
+            themeLink.setAttribute('href', 'style.css');
         }
     });
 </script>
