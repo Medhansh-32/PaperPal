@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam File Links</title>
-    <link rel="icon" href="/images/SRM_University,_Haryana_logo.png" alt="University Logo">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>PaperPal</title>
+    <link rel="icon" href="/images/SRM_University,_Haryana_logo.png" alt="PaperPal Logo">
     <link id="theme-style" rel="stylesheet" href="style-dark.css"> <!-- Default light theme -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <nav class="navbar">
@@ -36,7 +36,12 @@
             localStorage.setItem('theme', 'light'); // Save user preference
         }
     }
-
+    function goBack() {
+        window.history.back();
+        setTimeout(function() {
+            window.location.reload(); // Refresh the page after going back
+        }, 1000);
+    }
     // Event listener for the button
     toggleThemeBtn.addEventListener('click', toggleTheme);
 
@@ -88,13 +93,6 @@
         </p>
     </div>
 </footer>
-<script>
-    function goBack() {
-        window.history.back();
-        setTimeout(function() {
-            window.location.reload(); // Refresh the page after going back
-        }, 1000);
-    }
-</script>
+
 </body>
 </html>

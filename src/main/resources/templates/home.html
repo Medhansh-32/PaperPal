@@ -45,10 +45,10 @@
     // Load saved theme from localStorage on page load
     window.addEventListener('load', () => {
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            themeLink.setAttribute('href', 'style-dark.css');
-        }else{
+        if (savedTheme === 'light') {
             themeLink.setAttribute('href', 'style.css');
+        }else{
+            themeLink.setAttribute('href', 'style-dark.css');
         }
     });
 </script>

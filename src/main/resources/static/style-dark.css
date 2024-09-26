@@ -82,7 +82,7 @@ input[type="text"], input[type="file"], select {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background: rgba(40, 40, 40, 0.9); /* Dark background matching other sections */
+    background: rgba(40, 40, 40, 1); /* Dark background matching other sections */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
     position: sticky;
     top: 0;

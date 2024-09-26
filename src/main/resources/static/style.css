@@ -11,8 +11,8 @@ html, body {
     height: 100%; /* Ensures that the body takes full viewport height */
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background: linear-gradient(135deg, #e0e0e0, #c0c0c0); /* Lighter gradient */
-    color: #333; /* Darker text color for contrast */
+    background: linear-gradient(135deg, #f0f0f0, #ffffff);
+    color: #333333;
     text-decoration: none; /* Removed underline from all elements by default */
 }
 
@@ -26,9 +26,8 @@ body {
 .styled-hr {
     border: 0.5px; /* Removes the default border */
     height: 2px; /* Sets the height */
-    background: black; /* Sets the color */
+    background: #333333; /* Sets the color */
     margin-bottom: 1px;
-
 }
 
 .container {
@@ -39,7 +38,7 @@ body {
     padding: 20px;
     background: rgba(255, 255, 255, 0.9); /* Light, semi-transparent background */
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Lighter shadow */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(8px); /* Slight glassmorphism effect */
 }
 
@@ -57,17 +56,17 @@ body {
 #loading-message {
     font-size: 14px;
     text-align: center;
-    color: #555; /* Lighter gray for loading message */
+    color: #333333;
 }
 
 /* General Input Field */
 input[type="text"], input[type="file"], select {
     width: 100%; /* Full width of the form-group */
     padding: 10px;
-    border: 1px solid #ccc; /* Lighter border */
+    border: 1px solid #ccc;
     border-radius: 6px;
     background: rgba(240, 240, 240, 0.9); /* Slightly lighter background */
-    color: #333; /* Darker text */
+    color: #333333;
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
@@ -83,8 +82,8 @@ input[type="text"], input[type="file"], select {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background: rgba(255, 255, 255, 0.9); /* Light background matching other sections */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Lighter shadow */
+    background: rgba(255, 255, 255, 1); /* Light background matching other sections */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     width: 100%;
@@ -95,7 +94,7 @@ input[type="text"], input[type="file"], select {
 .navbar-brand {
     font-family: 'Lobster', cursive; /* Beautiful cursive font for the logo */
     font-size: 2.5rem;
-    color: #333; /* Darker text for logo */
+    color: #333333; /* Darker text for visibility */
     text-decoration: none;
 }
 
@@ -107,23 +106,26 @@ input[type="text"], input[type="file"], select {
 }
 
 .navbar-links a {
-    color: #333; /* Darker text for links */
+    color: #333333; /* Dark text */
     text-decoration: none;
     font-size: 1.2rem;
+    text-decoration: none;
     padding: 10px 15px;
     transition: background-color 0.3s, color 0.3s;
     border-radius: 5px; /* Rounded corners */
 }
 
 .navbar-links a:hover {
-    background-color: rgba(200, 200, 200, 0.3); /* Light gray on hover */
-    color: #ffeb3b; /* Bright yellow on hover */
+    background-color: rgba(0, 0, 0, 0.1); /* Slightly transparent dark background on hover */
+    color: #ff6b6b; /* Coral on hover */
+    text-decoration: none;
 }
 
-/* Button Styling for Navbar */
+/* Button Styling */
 .navbar-btn {
-    background-color: #ffab91; /* Darker coral background for light theme */
-    color: #fff; /* Text color remains white */
+    background-color: #ff6b6b; /* Coral background */
+    text-decoration: none;
+    color: #fff;
     font-size: 1rem;
     border: none;
     padding: 10px 20px;
@@ -134,16 +136,35 @@ input[type="text"], input[type="file"], select {
 }
 
 .navbar-btn:hover {
-    background-color: #ff8a65; /* Darker coral on hover */
+    background-color: #e55b5b; /* Darker coral on hover */
+    text-decoration: none;
 }
 
-/* General Button Styling */
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar-btn {
+        margin-top: 10px;
+        text-decoration: none;
+    }
+}
+
+/* Button Styling */
 button, .button, a.button {
     display: inline-block;
     padding: 12px 24px;
     font-size: 1rem;
-    color: #fff; /* Text color remains white */
-    background: linear-gradient(45deg, #80deea, #4fc3f7); /* Darker gradient */
+    color: #fff;
+    background: linear-gradient(45deg, #4caf50, #81c784); /* Green and light green */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -151,28 +172,28 @@ button, .button, a.button {
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Lighter shadow */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 button:hover, .button:hover, a.button:hover {
-    background: linear-gradient(45deg, #4fc3f7, #80deea); /* Slightly darker gradient on hover */
+    background: linear-gradient(45deg, #81c784, #4caf50);
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 button:active {
-    background-color: #00796b; /* Darker teal for active state */
+    background-color: #388e3c;
 }
 
 /* Footer Styling */
 footer {
     position: sticky;
     top: 100%;
-    background: rgba(255, 255, 255, 0.9); /* Light background for footer */
-    color: #333; /* Darker text */
+    background: rgba(255, 255, 255, 0.9);
+    color: #333333;
     padding: 20px;
     text-align: center;
-    border-top: 4px solid #ccc; /* Lighter border */
+    border-top: 4px solid #ccc;
     width: 100%;
     margin-top: auto; /* Ensures footer sticks to the bottom when content is short */
 }
@@ -182,7 +203,7 @@ footer p {
 }
 
 footer a {
-    color: #4caf50; /* Keep link color green */
+    color: #4caf50;
     text-decoration: none;
 }
 
@@ -193,16 +214,16 @@ footer a:hover {
 /* LinkedIn Button Styling */
 footer button {
     padding: 10px 20px;
-    background: linear-gradient(45deg, #4fc3f7, #81d4fa); /* Lighter LinkedIn colors */
+    background: linear-gradient(45deg, #0072b1, #00aaff);
     border: none;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Lighter shadow */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 footer button:hover {
-    background: linear-gradient(45deg, #81d4fa, #4fc3f7); /* Reverse gradient on hover */
+    background: linear-gradient(45deg, #00aaff, #0072b1);
 }
 
 footer button a {
