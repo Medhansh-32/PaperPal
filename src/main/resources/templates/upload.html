@@ -11,16 +11,38 @@
     <script src="/script2.js" defer></script>
 </head>
 <body>
-<nav class="navbar">
-    <a href="#" class="navbar-brand">PaperPal</a>
-    <div class="navbar-links">
-        <a href="#home">Home</a>
-        <a href="#features">Features</a>
-        <a href="#contact">Contact</a>
-    </div>
-    <button id="theme-toggle" class="navbar-btn" >Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
-    <a href="/home" class="navbar-btn">Back to Home <i class="fa-sharp fa-solid fa-house"></i></a>
-</nav>
+
+<!-- Centered PaperPal Heading at the top -->
+<div id="pc">
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">PaperPal</a>
+        <div class="navbar-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button id="theme-toggle" class="navbar-btn" >Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
+        <a href="/home" class="button">Home <i class="fa-sharp fa-solid fa-house"></i></a>
+    </nav>
+</div>
+<div id="mobile">
+    <nav class="navbarmini">
+        <a href="#" class="navbar-brandmini" style="font-size: 2.6rem">PaperPal</a>
+        <!-- Dropdown using checkbox -->
+        <div id="dropdown-container">
+            <input type="checkbox" id="dropdown-checkbox">
+            <label class="dropdown-label" for="dropdown-checkbox"><i class="fa-solid fa-bars"></i></label>
+            <ul class="dropdown-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <button id="theme-toggles" class="navbar-btn">Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
+        <a href="/home" class="button">Home <i class="fa-sharp fa-solid fa-house"></i></a>
+    </nav>
+</div>
 <script>
     const toggleThemeBtn = document.getElementById('theme-toggle');
     const themeLink = document.getElementById('theme-style');
@@ -89,7 +111,7 @@
     </form>
     <br>
     <br>
-    <a href="/home" class="button">Back to Home <i class="fa-sharp fa-solid fa-house"></i></a>
+
 </div>
 <footer>
     <div class="footer-content">

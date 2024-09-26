@@ -22,7 +22,9 @@ body {
     flex-direction: column;
     min-height: 100vh; /* Ensures body takes up at least full viewport height */
 }
-
+#mobile{
+    visibility: hidden;
+}
 .styled-hr {
     border: 0.5px; /* Removes the default border */
     height: 2px; /* Sets the height */
@@ -158,6 +160,87 @@ input[type="text"], input[type="file"], select {
     }
 }
 
+/* Style for the navbar */
+.navbarmini{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+}
+.navbarmini a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Style for dropdown checkbox */
+#dropdown-container {
+    position: relative;
+}
+
+#dropdown-checkbox {
+    display: none;
+}
+
+/* Label for the dropdown checkbox (acts like a toggle button) */
+.dropdown-label {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #444;
+    color: white;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Dropdown list - Hidden by default */
+.dropdown-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    z-index: 1001;
+}
+
+.dropdown-list li {
+    margin: 0;
+}
+
+.dropdown-list li a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-list li a:hover {
+    background-color: #555;
+}
+
+/* Show the dropdown list when checkbox is checked */
+#dropdown-checkbox:checked ~ .dropdown-list {
+    display: block;
+
+}
+
+/* Style for the buttons */
+.navbar-btn {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.navbar-btn i {
+    margin-left: 5px;
+}
 /* Button Styling */
 button, .button, a.button {
     display: inline-block;
@@ -259,6 +342,21 @@ footer button a:hover {
         padding: 10px;
     }
 
+#mobile{
+    visibility: visible;
+}
+.navbarmini{
+    display: flex;
+    justify-content: space-between;
+}
+.navbar-brandmini{
+    font-family: 'Lobster', cursive; /* Beautiful cursive font for the logo */
+    color: #f0f0f0; /* White text for visibility */
+    text-decoration: none;
+}
+#pc{
+    display: none;
+}
     h1 {
         font-size: 2rem;
     }
@@ -278,6 +376,13 @@ footer button a:hover {
 }
 
 @media (max-width: 480px) {
+    #pc{
+        visibility: hidden;
+    }
+    #mobile{
+        visibility: visible;
+        margin-top: 0rem;
+    }
     .container {
         padding: 5px;
     }

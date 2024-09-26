@@ -12,6 +12,7 @@
 <body>
 
 <!-- Centered PaperPal Heading at the top -->
+<div id="pc">
 <nav class="navbar">
     <a href="#" class="navbar-brand">PaperPal</a>
     <div class="navbar-links">
@@ -20,8 +21,27 @@
         <a href="#contact">Contact</a>
     </div>
     <button id="theme-toggle" class="navbar-btn" >Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
-    <button class="navbar-btn" onclick="goBackToForm()">Back to Form</button>
+
 </nav>
+</div>
+<div id="mobile">
+    <nav class="navbarmini">
+        <a href="#" class="navbar-brandmini" style="font-size: 2.6rem">PaperPal</a>
+        <!-- Dropdown using checkbox -->
+        <div id="dropdown-container">
+            <input type="checkbox" id="dropdown-checkbox">
+            <label class="dropdown-label" for="dropdown-checkbox"><i class="fa-solid fa-bars"></i></label>
+            <ul class="dropdown-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <button id="theme-toggles" class="navbar-btn"><i class="fa-solid fa-circle-half-stroke"></i></button>
+
+    </nav>
+</div>
 <script>
     const toggleThemeBtn = document.getElementById('theme-toggle');
     const themeLink = document.getElementById('theme-style');
@@ -52,6 +72,7 @@
         }
     });
 </script>
+
 <div class="container">
     <h1>Home</h1>
     <hr class="styled-hr">
@@ -85,7 +106,6 @@
         </p>
         <p>Upload papers if you have and contribute in helping juniors.</p>
     </div>
-</footer>
-<script src="/script3.js"></script> <!-- Ensure the path is correct -->
+</footer> <!-- Ensure the path is correct -->
 </body>
 </html>

@@ -1,60 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PaperPal</title>
-    <link rel="icon" href="/images/SRM_University,_Haryana_logo.png" alt="PaperPal Logo">
-    <link id="theme-style" rel="stylesheet" href="style-dark.css"> <!-- Default light theme -->
+    <link rel="icon" th:href="@{/images/SRM_University,_Haryana_logo.png}" alt="PaperPal Logo">
+    <link id="theme-style" th:href="@{/style-dark.css}"> <!-- Default dark theme -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-<nav class="navbar">
-    <a href="#" class="navbar-brand">PaperPal</a>
-    <div class="navbar-links">
-        <a href="#home">Home</a>
-        <a href="#features">Features</a>
-        <a href="#contact">Contact</a>
-    </div>
-    <button id="theme-toggle" class="navbar-btn" >Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
-    <a href="/home" class="navbar-btn">Back to Home <i class="fa-sharp fa-solid fa-house"></i></a>
-</nav>
-<script>
-    const toggleThemeBtn = document.getElementById('theme-toggle');
-    const themeLink = document.getElementById('theme-style');
 
-    // Function to switch between light and dark themes
-    function toggleTheme() {
-        // If the current theme is light (style.css), switch to dark (style-dark.css)
-        if (themeLink.getAttribute('href') === 'style.css') {
-            themeLink.setAttribute('href', 'style-dark.css');
-            localStorage.setItem('theme', 'dark'); // Save user preference
-        } else {
-            // Otherwise, switch back to the light theme (style.css)
-            themeLink.setAttribute('href', 'style.css');
-            localStorage.setItem('theme', 'light'); // Save user preference
-        }
-    }
-    function goBack() {
-        window.history.back();
-        setTimeout(function() {
-            window.location.reload(); // Refresh the page after going back
-        }, 1000);
-    }
-    // Event listener for the button
-    toggleThemeBtn.addEventListener('click', toggleTheme);
+<!-- Centered PaperPal Heading at the top -->
+<div id="pc">
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">PaperPal</a>
+        <div class="navbar-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button id="theme-toggle" class="navbar-btn" >Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
+        <a href="/home" class="button">Home <i class="fa-sharp fa-solid fa-house"></i></a>
+    </nav>
+</div>
+<div id="mobile">
+    <nav class="navbarmini">
+        <a href="#" class="navbar-brandmini" style="font-size: 2.6rem">PaperPal</a>
+        <!-- Dropdown using checkbox -->
+        <div id="dropdown-container">
+            <input type="checkbox" id="dropdown-checkbox">
+            <label class="dropdown-label" for="dropdown-checkbox"><i class="fa-solid fa-bars"></i></label>
+            <ul class="dropdown-list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
 
-    // Load saved theme from localStorage on page load
-    window.addEventListener('load', () => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            themeLink.setAttribute('href', 'style-dark.css');
-        }else{
-            themeLink.setAttribute('href', 'style.css');
-        }
-    });
-</script>
+        <button id="theme-toggles" class="navbar-btn">Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
+        <a href="/home" class="button">Home <i class="fa-sharp fa-solid fa-house"></i></a>
+    </nav>
+</div>
 <div class="main-content">
     <div class="container">
         <h1>Exam File Links</h1>
@@ -63,7 +51,6 @@
             <div class="links-container">
                 <br>
                 <a th:each="link, stat : ${links}" th:href="${link}" class="button" target="_blank" style="display: block; margin-bottom: 1.2rem;height: 3rem;width: 13rem">Download PDF [[${stat.index} + 1]]</a>
-
                 <br>
             </div>
         </div>
@@ -77,22 +64,439 @@
             <button onclick="goBack()" class="back-button">Go Back</button>
             <br>
             <br>
-
             <a th:href="@{/home}" class="button">Back to Home <i class="fa-sharp fa-solid fa-house"></i></a>
         </div>
     </div>
 </div>
+
 <footer>
     <div class="footer-content">
         <p>Developed By - <strong>Medhansh Sharma</strong></p>
         <p>
-            <button> <a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">Connect with me on LinkedIn <i class="fa-brands fa-linkedin"></i></a></button>
+            <a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">
+                Connect with me on LinkedIn <i class="fa-brands fa-linkedin"></i>
+            </a>
         </p>
-        <p>
-            Upload papers if you have and contribute to helping juniors.
-        </p>
+        <p>Upload papers if you have and contribute to helping juniors.</p>
     </div>
 </footer>
+<style>
+    /* Base Reset */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html, body {
+        height: 100%; /* Ensures that the body takes full viewport height */
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        background: linear-gradient(135deg, #003366, #0066cc);
+        color: #f0f0f0;
+        text-decoration: none; /* Removed underline from all elements by default */
+    }
+
+    /* Layout */
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Ensures body takes up at least full viewport height */
+    }
+    #mobile{
+        visibility: hidden;
+    }
+    .styled-hr {
+        border: 0.5px; /* Removes the default border */
+        height: 2px; /* Sets the height */
+        background: white; /* Sets the color */
+        margin-bottom: 1px;
+    }
+
+    .container {
+        flex: 1; /* Ensures the container takes up the remaining space */
+        width: 90%;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background: rgba(40, 40, 40, 0.9); /* Dark, semi-transparent background */
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px); /* Slight glassmorphism effect */
+    }
+
+    /* AI Assistance Section */
+    #ai-response {
+        padding: 15px;
+        background-color: rgba(40, 40, 40, 0.9); /* Matches the container background */
+        font-size: 16px;
+        border-radius: 4px;
+        min-height: 50px;
+        display: block; /* Ensure it's visible */
+        margin-bottom: 10px;
+    }
+
+    #loading-message {
+        font-size: 14px;
+        text-align: center;
+        color: white;
+    }
+
+    /* General Input Field */
+    input[type="text"], input[type="file"], select {
+        width: 100%; /* Full width of the form-group */
+        padding: 10px;
+        border: 1px solid #666;
+        border-radius: 6px;
+        background: rgba(60, 60, 60, 0.9); /* Slightly lighter background */
+        color: #f0f0f0;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+    /* Shorter AI Prompt Input Field */
+    #prompt {
+        width: 50%;
+    }
+
+    /* Navbar Styling */
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background: rgba(40, 40, 40, 1); /* Dark background matching other sections */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    /* Logo Styling */
+    .navbar-brand {
+        font-family: 'Lobster', cursive; /* Beautiful cursive font for the logo */
+        font-size: 2.5rem;
+        color: #f0f0f0; /* White text for visibility */
+        text-decoration: none;
+    }
+
+    /* Navigation Links */
+    .navbar-links {
+        text-decoration: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .navbar-links a {
+        color: #f0f0f0; /* White text */
+        text-decoration: none;
+        font-size: 1.2rem;
+        text-decoration: none;
+        padding: 10px 15px;
+        transition: background-color 0.3s, color 0.3s;
+        border-radius: 5px; /* Rounded corners */
+    }
+
+    .navbar-links a:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white background on hover */
+        color: #ffeb3b; /* Bright yellow on hover */
+        text-decoration: none;
+    }
+
+    /* Button Styling */
+    .navbar-btn {
+        background-color: #ff6b6b; /* Coral background */
+        text-decoration: none;
+        color: #fff;
+        font-size: 1rem;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .navbar-btn:hover {
+        background-color: #e55b5b; /* Darker coral on hover */
+        text-decoration: none;
+    }
+
+    /* Responsive Design for Mobile */
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            padding: 10px 20px;
+        }
+
+        .navbar-links {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .navbar-btn {
+            margin-top: 10px;
+            text-decoration: none;
+        }
+    }
+
+    /* Style for the navbar */
+    .navbarmini{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        padding: 10px 20px;
+    }
+    .navbarmini a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    /* Style for dropdown checkbox */
+    #dropdown-container {
+        position: relative;
+    }
+
+    #dropdown-checkbox {
+        display: none;
+    }
+
+    /* Label for the dropdown checkbox (acts like a toggle button) */
+    .dropdown-label {
+        cursor: pointer;
+        padding: 10px 15px;
+        background-color: #444;
+        color: white;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+    /* Dropdown list - Hidden by default */
+    .dropdown-list {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #444;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 200px;
+        z-index: 1001;
+    }
+
+    .dropdown-list li {
+        margin: 0;
+    }
+
+    .dropdown-list li a {
+        display: block;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .dropdown-list li a:hover {
+        background-color: #555;
+    }
+
+    /* Show the dropdown list when checkbox is checked */
+    #dropdown-checkbox:checked ~ .dropdown-list {
+        display: block;
+
+    }
+
+    /* Style for the buttons */
+    .navbar-btn {
+        background-color: #444;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .navbar-btn i {
+        margin-left: 5px;
+    }
+    /* Button Styling */
+    button, .button, a.button {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 1rem;
+        color: #fff;
+        background: linear-gradient(45deg, #009688, #80cbc4); /* Teal and light green */
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin: 10px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    button:hover, .button:hover, a.button:hover {
+        background: linear-gradient(45deg, #80cbc4, #009688);
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    button:active {
+        background-color: #00796b;
+    }
+
+    /* Footer Styling */
+    footer {
+        position: sticky;
+        top: 100%;
+        background: rgba(40, 40, 40, 0.9);
+        color: #f0f0f0;
+        padding: 20px;
+        text-align: center;
+        border-top: 4px solid #666;
+        width: 100%;
+        margin-top: auto; /* Ensures footer sticks to the bottom when content is short */
+    }
+
+    footer p {
+        margin-bottom: 10px;
+    }
+
+    footer a {
+        color: #4caf50;
+        text-decoration: none;
+    }
+
+    footer a:hover {
+        text-decoration: underline;
+    }
+
+    /* LinkedIn Button Styling */
+    footer button {
+        padding: 10px 20px;
+        background: linear-gradient(45deg, #0072b1, #00aaff);
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    footer button:hover {
+        background: linear-gradient(45deg, #00aaff, #0072b1);
+    }
+
+    footer button a {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    footer button a:hover {
+        text-decoration: none;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 1200px) {
+        .container {
+            padding: 15px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 10px;
+        }
+
+        #mobile{
+            visibility: visible;
+        }
+        .navbarmini{
+            display: flex;
+            justify-content: space-between;
+        }
+        .navbar-brandmini{
+            font-family: 'Lobster', cursive; /* Beautiful cursive font for the logo */
+            color: #f0f0f0; /* White text for visibility */
+            text-decoration: none;
+        }
+        #pc{
+            display: none;
+        }
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+        }
+
+        button, .button, a.button {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        #pc{
+            visibility: hidden;
+        }
+        #mobile{
+            visibility: visible;
+            margin-top: 0rem;
+        }
+        .container {
+            padding: 5px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+        }
+
+        button, .button, a.button {
+            padding: 8px 16px;
+            font-size: 0.8rem;
+        }
+    }
+
+</style>
+<script>
+    function goBack() {
+        window.history.back();
+        setTimeout(function() {
+            window.location.reload(); // Refresh the page after going back
+        }, 1000);
+    }
+</script>
 
 </body>
 </html>
