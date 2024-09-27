@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PaperPal</title>
     <link rel="icon" href="/images/SRM_University,_Haryana_logo.png" alt="PaperPal Logo">
-    <link id="theme-style" rel="stylesheet" href="style-dark.css"> <!-- Default light theme -->
+    <link id="theme-style" rel="stylesheet" href="style-dark.css"> <!-- Default dark theme -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-<!-- Centered PaperPal Heading at the top -->
+<!-- Desktop navigation -->
 <div id="pc">
-<nav class="navbar">
-    <a href="#" class="navbar-brand">PaperPal</a>
-    <div class="navbar-links">
-        <a href="#home">Home</a>
-        <a href="#features">Features</a>
-        <a href="#contact">Contact</a>
-    </div>
-    <button id="theme-toggle" class="navbar-btn" >Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
-
-</nav>
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">PaperPal</a>
+        <div class="navbar-links">
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <button id="theme-toggle" class="navbar-btn">Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
+    </nav>
 </div>
+
+<!-- Mobile navigation -->
 <div id="mobile">
     <nav class="navbarmini">
         <a href="#" class="navbar-brandmini" style="font-size: 2.6rem">PaperPal</a>
-        <!-- Dropdown using checkbox -->
+        <!-- Dropdown for mobile using checkbox -->
         <div id="dropdown-container">
             <input type="checkbox" id="dropdown-checkbox">
             <label class="dropdown-label" for="dropdown-checkbox"><i class="fa-solid fa-bars"></i></label>
@@ -37,53 +38,53 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
-
         <button id="theme-toggles" class="navbar-btn"><i class="fa-solid fa-circle-half-stroke"></i></button>
-
     </nav>
 </div>
+
+<!-- JavaScript for theme toggle -->
 <script>
-    const toggleThemeBtn = document.getElementById('theme-toggle');
     const themeLink = document.getElementById('theme-style');
 
     // Function to switch between light and dark themes
     function toggleTheme() {
-        // If the current theme is light (style.css), switch to dark (style-dark.css)
-        if (themeLink.getAttribute('href') === 'style.css') {
-            themeLink.setAttribute('href', 'style-dark.css');
-            localStorage.setItem('theme', 'dark'); // Save user preference
-        } else {
-            // Otherwise, switch back to the light theme (style.css)
+        const currentTheme = themeLink.getAttribute('href');
+        if (currentTheme.includes('dark')) {
             themeLink.setAttribute('href', 'style.css');
-            localStorage.setItem('theme', 'light'); // Save user preference
+            localStorage.setItem('theme', 'light');
+        } else {
+            themeLink.setAttribute('href', 'style-dark.css');
+            localStorage.setItem('theme', 'dark');
         }
     }
 
-    // Event listener for the button
-    toggleThemeBtn.addEventListener('click', toggleTheme);
+    // Add event listeners for both PC and mobile theme toggles
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    document.getElementById('theme-toggles').addEventListener('click', toggleTheme);
 
     // Load saved theme from localStorage on page load
     window.addEventListener('load', () => {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             themeLink.setAttribute('href', 'style.css');
-        }else{
+        } else {
             themeLink.setAttribute('href', 'style-dark.css');
         }
     });
 </script>
 
+<!-- Main content section -->
 <div class="container">
     <h1>Home</h1>
     <hr class="styled-hr">
 
+    <!-- Upload and get links buttons -->
     <div class="button-group">
         <a href="/upload" class="button">Upload Question Paper <i class="fa-solid fa-file-arrow-up"></i></a>
         <br><br>
         <a href="/getlinks" class="button">Get Exam File Links <i class="fa-sharp fa-solid fa-file-arrow-down"></i></a>
     </div>
 </div>
-
 <div class="container">
     <h2>Ask AI</h2>
     <hr class="styled-hr">
@@ -98,6 +99,7 @@
     </form>
 </div>
 
+<!-- Footer section -->
 <footer>
     <div class="footer-content">
         <p>Developed By - <strong>Medhansh Sharma</strong></p>
@@ -106,6 +108,8 @@
         </p>
         <p>Upload papers if you have and contribute in helping juniors.</p>
     </div>
-</footer> <!-- Ensure the path is correct -->
+</footer>
+
 </body>
+<script src="/script3.js"></script>
 </html>
