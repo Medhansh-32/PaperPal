@@ -8,7 +8,7 @@
     <link id="theme-style" rel="stylesheet" href="style-dark.css"> <!-- Default dark theme -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="/script2.js" defer></script>
+
 </head>
 <body>
 
@@ -46,36 +46,6 @@
 </div>
 
 <!-- JavaScript for theme toggle -->
-<script>
-    const themeLink = document.getElementById('theme-style');
-
-    // Function to switch between light and dark themes
-    function toggleTheme() {
-        const currentTheme = themeLink.getAttribute('href');
-        if (currentTheme.includes('dark')) {
-            themeLink.setAttribute('href', 'style.css');
-            localStorage.setItem('theme', 'light');
-        } else {
-            themeLink.setAttribute('href', 'style-dark.css');
-            localStorage.setItem('theme', 'dark');
-        }
-    }
-
-    // Add event listeners for both PC and mobile theme toggles
-    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
-    document.getElementById('theme-toggles').addEventListener('click', toggleTheme);
-
-    // Load saved theme from localStorage on page load
-    window.addEventListener('load', () => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            themeLink.setAttribute('href', 'style.css');
-        } else {
-            themeLink.setAttribute('href', 'style-dark.css');
-        }
-    });
-</script>
-
 <div class="container">
     <h1>Upload Question Paper</h1>
     <hr class="styled-hr">
@@ -125,5 +95,9 @@
         </p>
     </div>
 </footer>
+<script src="/script2.js" defer></script>
+<script src="/script4.js"></script>
+
 </body>
+
 </html>

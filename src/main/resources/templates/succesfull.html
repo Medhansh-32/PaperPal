@@ -45,36 +45,6 @@
 </div>
 
 <!-- JavaScript for theme toggle -->
-<script>
-    const themeLink = document.getElementById('theme-style');
-
-    // Function to switch between light and dark themes
-    function toggleTheme() {
-        const currentTheme = themeLink.getAttribute('href');
-        if (currentTheme.includes('dark')) {
-            themeLink.setAttribute('href', 'style.css');
-            localStorage.setItem('theme', 'light');
-        } else {
-            themeLink.setAttribute('href', 'style-dark.css');
-            localStorage.setItem('theme', 'dark');
-        }
-    }
-
-    // Add event listeners for both PC and mobile theme toggles
-    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
-    document.getElementById('theme-toggles').addEventListener('click', toggleTheme);
-
-    // Load saved theme from localStorage on page load
-    window.addEventListener('load', () => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            themeLink.setAttribute('href', 'style.css');
-        } else {
-            themeLink.setAttribute('href', 'style-dark.css');
-        }
-    });
-</script>
-
 <h2>Successful, Thank You :)</h2>
 <hr class="styled-hr">
 <div id="unsuccess">
@@ -94,8 +64,8 @@
         <p>Developed By - <strong>Medhansh Sharma</strong></p>
         <p>
           <button><a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">
-              Connect with me on LinkedIn <i class="fa-brands fa-linkedin"></i></button>
-            </a>
+             Connect with me on LinkedIn <i class="fa-brands fa-linkedin"></i></a></button>
+
         </p>
         <p>
             Upload papers if you have and contribute to helping juniors.
@@ -103,5 +73,8 @@
     </div>
 </footer>
 <script src="/script.js"></script>
+<script src="/script4.js"></script>
+
 </body>
+
 </html>
