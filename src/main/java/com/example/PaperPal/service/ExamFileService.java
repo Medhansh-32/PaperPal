@@ -49,11 +49,12 @@ public class ExamFileService {
     }
     public String createDownloadLink(ExamFile examFile) {
 
-        return ServletUriComponentsBuilder.fromCurrentContextPath()
+        String secureRequest= ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/file/")
                 .path(examFile.getExamId().toString())  // Convert the examId to string and append it to the path
                 .toUriString();
-
+        secureRequest=secureRequest.replace("http","https");
+        return secureRequest;
     }
     public ResponseEntity<?> deleteExamFile(ObjectId id) {
        ExamFile examFile= examFileRepository.deleteExamFileByExamId(id);

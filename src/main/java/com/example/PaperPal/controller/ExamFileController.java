@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 
 @RestController
@@ -35,7 +34,7 @@ public class ExamFileController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ByteArrayResource> downaloadExamFile(@PathVariable ObjectId id) throws IOException {
+    public ResponseEntity<ByteArrayResource> downloadExamFile(@PathVariable ObjectId id) throws IOException {
         byte[] data = examFileService.downloadExamFile(id).getBody();
         if(data!=null) {
             ByteArrayResource resource = new ByteArrayResource(data);
