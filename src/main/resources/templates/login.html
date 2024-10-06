@@ -4,9 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="style2.css">
+
 </head>
 <body>
+<style>
+    /* Base Reset */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html, body {
+        height: 100%;
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #003366, #0066cc); /* Gradient background */
+        color: #f0f0f0;
+        overflow-x: hidden;
+        scroll-behavior: smooth; /* Smooth scrolling */
+    }
+
+    /* Container Styling */
+    .container {
+        margin: 100px auto; /* Adjusted margin for better centering */
+        padding: 40px;
+        background: rgba(40, 40, 40, 0.9); /* Dark, transparent background */
+        border-radius: 12px;
+        max-width: 400px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(8px); /* Glassmorphism effect */
+        animation: slideDown 0.5s ease-out forwards; /* Adjusted duration for a quicker animation */
+    }
+
+    /* Slide Down Animation */
+    @keyframes slideDown {
+        0% {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Heading Styling */
+    h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #ffeb3b; /* Bright yellow text for contrast */
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    /* Form Group Styling */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+        color: #f0f0f0;
+    }
+
+    /* Input Fields Styling */
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid #666;
+        border-radius: 8px;
+        font-size: 1rem;
+        color: #f0f0f0;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 8px #00ffcc; /* Neon focus glow */
+        outline: none;
+    }
+
+    /* Button Styling */
+    .button {
+        width: 100%;
+        padding: 12px 20px;
+        background: linear-gradient(135deg, #009688, #80cbc4); /* Teal gradient */
+        color: #fff;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .button:hover {
+        background: linear-gradient(135deg, #80cbc4, #009688);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 255, 204, 0.6); /* Neon hover glow */
+    }
+
+    .button:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 12px rgba(0, 255, 204, 0.4);
+    }
+
+    /* Horizontal Line Styling */
+    .styled-hr {
+        border: 0;
+        height: 2px;
+        background: #ffeb3b; /* Bright yellow line */
+        margin: 20px 0;
+    }
+
+    /* Link Buttons (Sign Up / Forgot Password) */
+    .navbar-btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px;
+        color: #fff;
+        background: linear-gradient(135deg, #ff6b6b, #ff7f50); /* Coral gradient */
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .navbar-btn:hover {
+        background: linear-gradient(135deg, #ff7f50, #ff6b6b);
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(255, 123, 123, 0.6); /* Subtle hover effect */
+    }
+
+    .navbar-btn:active {
+        transform: translateY(0);
+    }
+
+    /* Footer Styling */
+    footer {
+        margin-top: 40px;
+        text-align: center;
+        color: #f0f0f0;
+        font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .container {
+            max-width: 90%;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+        }
+
+        .button {
+            font-size: 1rem;
+        }
+    }
+
+</style>
 
 <div class="container">
     <h1>Welcome Back!</h1>
@@ -29,5 +204,23 @@
 <footer>
     <p>&copy; 2024 PaperPal. All rights reserved.</p>
 </footer>
+<script>
+
+    window.addEventListener('scroll', function() {
+        const container = document.querySelector('.container');
+        const containerPosition = container.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+
+        if (containerPosition < screenPosition) {
+            container.classList.add('scroll-visible');
+        }
+    })
+    window.addEventListener("load",()=>{
+        const sheet=document.getElementById("log")
+        sheet.setAttribute("href","stylel.css");
+    });
+
+</script>
+
 </body>
 </html>
