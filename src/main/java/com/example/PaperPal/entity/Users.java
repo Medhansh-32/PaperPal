@@ -15,10 +15,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Users {
 
     @Id
-    ObjectId id;
+    private ObjectId id;
 
     @Indexed(unique = true)
-    String userName;
+    private String userName;
 
-    String password;
+    @Indexed(unique = true)
+    private String email;
+
+    private String password;
 }
