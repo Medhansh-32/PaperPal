@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome Back!</h1>
+    <h2>Please log in to continue</h2>
+    <form action="/login" method="POST"> <!-- Adjust action URL as needed -->
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+        </div>
+        <button type="submit" class="button">Login</button>
+    </form>
+    <div class="styled-hr"></div>
+    <p>Don't have an account? <a href="/user/register" class="navbar-btn">Sign Up</a></p>
+    <p>Forgot your password? <a href="/user/forgot-password" class="navbar-btn">Reset Password</a></p>
+</div>
+<footer>
+    <p>&copy; 2024 PaperPal. All rights reserved.</p>
+</footer>
+</body>
+</html>
