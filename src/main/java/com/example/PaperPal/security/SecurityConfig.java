@@ -27,7 +27,7 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/register/**").permitAll()
-                        .requestMatchers("user/register").permitAll()// Allow registration without authentication
+                        .requestMatchers("/user").permitAll()// Allow registration without authentication
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .anyRequest().authenticated() // Require authentication for other requests
                 )
