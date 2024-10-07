@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Font Link -->
 </head>
 <body>
 <style>
@@ -26,16 +26,34 @@
         scroll-behavior: smooth; /* Smooth scrolling */
     }
 
+    /* Navbar Styling */
+    .navbar {
+        background: rgba(40, 40, 40, 0.9); /* Dark background for navbar */
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .navbar h1 {
+        color: #ffeb3b; /* Bright yellow text for contrast */
+        font-size: 2.5rem; /* Font size for navbar */
+        margin: 0;
+    }
+
     /* Container Styling */
     .container {
         margin: 100px auto; /* Adjusted margin for better centering */
-        padding: 40px;
+        padding: 50px; /* Increased padding for larger form */
         background: rgba(40, 40, 40, 0.9); /* Dark, transparent background */
         border-radius: 12px;
-        max-width: 400px;
+        max-width: 600px; /* Increased width for a broader form */
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
         backdrop-filter: blur(8px); /* Glassmorphism effect */
         animation: slideDown 0.5s ease-out forwards; /* Adjusted duration for a quicker animation */
+        text-align: left; /* Align text to the left */
     }
 
     /* Slide Down Animation */
@@ -51,18 +69,11 @@
     }
 
     /* Heading Styling */
-    h1, h2 {
+    h2 {
         text-align: center;
         margin-bottom: 20px;
         color: #ffeb3b; /* Bright yellow text for contrast */
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    h2 {
-        font-size: 1.3rem;
+        font-size: 1.3rem; /* Slightly smaller than heading */
     }
 
     /* Form Group Styling */
@@ -81,11 +92,11 @@
     input[type="text"],
     input[type="password"] {
         width: 100%;
-        padding: 12px;
+        padding: 14px; /* Increased padding for larger input fields */
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid #666;
         border-radius: 8px;
-        font-size: 1rem;
+        font-size: 1.1rem; /* Increased font size */
         color: #f0f0f0;
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
@@ -100,10 +111,10 @@
     /* Button Styling */
     .button {
         width: 100%;
-        padding: 12px 20px;
+        padding: 14px 20px; /* Increased padding for button */
         background: linear-gradient(135deg, #009688, #80cbc4); /* Teal gradient */
         color: #fff;
-        font-size: 1.2rem;
+        font-size: 1.2rem; /* Larger button text */
         border: none;
         border-radius: 8px;
         cursor: pointer;
@@ -183,9 +194,14 @@
 
 </style>
 
+<!-- Navbar -->
+<div class="navbar">
+    <h1>PaperPal</h1>
+</div>
+
 <div class="container">
-    <h1>Welcome Back!</h1>
-    <h2>Please log in to continue</h2>
+    <h2>Welcome Back!</h2>
+    <h2>Your Partner in Academic Success</h2> <!-- Added slogan to match previous heading -->
     <form action="/login" method="POST"> <!-- Adjust action URL as needed -->
         <div class="form-group">
             <label for="username">Username:</label>
@@ -198,14 +214,13 @@
         <button type="submit" class="button">Login</button>
     </form>
     <div class="styled-hr"></div>
-    <p> <a href="/register" class="navbar-btn">Don't have an account?</a></p>
-    <p> <a href="/user/forgot-password" class="navbar-btn">Forgot your password?</a></p>
+    <p><a href="/register" class="navbar-btn">Don't have an account?</a></p>
+    <p><a href="/user/forgot-password" class="navbar-btn">Forgot your password?</a></p>
 </div>
 <footer>
     <p>&copy; 2024 PaperPal. All rights reserved.</p>
 </footer>
 <script>
-
     window.addEventListener('scroll', function() {
         const container = document.querySelector('.container');
         const containerPosition = container.getBoundingClientRect().top;
@@ -214,13 +229,11 @@
         if (containerPosition < screenPosition) {
             container.classList.add('scroll-visible');
         }
-    })
-    window.addEventListener("load",()=>{
-        const sheet=document.getElementById("log")
-        sheet.setAttribute("href","stylel.css");
     });
-
+    window.addEventListener("load", () => {
+        const sheet = document.getElementById("log");
+        sheet.setAttribute("href", "stylel.css");
+    });
 </script>
-
 </body>
 </html>
