@@ -37,5 +37,15 @@ public class UserController {
 
     }
 
+    @PostMapping("/otp")
+    public String sendOtp(@RequestParam String email,@RequestParam String otp) {
+
+        if(otpService.validateOtp(email,otp)){
+            return "user verified...";
+        }else{
+            return "wrong OTP";
+        }
+    }
+
 
 }

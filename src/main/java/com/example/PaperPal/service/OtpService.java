@@ -71,16 +71,28 @@ public class OtpService {
         helper.setSubject("Request for changing the password.");
         helper.setText(emailContent, true); // true indicates HTML
 
-        mailSender.send(message);
+       // mailSender.send(message);
 
         otpCache.put(otpDetails.getOtpId(),otpDetails);
         return otpDetails;
     }
 
 
-    public boolean validateOtp() {
+    public boolean validateOtp(String email,String otp) {
 
-        return true;
-    }
+        Users user=userRepository.findByEmail(email);
+        String otpId=user.getUserName()+user.getEmail();
+
+        OtpDetails otpDetails=otpCache.get(otpId);
+
+        if(otpDetails.getExpiryTime().after(new Date())
+                && otpDetails.getOtp().equals(otp)){
+            //otpCache.remove(otpId);
+            return true;
+
+            }else{
+                return false;
+            }
+        }
 
 }
