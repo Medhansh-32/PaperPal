@@ -25,3 +25,16 @@ async function getAiResponse(event) {
         aiResponse.textContent = 'An error occurred while fetching the response.';
     }
 }
+function validatePasswords() {
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+    var errorMessage = document.getElementById("error-message");
+
+    if (password !== confirmPassword) {
+        errorMessage.textContent = "Passwords do not match.";
+        return false;
+    } else {
+        errorMessage.textContent = "";
+        return true;
+    }
+}

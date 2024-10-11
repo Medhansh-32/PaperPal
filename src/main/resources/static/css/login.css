@@ -16,38 +16,55 @@ html, body {
     scroll-behavior: smooth; /* Smooth scrolling */
 }
 
-/* Container Styling */
-.container {
-    margin: 50px auto;
-    padding: 40px;
-    background: rgba(40, 40, 40, 0.9); /* Dark, transparent background */
-    border-radius: 12px;
-    max-width: 400px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px); /* Glassmorphism effect */
-    transform: translateY(100px); /* Initial translate for animation */
-    animation: slideDown 1s ease-out forwards;
+/* Navbar Styling */
+.navbar {
+    background: rgba(40, 40, 40, 0.9); /* Dark background for navbar */
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
+.navbar h1 {
+    color: #ffeb3b; /* Bright yellow text for contrast */
+    font-size: 2.5rem; /* Font size for navbar */
+    margin: 0;
+    font-family: 'Lobster', cursive; /* Applied Lobster font */
+}
+
+/* Container Styling */
+.container {
+    margin: 100px auto; /* Adjusted margin for better centering */
+    padding: 50px; /* Increased padding for larger form */
+    background: rgba(40, 40, 40, 0.9); /* Dark, transparent background */
+    border-radius: 12px;
+    max-width: 600px; /* Increased width for a broader form */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px); /* Glassmorphism effect */
+    animation: slideDown 0.5s ease-out forwards; /* Adjusted duration for a quicker animation */
+    text-align: left; /* Align text to the left */
+}
+
+/* Slide Down Animation */
 @keyframes slideDown {
-    to {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
         transform: translateY(0);
+        opacity: 1;
     }
 }
 
 /* Heading Styling */
-h1, h2 {
+h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #ffeb3b; /* Bright yellow text for contrast */
-}
-
-h1 {
-    font-size: 2.5rem;
-}
-
-h2 {
-    font-size: 1.3rem;
+    font-size: 1.3rem; /* Slightly smaller than heading */
 }
 
 /* Form Group Styling */
@@ -66,11 +83,11 @@ label {
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    padding: 12px;
+    padding: 14px; /* Increased padding for larger input fields */
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid #666;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 1.1rem; /* Increased font size */
     color: #f0f0f0;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -85,10 +102,10 @@ input[type="password"]:focus {
 /* Button Styling */
 .button {
     width: 100%;
-    padding: 12px 20px;
+    padding: 14px 20px; /* Increased padding for button */
     background: linear-gradient(135deg, #009688, #80cbc4); /* Teal gradient */
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Larger button text */
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -99,7 +116,7 @@ input[type="password"]:focus {
 
 .button:hover {
     background: linear-gradient(135deg, #80cbc4, #009688);
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 255, 204, 0.6); /* Neon hover glow */
 }
 
@@ -114,16 +131,6 @@ input[type="password"]:focus {
     height: 2px;
     background: #ffeb3b; /* Bright yellow line */
     margin: 20px 0;
-    animation: lineAnimation 1s ease-out forwards;
-}
-
-@keyframes lineAnimation {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
 }
 
 /* Link Buttons (Sign Up / Forgot Password) */
@@ -156,34 +163,7 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Scroll Animation */
-@keyframes scrollFadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(100px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Scroll-triggered animation */
-.container {
-    opacity: 0;
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.container.scroll-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Smooth Scrolling Effect */
-html {
-    scroll-behavior: smooth;
-}
-
+/* Responsive Styles */
 @media (max-width: 768px) {
     .container {
         max-width: 90%;
