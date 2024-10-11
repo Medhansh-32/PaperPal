@@ -71,7 +71,7 @@ public class OtpService {
         helper.setSubject("Request for changing the password.");
         helper.setText(emailContent, true); // true indicates HTML
 
-       // mailSender.send(message);
+        mailSender.send(message);
 
         otpCache.put(otpDetails.getOtpId(),otpDetails);
         return otpDetails;

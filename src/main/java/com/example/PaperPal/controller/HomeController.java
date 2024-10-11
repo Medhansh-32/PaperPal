@@ -57,6 +57,10 @@ public class HomeController{
             return "unsuccesfull";
 
     }
+    @GetMapping("/forgotPassword")
+    public String forgotPassword() {
+        return "forgotPassword";
+    }
 
     @GetMapping("/upload")
     public String upload() {

@@ -1,13 +1,11 @@
 package com.example.PaperPal.controller;
 
 import com.example.PaperPal.entity.OtpDetails;
-import com.example.PaperPal.entity.UserDto;
-import com.example.PaperPal.entity.Users;
 import com.example.PaperPal.repository.UserRepository;
 import com.example.PaperPal.service.OtpService;
 import com.example.PaperPal.service.UserService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,24 +24,29 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/changePassword/{email}")
-    public OtpDetails changePassword(@PathVariable String email) {
+    @PostMapping("/changePassword")
+    public ResponseEntity changePassword(@RequestParam String email, HttpServletResponse response) {
         try{
-            return otpService.sendOtp(email);
+            otpService.sendOtp(email);
+           // response.sendRedirect("/otpPage");
+            return new ResponseEntity<>(HttpStatus.OK);
+
         }catch (Exception e){
+
             log.error(e.getMessage());
-            return null;
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
 
     @PostMapping("/otp")
-    public String sendOtp(@RequestParam String email,@RequestParam String otp) {
+    public ResponseEntity validateOtp(@RequestParam String email, @RequestParam String otp) {
 
         if(otpService.validateOtp(email,otp)){
-            return "user verified...";
+            log.info("Checking otp...");
+            return new ResponseEntity<>(HttpStatus.OK);
         }else{
-            return "wrong OTP";
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

@@ -30,6 +30,9 @@ public class SecurityConfig {
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/user").permitAll()// Allow registration without authentication
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/forgotPassword").permitAll()
+                        .requestMatchers("/changePassword").permitAll()
+                        .requestMatchers("/otp").permitAll()
                         .anyRequest().authenticated() // Require authentication for other requests
                 )
                 .httpBasic(Customizer.withDefaults())
