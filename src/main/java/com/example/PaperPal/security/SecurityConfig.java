@@ -32,7 +32,9 @@ public class SecurityConfig {
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/forgotPassword").permitAll()
                         .requestMatchers("/changePassword").permitAll()
+                        .requestMatchers("/newPassword").permitAll()
                         .requestMatchers("/otp").permitAll()
+                        .requestMatchers("/setNewPassword").permitAll()
                         .anyRequest().authenticated() // Require authentication for other requests
                 )
                 .httpBasic(Customizer.withDefaults())
