@@ -1,55 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload User Response</title>
-    <link rel="icon" href="/images/SRM_University,_Haryana_logo.png">
-    <link id="theme-style" rel="stylesheet" href="/css/style-dark.css"> <!-- Default dark theme -->
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-</head>
-<body>
-
-<!-- Desktop navigation -->
-<div id="pc">
-    <nav class="navbar">
-        <a href="#" class="navbar-brand">PaperPal</a>
-        <div class="navbar-links">
-            <a href="https://github.com/Medhansh-32">GitHub</a><br>
-            <a href="https://github.com/Medhansh-32/PaperPal/blob/main/README.md">Description</a><br>
-            <a href="mailto:sharmamedhansh21@gmail.com">FeedBack</a>
-
-        </div>
-        <a href="/" class="button">Home <i class="fa-sharp fa-solid fa-house"></i></a>
-        <button id="theme-toggle" class="navbar-btn">Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
-        <a href="/logout" class="button">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-
-    </nav>
-</div>
-
-<!-- Mobile navigation -->
-<div id="mobile">
-    <nav class="navbarmini">
-        <a href="#" class="navbar-brandmini" style="font-size: 2rem">PaperPal</a>
-        <!-- Dropdown for mobile using checkbox -->
-        <div id="dropdown-container">
-            <input type="checkbox" id="dropdown-checkbox">
-            <label class="dropdown-label" for="dropdown-checkbox"><i class="fa-solid fa-bars"></i></label>
-            <ul class="dropdown-list">
-                <li><a href="https://github.com/Medhansh-32">GitHub</a></li>
-                <li><a href="https://github.com/Medhansh-32/PaperPal/blob/main/README.md">Description</a></li>
-                <li><a href="mailto:sharmamedhansh21@gmail.com">FeedBack</a></li>
-                <li><a href="/logout" class="button">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
-            </ul>
-        </div>
-        <a href="/" class="button"><i class="fa-sharp fa-solid fa-house"></i></a>
-        <button id="theme-toggles" class="navbar-btn"><i class="fa-solid fa-circle-half-stroke"></i></button>
-
-    </nav>
-</div>
-
+<title>Upload User Response</title>
+<link id="theme-style" rel="stylesheet" href="/css/style-dark.css">
+<div th:replace="~{fragments/navbar2 :: navbar2}"></div>
 <!-- JavaScript for theme toggle -->
 <div class="container">
     <h1>Upload Question Paper</h1>
@@ -89,17 +40,7 @@
     <br>
 </div>
 
-<footer>
-    <div class="footer-content">
-        <p>Developed By - <strong>Medhansh Sharma</strong></p>
-        <p>
-            <button><a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">Connect with me on LinkedIn <i class="fa-brands fa-linkedin"></i></a></button>
-        </p>
-        <p>
-            Upload papers if you have and contribute in helping juniors.
-        </p>
-    </div>
-</footer>
+<div th:replace="~{fragments/footer :: footer}"></div>
 <script src="/js/script2.js" defer></script>
 <script src="/js/script4.js"></script>
 
