@@ -27,14 +27,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/register/**").permitAll()
-                        .requestMatchers("/user").permitAll()// Allow registration without authentication
+                        .requestMatchers("/user/**").permitAll()// Allow registration without authentication
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                        .requestMatchers("/forgotPassword").permitAll()
-                        .requestMatchers("/changePassword").permitAll()
-                        .requestMatchers("/newPassword").permitAll()
-                        .requestMatchers("/otp").permitAll()
-                        .requestMatchers("/setNewPassword").permitAll()
                         .anyRequest().authenticated() // Require authentication for other requests
                 )
               //  .httpBasic(Customizer.withDefaults())

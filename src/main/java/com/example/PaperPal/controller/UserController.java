@@ -17,6 +17,7 @@ import java.io.IOException;
 
 @Slf4j
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -28,6 +29,28 @@ public class UserController {
         this.userService = userService;
         this.otpService = otpService;
         this.userRepository = userRepository;
+    }
+    @PostMapping("/redirectHome")
+    public ResponseEntity<String> register(@RequestBody UserDto user) {
+        // Check if the email is already taken
+        boolean isRegistered = userService.registerUser(
+                Users.builder()
+                        .userName(user.getFirstName() + " " + user.getLastName())
+                        .password(user.getPassword())
+                        .email(user.getEmail())
+                        .build()
+        );
+
+        if (isRegistered) {
+            // If registration is successful
+            log.info("User Registered");
+            return ResponseEntity.ok("Registration successful");
+        } else {
+            // If email/username is already taken, return error
+            log.info("User not registered");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Email or Username already registered.....");
+        }
     }
 
     @PostMapping("/changePassword")
@@ -64,7 +87,7 @@ public class UserController {
             Users user= userRepository.findByEmail(userDto.getEmail());
             user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
             userRepository.save(user);
-            log.info("password updated succesfully");
+            log.info("password updated successfully");
             return new ResponseEntity<>(HttpStatus.OK);
         }catch (Exception e){
             log.error(e.getMessage());

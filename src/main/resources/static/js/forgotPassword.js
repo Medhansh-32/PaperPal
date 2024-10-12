@@ -31,7 +31,7 @@ emailForm.addEventListener('submit', function(event) {
     hideError(emailError);
 
     // Send POST request to /changePassword with the email
-    fetch(`/changePassword?email=${encodeURIComponent(email)}`, {
+    fetch(`/user/changePassword?email=${encodeURIComponent(email)}`, {
         method: 'POST',
     })
         .then(response => {
@@ -82,13 +82,13 @@ document.getElementById('verifyOtpBtn').addEventListener('click', function() {
     clearInterval(countdown); // Stop the timer after OTP submission
 
     // Send POST request with email and OTP as request parameters
-    fetch(`/otp?email=${encodeURIComponent(email)}&otp=${encodeURIComponent(otp)}`, {
+    fetch(`/user/otp?email=${encodeURIComponent(email)}&otp=${encodeURIComponent(otp)}`, {
         method: 'POST',
     })
         .then(response => {
             if (response.ok) {
                 // If the response is successful (response.ok is true), show success message
-                window.location.href = '/newPassword?email='+email;
+                window.location.href = '/user/newPassword?email='+email;
             } else {
                 // Show invalid OTP message next to OTP input
                 showError(otpError, 'Invalid OTP. Please try again.');

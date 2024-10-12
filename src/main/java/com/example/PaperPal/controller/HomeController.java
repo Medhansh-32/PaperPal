@@ -36,33 +36,7 @@ public class HomeController{
         return "login";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "register";
-    }
 
-
-    @PostMapping("/user")
-    public String register(@ModelAttribute UserDto user, HttpServletResponse response) throws IOException {
-
-        Boolean check=userService.registerUser(   Users.builder()
-                .userName(user.getFirstName()+" "+user.getLastName())
-                .password(user.getPassword())
-                .email(user.getEmail())
-                .build());
-
-        if(check){
-            response.sendRedirect("");
-
-        }
-
-            return "unsuccesfull";
-
-    }
-    @GetMapping("/forgotPassword")
-    public String forgotPassword() {
-        return "forgotPassword";
-    }
 
     @GetMapping("/upload")
     public String upload() {
@@ -83,11 +57,18 @@ public class HomeController{
     public String delete() {
         return "deleteresponse";
     }
-    @GetMapping("/newPassword")
+    @GetMapping("user/newPassword")
     public String newPassword(@RequestParam String email, Model model) {
         model.addAttribute("email",email);
         return "newPassword";
     }
-
+    @GetMapping("user/register")
+    public String register() {
+        return "register";
+    }
+    @GetMapping("user/forgotPassword")
+    public String forgotPassword() {
+        return "forgotPassword";
+    }
 
 }
