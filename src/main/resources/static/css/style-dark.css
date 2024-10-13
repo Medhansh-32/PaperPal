@@ -88,7 +88,7 @@ input[type="text"], input[type="file"], select {
     padding: 15px 30px;
     background: rgba(40, 40, 40, 1); /* Dark background matching other sections */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); /* Shadow effect */
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000; /* On top of other elements */
@@ -161,10 +161,15 @@ input[type="text"], input[type="file"], select {
 /* Style for the navbar */
 .navbarmini {
     display: flex;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
     background-color: #333; /* Dark background for mini navbar */
     padding: 10px 20px; /* Padding */
+    width: 100%; /* Ensure it spans the full width */
+    top: 0; /* Fixed at the top */
+    z-index: 1000; /* On top of other elements */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); /* Shadow effect */
 }
 
 .navbarmini a {

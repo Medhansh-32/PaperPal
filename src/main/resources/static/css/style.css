@@ -86,7 +86,7 @@ input[type="text"], input[type="file"], select {
     padding: 15px 30px;
     background: rgba(255, 255, 255, 1); /* Light background */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
@@ -159,13 +159,20 @@ input[type="text"], input[type="file"], select {
 }
 
 /* Style for the navbar */
+/* Style for the navbarmini */
 .navbarmini {
     display: flex;
+    position: fixed;
     justify-content: space-between;
     align-items: center;
-    background-color: #ffffff; /* Light background */
-    padding: 10px 20px;
+    width: 100%; /* Ensure full width */
+    background-color: #ffffff; /* Keep the original dark background */
+    padding: 10px 20px; /* Spacing */
+    top: 0; /* Fixed to the top */
+    z-index: 1000; /* Keep it on top of other content */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.8); /* Add shadow for depth */
 }
+
 .navbarmini a {
     color: #333333; /* Dark text */
     text-decoration: none;
