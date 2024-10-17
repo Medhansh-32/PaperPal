@@ -57,16 +57,16 @@ public class HomeController{
     public String delete() {
         return "deleteresponse";
     }
-    @GetMapping("user/newPassword")
+    @GetMapping("/user/newPassword")
     public String newPassword(@RequestParam String email, Model model) {
         model.addAttribute("email",email);
         return "newPassword";
     }
-    @GetMapping("user/register")
+    @GetMapping("/user/register")
     public String register() {
         return "register";
     }
-    @GetMapping("user/forgotPassword")
+    @GetMapping("/user/forgotPassword")
     public String forgotPassword() {
         return "forgotPassword";
     }

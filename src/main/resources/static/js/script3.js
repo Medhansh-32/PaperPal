@@ -58,3 +58,57 @@ document.getElementById("registerForm").addEventListener("submit", async functio
         errorMessage.textContent = "An error occurred. Please try again.";
     }
 });
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the form element
+    const doubtForm = document.getElementById('doubtForm');
+
+    // Add event listener for form submission
+    doubtForm.addEventListener('submit', async function (event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+
+        // Get the values from the form fields
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+
+        // Create the data object to send in the POST request
+        const postData = {
+            title: title,
+            description: description
+        };
+
+        try {
+            // Send a POST request to the /postDoubts endpoint
+            const response = await fetch('/postDoubts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(postData)
+            });
+
+            // Check if the response is OK (status 200-299)
+            if (response.ok) {
+                const result = await response.json();
+                alert('Doubt posted successfully!');
+
+                // Optionally, you can clear the form fields after submission
+                doubtForm.reset();
+
+                // Reload or update the doubts list on success
+                loadDoubts();
+            } else {
+                alert('Error posting doubt. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred while posting the doubt.');
+        }
+    });
+
+    // Function to load the doubts (optional)
+    function loadDoubts() {
+        // Add logic here to fetch and display the list of posted doubts
+        // You can use another fetch call to get the doubts and update the UI
+    }
+});
