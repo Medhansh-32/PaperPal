@@ -1,36 +1,46 @@
 package com.example.PaperPal.controller;
 
+import com.example.PaperPal.entity.Doubts;
 import com.example.PaperPal.entity.OtpDetails;
 import com.example.PaperPal.entity.UserDto;
 import com.example.PaperPal.entity.Users;
+import com.example.PaperPal.repository.DoubtsRepository;
 import com.example.PaperPal.repository.UserRepository;
 import com.example.PaperPal.service.OtpService;
 import com.example.PaperPal.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.Date;
 
 @Slf4j
 @RestController
-@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
     private final OtpService otpService;
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
+    private final AuthenticationProvider authenticationProvider;
+    private final DoubtsRepository doubtsRepository;
 
-    public UserController(UserService userService, OtpService otpService, UserRepository userRepository) {
+    public UserController(UserService userService, OtpService otpService, UserRepository userRepository, AuthenticationProvider authenticationProvider, DoubtsRepository doubtsRepository) {
         this.userService = userService;
         this.otpService = otpService;
         this.userRepository = userRepository;
+        this.authenticationProvider = authenticationProvider;
+        this.doubtsRepository = doubtsRepository;
     }
-    @PostMapping("/redirectHome")
+    @PostMapping("/user/redirectHome")
     public ResponseEntity<String> register(@RequestBody UserDto user) {
         // Check if the email is already taken
         boolean isRegistered = userService.registerUser(
@@ -53,7 +63,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/changePassword")
+    @PostMapping("/user/changePassword")
     public ResponseEntity changePassword(@RequestParam String email, HttpServletResponse response) {
         try{
             otpService.sendOtp(email);
@@ -69,7 +79,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/otp")
+    @PostMapping("/user/otp")
     public ResponseEntity validateOtp(@RequestParam String email, @RequestParam String otp, HttpServletResponse response) throws IOException {
 
         if(otpService.validateOtp(email,otp)){
@@ -80,7 +90,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/setNewPassword")
+    @PostMapping("/user/setNewPassword")
     public ResponseEntity setNewPassword(@RequestBody UserDto userDto){
         log.info(userDto.getEmail());
         try {
@@ -94,5 +104,26 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
+    }
+
+    @PostMapping("/postDoubts")
+    public ResponseEntity<String> addDoubts(@RequestBody Doubts doubts) {
+        log.info("Doubt request received...");
+        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+        String userName=authentication.getName();
+        try {
+            doubtsRepository.save(Doubts.builder()
+                    .userName(userName)
+                    .doubtTitle(doubts.getDoubtTitle())
+                    .doubtDescription(doubts.getDoubtDescription())
+                    .doubtDate(new Date())
+                    .doubtStatus(false)
+                    .build());
+            log.info("Doubts posted....");
+            return new ResponseEntity<>("Doubt posted successfully",HttpStatus.OK);
+        }catch (Exception e){
+            log.error(e.getMessage());
+            return new ResponseEntity<>("Error posting doubt. Please try again.",HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
