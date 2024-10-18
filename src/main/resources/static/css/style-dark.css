@@ -122,6 +122,46 @@ input[type="text"], input[type="file"], select {
     background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white background on hover */
     color: #ffeb3b; /* Bright yellow on hover */
 }
+.main-container {
+    display: flex; /* Align children in a row */
+    justify-content: space-around; /* Space between columns */
+
+}
+#description {
+    width: 100%; /* Full width to fit the container */
+    padding: 12px; /* Padding inside the textarea for comfort */
+    font-size: 1rem; /* Font size for the text */
+    line-height: 1.4; /* Improve readability */
+    border: 1px solid #666; /* Dark border */
+    border-radius: 8px; /* Smooth rounded corners */
+    background-color: rgba(60, 60, 60, 0.9); /* Dark background matching other inputs */
+    color: #f0f0f0; /* Light text color for readability */
+    resize: vertical; /* Allow vertical resizing */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+#description:focus {
+    border-color: #4caf50; /* Green border on focus */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Slight shadow on focus */
+    outline: none; /* Remove the default outline */
+}
+
+#description::placeholder {
+    color: #ccc; /* Lighter color for the placeholder text */
+    font-style: italic; /* Placeholder in italics */
+}
+
+.left-column {
+    flex: 0 0 75%; /* Decrease width to 25% for post of doubts */
+   /* Space between columns */
+}
+
+.right-column {
+    flex: 0 0 25%; /* Increase width to 75% for Ask AI and Home */
+
+    /* Space between columns */
+}
 
 /* Button Styling */
 .navbar-btn {
@@ -155,6 +195,21 @@ input[type="text"], input[type="file"], select {
     .navbar-btn {
         margin-top: 10px; /* Margin for button */
         text-decoration: none; /* Remove underline */
+    }
+    .main-container {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: stretch; /* Ensure columns take full width */
+    }
+
+    .left-column {
+        flex: 0 0 auto; /* Default size based on content */
+        width: 100%; /* Full width for the post doubts section */
+        margin-bottom: 20px; /* Space between sections */
+    }
+
+    .right-column {
+        flex: 0 0 auto; /* Default size based on content */
+        width: 100%; /* Full width for the Ask AI and Home sections */
     }
 }
 
