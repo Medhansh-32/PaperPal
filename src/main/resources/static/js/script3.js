@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(response.status,response.statusText)
             // Check if the response is OK (status 200-299)
             if (response.ok) {
+                alert("Doubt Posted")
                 posting.innerText = await response.text();
 
                 // Optionally, you can clear the form fields after submission

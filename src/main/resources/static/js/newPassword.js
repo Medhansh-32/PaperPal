@@ -41,8 +41,9 @@ passwordForm.addEventListener('submit', function(event) {
         .then(response => {
             if (response.ok) {
                 console.log("Password updated successfully")
-                window.location.href='/login'
+                window.location.href='/'
             } else {
+                window.location.href='/user/forgotPassword'
                 console.error("Failed to update password");
             }
         })

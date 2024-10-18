@@ -8,7 +8,9 @@ import com.example.PaperPal.repository.DoubtsRepository;
 import com.example.PaperPal.repository.UserRepository;
 import com.example.PaperPal.service.OtpService;
 import com.example.PaperPal.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -79,31 +81,41 @@ public class UserController {
     }
 
 
-    @PostMapping("/user/otp")
-    public ResponseEntity validateOtp(@RequestParam String email, @RequestParam String otp, HttpServletResponse response) throws IOException {
-
+    @PostMapping("/otp")
+    public ResponseEntity validateOtp(@RequestParam String email,
+                                      @RequestParam String otp,
+                                      HttpServletResponse response,
+                                      HttpServletRequest request) throws IOException {
+        HttpSession session=request.getSession();
         if(otpService.validateOtp(email,otp)){
             log.info("Checking otp...");
+
+            session.setAttribute("otpVerified","true");
             return new ResponseEntity<>(HttpStatus.OK);
         }else{
+            session.setAttribute("otpVerified","false");
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PostMapping("/user/setNewPassword")
-    public ResponseEntity setNewPassword(@RequestBody UserDto userDto){
+    @PostMapping("/setNewPassword")
+    public ResponseEntity setNewPassword(@RequestBody UserDto userDto,HttpSession session){
         log.info(userDto.getEmail());
-        try {
-            Users user= userRepository.findByEmail(userDto.getEmail());
-            user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-            userRepository.save(user);
-            log.info("password updated successfully");
-            return new ResponseEntity<>(HttpStatus.OK);
-        }catch (Exception e){
-            log.error(e.getMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        if(session!=null && session.getAttribute("otpVerified")!=null){
+            try {
+                if(session.getAttribute("otpVerified").equals("true")){
+                    Users user= userRepository.findByEmail(userDto.getEmail());
+                    user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+                    userRepository.save(user);
+                    log.info("password updated successfully");
+                    return new ResponseEntity<>(HttpStatus.OK);
+                }
+            }catch (Exception e){
+                log.error(e.getMessage());
+            }
         }
-
+        log.info("password not updated...");
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @PostMapping("/postDoubts")
