@@ -1,0 +1,258 @@
+#mobile {
+    visibility: hidden; /* Mobile view container */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(33, 37, 41, 1); /* Dark background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* On top of other elements */
+}
+
+/* Logo Styling */
+.navbar-brand {
+    font-family: 'Lobster', cursive; /* Beautiful cursive font for the logo */
+    font-size: 2.5rem; /* Logo font size */
+    color: #ffffff; /* White text for visibility */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Navigation Links */
+.navbar-links {
+    text-decoration: none;
+    display: flex;
+    gap: 20px; /* Space between links */
+}
+
+.navbar-links a {
+    color: #ffffff; /* White text for links */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2rem; /* Font size for links */
+    padding: 10px 15px; /* Padding for links */
+    transition: background-color 0.3s, color 0.3s; /* Transition effects */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.navbar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white background on hover */
+    color: #72cd44; /* Bright yellow-green on hover */
+}
+
+button, .button, a.button {
+    display: inline-block; /* Inline block display */
+    padding: 12px 24px; /* Button padding */
+    font-size: 1rem; /* Font size for buttons */
+    color: #fff; /* White text */
+    background: linear-gradient(45deg, #009688, #80cbc4); /* Teal and light green */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition effects */
+    margin: 10px; /* Margin around buttons */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Shadow effect */
+}
+.navbar-btn {
+    background-color: #ff6b6b; /* Coral background */
+    text-decoration: none; /* Remove underline */
+    color: #ffffff; /* White text */
+    font-size: 1rem; /* Font size for buttons */
+    border: none; /* No border */
+    padding: 10px 20px; /* Button padding */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease; /* Transition effect */
+}
+
+.navbar-btn:hover {
+    text-decoration: none;
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #80cbc4, #009688); /* Hover gradient */
+    transform: scale(1.05); /* Scale effect on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
+}
+button:hover, .button:hover, a.button:hover {
+    background: linear-gradient(45deg, #80cbc4, #009688); /* Hover gradient */
+    transform: scale(1.05); /* Scale effect on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
+}
+
+button:active {
+    background-color: #00796b; /* Darker shade on active */
+}
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        padding: 10px 20px; /* Padding adjustment */
+    }
+
+    .navbar-links {
+        flex-direction: column; /* Stack links vertically */
+        gap: 15px; /* Space between links */
+    }
+
+    .navbar-btn {
+        margin-top: 10px; /* Margin for button */
+        text-decoration: none; /* Remove underline */
+    }
+}
+
+.navbarmini {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b1b1b; /* Darker background for mini navbar */
+    padding: 10px 20px; /* Padding */
+    width: 100%; /* Ensure it spans the full width */
+    top: 0; /* Fixed at the top */
+    z-index: 1000; /* On top of other elements */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); /* Shadow effect */
+}
+
+.navbarmini a {
+    color: #ffffff; /* White text for mini navbar */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size for links */
+}
+
+/* Style for dropdown checkbox */
+#dropdown-container {
+    position: relative; /* Position for dropdown */
+}
+
+#dropdown-checkbox {
+    display: none; /* Hide checkbox */
+}
+
+/* Label for the dropdown checkbox (acts like a toggle button) */
+.dropdown-label {
+    cursor: pointer; /* Pointer on hover */
+    padding: 10px 15px; /* Padding */
+    background-color: #343a40; /* Dark background */
+    color: #ffffff; /* White text */
+    border-radius: 5px; /* Rounded corners */
+    display: inline-block; /* Inline display */
+}
+
+/* Dropdown list - Hidden by default */
+.dropdown-list {
+    display: none; /* Initially hidden */
+    position: absolute; /* Absolute positioning */
+    top: 100%; /* Position below the label */
+    left: 0; /* Align to the left */
+    background-color: #343a40; /* Darker background for dropdown */
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* No padding */
+    margin: 0; /* No margin */
+    width: 200px; /* Width of dropdown */
+    z-index: 1001; /* On top of other elements */
+}
+
+.dropdown-list li {
+    margin: 0; /* No margin */
+}
+
+.dropdown-list li a {
+    display: block; /* Block display for links */
+    padding: 10px; /* Padding for dropdown items */
+    color: #ffffff; /* White text */
+    text-decoration: none; /* Remove underline */
+}
+
+.dropdown-list li a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Lighter background on hover */
+}
+
+/* Show the dropdown list when checkbox is checked */
+#dropdown-checkbox:checked ~ .dropdown-list {
+    display: block; /* Show dropdown on checkbox checked */
+}
+
+footer {
+    position: sticky; /* Sticky footer */
+    top: 100%; /* Position at the bottom */
+    background: rgba(33, 37, 41, 0.9); /* Dark background */
+    color: #ffffff; /* Light text */
+    padding: 20px; /* Padding */
+    text-align: center; /* Center text */
+    border-top: 4px solid #444444; /* Top border */
+    width: 100%; /* Full width */
+    margin-top: auto; /* Ensure footer sticks to the bottom when content is short */
+}
+
+footer p {
+    margin-bottom: 10px; /* Margin for footer paragraph */
+}
+
+footer a {
+    color: #4caf50; /* Green link color */
+    text-decoration: none; /* Remove underline */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* LinkedIn Button Styling */
+footer button {
+    padding: 10px 20px; /* Padding for footer button */
+    background: linear-gradient(45deg, #0072b1, #00aaff); /* LinkedIn colors */
+    border: none; /* No border */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease; /* Transition effect */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Shadow effect */
+}
+
+footer button:hover {
+    background: linear-gradient(45deg, #00aaff, #0072b1); /* Hover gradient */
+}
+
+footer button a {
+    color: #ffffff; /* White text for button links */
+    text-decoration: none; /* Remove underline */
+}
+
+footer button a:hover {
+    text-decoration: none; /* No underline on hover */
+}
+
+@media (max-width: 768px) {
+    #mobile {
+        visibility: visible; /* Show mobile view */
+    }
+
+    .navbarmini {
+        display: flex; /* Flex display for mini navbar */
+        justify-content: space-between; /* Space between items */
+    }
+
+    .navbar-brandmini {
+        font-family: 'Lobster', cursive; /* Cursive font for mini navbar */
+        color: #ffffff; /* White text */
+        text-decoration: none; /* Remove underline */
+    }
+
+    #pc {
+        display: none; /* Hide desktop view */
+    }
+}
+
+@media (max-width: 480px) {
+    #pc {
+        visibility: hidden; /* Hide desktop view */
+    }
+
+    #mobile {
+        visibility: visible; /* Show mobile view */
+        margin-top: 0rem; /* No margin */
+    }
+}

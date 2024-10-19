@@ -2,6 +2,7 @@ package com.example.PaperPal.controller;
 
 import com.example.PaperPal.entity.UserDto;
 import com.example.PaperPal.entity.Users;
+import com.example.PaperPal.service.DoubtsService;
 import com.example.PaperPal.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,13 @@ import java.io.IOException;
 @Controller
 public class HomeController{
 
+    private final DoubtsService doubtsService;
     public UserService userService;
 
     @Autowired
-    public HomeController(UserService userService){
+    public HomeController(UserService userService, DoubtsService doubtsService){
         this.userService = userService;
+        this.doubtsService = doubtsService;
     }
 
 
@@ -69,6 +72,12 @@ public class HomeController{
     @GetMapping("/user/forgotPassword")
     public String forgotPassword() {
         return "forgotPassword";
+    }
+
+    @GetMapping("/allDoubts")
+    public String getAllDoubts(Model model) {
+        model.addAttribute("doubts",doubtsService.getAllDoubts());
+        return "allDoubts";
     }
 
 }

@@ -1,0 +1,54 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/navbar-footer-dark.css">
+
+<div th:replace="~{fragments/navbar2 :: navbar2}"></div>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-dark.min.css">
+<style>
+    body {
+        background-color: #343a40; /* Dark background color */
+    }
+    .card {
+        background-color: #495057; /* Darker card background */
+        color: white; /* White text for contrast */
+    }
+    .alert {
+        background-color: #6c757d; /* Alert background for empty list */
+        color: white; /* White text for contrast */
+    }
+</style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4 text-light">Doubts</h1>
+
+    <!-- Check if the list of doubts is empty -->
+    <div th:if="${#lists.isEmpty(doubts)}" class="alert alert-info" role="alert">
+        No doubts available.
+    </div>
+
+    <div class="row">
+        <!-- Iterate over the list of doubts -->
+        <div th:each="doubt : ${doubts}" class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 th:text="${doubt.doubtTitle}">Doubt Title</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted" th:text="'Asked by: ' + ${doubt.userName}"></h6>
+                    <p class="card-text" th:text="${doubt.doubtDescription}">Doubt Description</p>
+                    <p class="card-text"><small class="text-muted" th:text="${#dates.format(doubt.doubtDate, 'dd/MM/yyyy')}">Date</small></p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-primary">Reply</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>

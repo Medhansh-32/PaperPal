@@ -118,24 +118,4 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-    @PostMapping("/postDoubts")
-    public ResponseEntity<String> addDoubts(@RequestBody Doubts doubts) {
-        log.info("Doubt request received...");
-        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
-        String userName=authentication.getName();
-        try {
-            doubtsRepository.save(Doubts.builder()
-                    .userName(userName)
-                    .doubtTitle(doubts.getDoubtTitle())
-                    .doubtDescription(doubts.getDoubtDescription())
-                    .doubtDate(new Date())
-                    .doubtStatus(false)
-                    .build());
-            log.info("Doubts posted....");
-            return new ResponseEntity<>("Doubt posted successfully",HttpStatus.OK);
-        }catch (Exception e){
-            log.error(e.getMessage());
-            return new ResponseEntity<>("Error posting doubt. Please try again.",HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }
