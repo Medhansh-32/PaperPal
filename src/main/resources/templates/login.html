@@ -32,8 +32,17 @@
         <button type="submit" class="button">Login</button>
     </form>
     <div class="styled-hr"></div>
-    <p><a href="/user/register" class="navbar-btn">Don't have an account?</a></p>
-    <p><a href="user/forgotPassword" class="navbar-btn">Forgot your password?</a></p>
+    <div class="password">
+        <p><a href="/user/register" class="navbar-btn">Don't have an account?</a></p>
+        <p><a href="user/forgotPassword" class="navbar-btn">Forgot your password?</a></p>
+    </div>
+    <div class="or-divider">
+        <p>or</p>
+    </div>
+
+    <a href="/oauth2/authorization/github" class="github-btn">
+        <button type="button" class="button github-button">Login with GitHub</button>
+    </a>
 </div>
 <footer>
     <p>&copy; 2024 PaperPal. All rights reserved.</p>

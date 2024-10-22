@@ -295,6 +295,7 @@ input[type="text"], input[type="file"], select {
 
 /* Navbar Styling */
 .main-container {
+    padding-top: -10px;
     display: flex; /* Align children in a row */
     justify-content: space-around; /* Space between columns */
 

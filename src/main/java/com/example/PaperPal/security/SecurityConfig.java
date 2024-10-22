@@ -29,12 +29,15 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/user/**").permitAll()// Allow registration without authentication
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                        .anyRequest().authenticated() // Require authentication for other requests
+                        .anyRequest().authenticated()// Require authentication for other requests
                 )
               //  .httpBasic(Customizer.withDefaults())
                 .formLogin(form -> form
                         .loginPage("/login") // Specify custom login page
                         .permitAll() // Allow all users to access the login page
+                )
+                .oauth2Login(form->
+                        form.loginPage("/login")
                 )
                 .logout(logout -> logout
                         .permitAll() // Allow all users to log out

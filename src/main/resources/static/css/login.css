@@ -182,3 +182,71 @@ footer {
         font-size: 1rem;
     }
 }
+/* GitHub Button Styling */
+.github-btn {
+    display: inline-block;
+    width: 100%;
+}
+
+.github-button {
+    background: #333; /* Dark GitHub color */
+    color: #fff;
+    padding: 14px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.github-button:hover {
+    background: #24292e; /* Slightly lighter GitHub color */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 255, 204, 0.6); /* Glow effect */
+}
+.or-divider {
+    text-align: center; /* Center the text */
+    margin: 1.5rem 0; /* Add some vertical spacing */
+}
+
+.or-divider p {
+    display: inline-block; /* Make sure it behaves like inline */
+    background: rgba(255, 255, 255, 0.1); /* Optional: Background for visibility */
+    padding: 0.5rem 1rem; /* Optional: Add some padding for emphasis */
+    border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.github-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 255, 204, 0.4);
+}
+.or-divider {
+    text-align: center; /* Center the text */
+    margin: 1.5rem 0; /* Add some vertical spacing */
+}
+
+.or-divider p {
+    display: inline-block; /* Make sure it behaves like inline */
+    background: rgba(255, 255, 255, 0.1); /* Optional: Background for visibility */
+    padding: 0.5rem 1rem; /* Optional: Add some padding for emphasis */
+    border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.password{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:1.5rem;
+}
+/* Optional GitHub icon styling */
+.github-button::before {
+    content: " ";
+    background-image: url('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
+    background-size: 20px 20px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
