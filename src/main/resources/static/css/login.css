@@ -181,6 +181,10 @@ footer {
     .button {
         font-size: 1rem;
     }
+    .navbar-btn{
+        width: 8.5rem;
+        font-size: 1rem;
+    }
 }
 /* GitHub Button Styling */
 .github-btn {

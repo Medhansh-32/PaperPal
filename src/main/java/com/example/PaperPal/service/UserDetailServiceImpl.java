@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import static org.springframework.security.config.http.MatcherType.regex;
+
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 
@@ -19,13 +21,20 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-            Users user=userRepository.findByUserName(username);
-            if(user==null){
+            Users user=userRepository.findByEmail(username);
+            if(user!=null){
+                return  User.builder()
+                        .username(user.getUserName())
+                        .password(user.getPassword())
+                        .build();
+            }else if(userRepository.findByUserName(username)!=null){
+                 user=userRepository.findByUserName(username);
+                return  User.builder()
+                        .username(user.getUserName())
+                        .password(user.getPassword())
+                        .build();
+            }else {
                 throw new UsernameNotFoundException("User not found");
             }
-      return  User.builder()
-                .username(user.getUserName())
-                .password(user.getPassword())
-                .build();
     }
 }

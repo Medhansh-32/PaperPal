@@ -1,11 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubts</title>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/navbar-footer-dark.css">
-
-<div th:replace="~{fragments/navbar2 :: navbar2}"></div>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-dark.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Custom Dark Mode Styles -->
+    <link rel="stylesheet" href="/css/navbar-footer-dark.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap-dark.min.css">
+
     <style>
         body {
             background-color: #121212;
@@ -38,8 +41,13 @@
             color: #d1ecf1;
             border-color: #17a2b8;
         }
-        .container mt-5{
-            margin-top: -10px;
+        .reply-box {
+            display: none;
+            margin-top: 10px;
+        }
+        .replies {
+            display: none;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -47,33 +55,47 @@
 <div class="container mt-5">
     <h1 class="mb-4 text-light">Doubts</h1>
 
-    <!-- Check if the list of doubts is empty -->
     <div th:if="${#lists.isEmpty(doubts)}" class="alert alert-info" role="alert">
         No doubts available.
     </div>
 
     <div class="row">
-        <!-- Iterate over the list of doubts -->
         <div th:each="doubt : ${doubts}" class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-header">
                     <h5 th:text="${doubt.doubtTitle}">Doubt Title</h5>
                 </div>
                 <div class="card-body">
+                    <input type="hidden" id="doubt-id" th:value="${doubt.doubtId}" />
                     <h6 class="card-subtitle mb-2 text-muted" th:text="'Asked by: ' + ${doubt.userName}"></h6>
                     <p class="card-text" th:text="${doubt.doubtDescription}">Doubt Description</p>
                     <p class="card-text"><small class="text-muted" th:text="${#dates.format(doubt.doubtDate, 'dd/MM/yyyy')}">Date</small></p>
                 </div>
+
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary">Reply</a>
+                    <a href="javascript:void(0)" class="btn btn-primary" onclick="showReplyBox(this)">Reply</a>
+                    <button class="btn btn-secondary ml-2" onclick="showReplies(this)">Show Replies</button>
+                    <div class="reply-box mt-2">
+                        <textarea class="form-control mb-2" placeholder="Enter your reply"></textarea>
+                        <button class="btn btn-success btn-sm" onclick="postReply(this)">Post</button>
+                    </div>
+
+                    <div class="replies">
+                        <!-- Replies will be shown here dynamically -->
+                    </div>
+                    <div id="allReplies"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <div th:replace="~{fragments/footer :: footer}"></div>
+
+<script src="/js/doubts.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

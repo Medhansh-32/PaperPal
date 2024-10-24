@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         try {
             // Send the prompt to the backend
-            const response = await fetch('/askAi', {
+            const response = await fetch('/ai/generateStream?prompt='+prompt, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Handle the backend response
             if (response.ok) {
-                const result = await response.json();
-                aiResponse.innerHTML = `<p>${result.answer}</p>`; // Display the AI's response
+                const result = await response.body;
+                aiResponse.innerHTML = `<p>${result}</p>`; // Display the AI's response
             } else {
                 const errorData = await response.text();
                 aiResponse.innerHTML = `<p>Error: ${errorData}</p>`;
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         try {
             // Send a POST request to the /postDoubts endpoint
-            const response = await fetch('/postDoubts', {
+            const response = await fetch('/doubts/postDoubts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -301,7 +301,7 @@ input[type="text"], input[type="file"], select {
 
 }
 #description {
-    width: 100%; /* Full width to fit the container *
+    width: 100%; /* Full width to fit the container */
     padding: 12px; /* Padding inside the textarea for comfort */
     font-size: 1rem; /* Font size for the text */
     line-height: 1.4; /* Improve readability */
