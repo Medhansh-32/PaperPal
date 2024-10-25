@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Handle the backend response
             if (response.ok) {
-                const result = await response.body;
+                const result = await response.text();
                 aiResponse.innerHTML = `<p>${result}</p>`; // Display the AI's response
             } else {
                 const errorData = await response.text();

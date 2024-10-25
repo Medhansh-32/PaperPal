@@ -81,23 +81,10 @@ public class DoubtsService {
             Optional<Doubts> doubts = doubtsRepository.findById(reply.id);
             if (doubts.isPresent()) {
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                Object principal = authentication.getPrincipal();
-                if(principal instanceof UserDetails) {
-                    UserDetails userDetails = (UserDetails) principal;
-                    String userName = userDetails.getUsername();
+                   String userName = authentication.getName();
                     doubts.get().getReplies().add(userName + " : " + reply.message);
                     doubtsRepository.save(doubts.get());
                     return true;
-                }
-                if(principal instanceof OAuth2User) {
-                    OAuth2User oAuth2User = (OAuth2User) principal;
-                    String userName = oAuth2User.getAttribute("name");
-                    doubts.get().getReplies().add(userName + " : " + reply.message);
-                    doubtsRepository.save(doubts.get());
-
-                }
-
-                return true;
             } else {
                 return false;
             }
