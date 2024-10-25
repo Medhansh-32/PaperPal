@@ -11,8 +11,7 @@ html, body {
     height: 100%; /* Ensures that the body takes full viewport height */
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background: linear-gradient(135deg, #003366, #0066cc); /* Gradient background */
-    color: #f0f0f0; /* Light text color */
+    color: deepskyblue; /* Light text color */
     text-decoration: none; /* Removed underline from all elements by default */
 }
 
@@ -427,6 +426,18 @@ button:active {
         padding: 10px 20px; /* Padding for smaller buttons */
         font-size: 0.9rem; /* Font size for smaller buttons */
     }
+}
+body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #f0f0f0;
+    margin: 0; /* Remove default margin */
+}
+
+/* Add this rule to ensure Bootstrap's background doesn't interfere */
+html, body {
+    background-color: transparent !important; /* Prevent Bootstrap from overriding */
 }
 
 @media (max-width: 480px) {

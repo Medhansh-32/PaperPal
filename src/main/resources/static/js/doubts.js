@@ -71,7 +71,11 @@ function showReplies(button) {
                 .then(response => {
                     // Check if the response is OK (status in the range 200-299)
                     if (!response.ok) {
-                        throw new Error('Network response was not ok: ' + response.statusText);
+                        const replyDiv = document.createElement('div');
+                        replyDiv.textContent = "No reply yet...."; // Set the text content to the reply
+                        repliesDiv.appendChild(replyDiv);
+                        repliesDiv.style.display = 'block';
+                        replyDiv.style.fontStyle="italic"
                     }
                     return response.json(); // Parse the JSON data from the response
                 })
@@ -90,7 +94,7 @@ function showReplies(button) {
                 })
                 .catch(error => {
                     console.error('There was a problem with the fetch operation:', error);
-                    document.getElementById('allReplies').innerText = 'Error fetching replies. Please try again.';
+                   // document.getElementById('allReplies').innerText = 'Error fetching replies. Please try again.';
                 });
         } else {
             alert('No reply ID found.');

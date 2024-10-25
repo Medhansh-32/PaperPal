@@ -1,3 +1,4 @@
+/* Navbar Styling */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -5,20 +6,16 @@
     padding: 15px 30px;
     background: rgba(33, 37, 41, 1); /* Dark background */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    position: fixed; /* Fixed position to keep it visible */
-    top: 0; /* Always at the top */
-    left: 0; /* Align to the left */
-    width: 100%; /* Full width */
+    position: fixed;
+    top: 0;
+    width: 100%;
     z-index: 1000; /* On top of other elements */
 }
 
-/* Ensure body content is below the navbar */
-body {
-    margin-top: 70px; /* Adjust this based on your navbar height */
-}
+/* Logo Styling */
 .navbar-brand {
     font-family: 'Lobster', cursive; /* Beautiful cursive font for the logo */
-    font-size: 4.5rem; /* Logo font size */
+    font-size: 2.5rem; /* Logo font size */
     color: #ffffff; /* White text for visibility */
     text-decoration: none; /* Remove underline */
 }
@@ -29,37 +26,7 @@ body {
     display: flex;
     gap: 20px; /* Space between links */
 }
-#mobile{
-    visibility: hidden;
-}
-button, .button, a.button {
-    display: inline-block; /* Inline block display */
-    padding: 12px 24px; /* Button padding */
-    font-size: 1rem; /* Font size for buttons */
-    color: #fff; /* White text */
-    background: linear-gradient(45deg, #009688, #80cbc4); /* Teal and light green */
-    border: none; /* No border */
-    border-radius: 8px; /* Rounded corners */
-    cursor: pointer; /* Pointer on hover */
-    text-align: center; /* Center text */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition effects */
-    margin: 10px; /* Margin around buttons */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Shadow effect */
-}
 
-button:hover, .button:hover, a.button:hover,.navbar-btn:hover {
-    background: linear-gradient(45deg, #80cbc4, #009688); /* Hover gradient */
-    transform: scale(1.05); /* Scale effect on hover */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
-    text-decoration: none;
-
-}
-
-
-button:active {
-    background-color: #00796b; /* Darker shade on active */
-}
 .navbar-links a {
     color: #ffffff; /* White text for links */
     text-decoration: none; /* Remove underline */
@@ -72,10 +39,9 @@ button:active {
 .navbar-links a:hover {
     background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white background on hover */
     color: #72cd44; /* Bright yellow-green on hover */
-    text-decoration: none;
 }
 
-/* Dropdown Menu inside Navbar */
+/* Style for dropdown checkbox */
 #dropdown-container {
     position: relative; /* Position for dropdown */
 }
@@ -128,7 +94,7 @@ button:active {
     display: block; /* Show dropdown on checkbox checked */
 }
 
-/* Navbar for Mobile View */
+/* Responsive Design for Mobile */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column; /* Stack items vertically */
@@ -145,69 +111,28 @@ button:active {
         text-decoration: none; /* Remove underline */
     }
 }
-.navbar-btn{
-    text-decoration: none;
-    border-radius: 8px;
-}
-/* Footer Styling */
-footer {
-    position: sticky; /* Sticky footer */
-    top: 100%; /* Position at the bottom */
-    background: rgba(33, 37, 41, 0.9); /* Dark background */
-    color: #ffffff; /* Light text */
-    padding: 20px; /* Padding */
-    text-align: center; /* Center text */
-    border-top: 4px solid #444444; /* Top border */
-    width: 100%; /* Full width */
-    margin-top: auto; /* Ensure footer sticks to the bottom when content is short */
+
+/* Mini Navbar Styling */
+.navbarmini {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b1b1b; /* Darker background for mini navbar */
+    padding: 10px 20px; /* Padding */
+    width: 100%; /* Ensure it spans the full width */
+    top: 0; /* Fixed at the top */
+    z-index: 1000; /* On top of other elements */
 }
 
-footer p {
-    margin-bottom: 10px; /* Margin for footer paragraph */
-}
-
-footer a {
-    color: #4caf50; /* Green link color */
+.navbarmini a {
+    color: #ffffff; /* White text for mini navbar */
     text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size for links */
 }
 
-footer a:hover {
-    text-decoration: underline; /* Underline on hover */
-}
-
-/* LinkedIn Button Styling */
-footer button {
-    padding: 10px 20px; /* Padding for footer button */
-    background: linear-gradient(45deg, #0072b1, #00aaff); /* LinkedIn colors */
-    border: none; /* No border */
-    border-radius: 6px; /* Rounded corners */
-    cursor: pointer; /* Pointer on hover */
-    transition: background-color 0.3s ease; /* Transition effect */
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Shadow effect */
-}
-
-footer button:hover {
-    background: linear-gradient(45deg, #00aaff, #0072b1); /* Hover gradient */
-}
-
-footer button a {
-    color: #ffffff; /* White text for button links */
-    text-decoration: none; /* Remove underline */
-}
-
-footer button a:hover {
-    text-decoration: none; /* No underline on hover */
-}
-
-/* Mobile View for Footer and Navbar */
+/* Responsive Design for Mini Navbar */
 @media (max-width: 768px) {
-    #mobile {
-        visibility: visible;
-        /* Show mobile view */
-    }
-#pc{
-    visibility: hidden;
-}
     .navbarmini {
         display: flex; /* Flex display for mini navbar */
         justify-content: space-between; /* Space between items */
@@ -216,21 +141,12 @@ footer button a:hover {
     .navbar-brandmini {
         font-family: 'Lobster', cursive; /* Cursive font for mini navbar */
         color: #ffffff; /* White text */
-        text-decoration: none !important; /* Remove underline */
+        text-decoration: none; /* Remove underline */
     }
-
+    .container{
+        padding: 0.5rem;
+    }
     #pc {
         display: none; /* Hide desktop view */
-    }
-}
-
-@media (max-width: 480px) {
-    #pc {
-        visibility: hidden; /* Hide desktop view */
-    }
-
-    #mobile {
-        visibility: visible; /* Show mobile view */
-        margin-top: 0rem; /* No margin */
     }
 }

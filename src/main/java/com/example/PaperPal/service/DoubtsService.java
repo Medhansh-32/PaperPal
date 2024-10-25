@@ -97,6 +97,7 @@ public class DoubtsService {
         try {
             return doubtsRepository.findById(id).get().getReplies();
         }catch(Exception e){
+            log.info(e.getMessage());
             return Collections.emptyList();
         }
     }
