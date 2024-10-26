@@ -170,6 +170,12 @@ function showMyDoubts(button) {
     })
         .then(response => {
             if (!response.ok) {
+                const noDoubt=document.createElement("div")
+                noDoubt.style.marginLeft="1rem"
+                noDoubt.innerText="You have no Doubt...."
+                doubtsContainer.textContent=""
+                doubtsContainer.appendChild(noDoubt)
+                button.textContent="All Doubts"
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             return response.json(); // Parse the JSON response
@@ -264,4 +270,7 @@ function noDoubts(data){
         doubtsContainer.appendChild(alertDiv);
         return;
     }
+}
+function solveDoubts(){
+    window.location.href="/allDoubts"
 }

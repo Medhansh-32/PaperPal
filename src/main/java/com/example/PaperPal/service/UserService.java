@@ -42,7 +42,7 @@ public class UserService {
                     "    <title>Welcome to PaperPal!</title>\n" +
                     "    <style>\n" +
                     "        body {\n" +
-                    "            font-family: Arial, sans-serif;\n" +
+                    "            font-family: Arial, sans-serif;\n" +" color:white;\n" +
                     "            margin: 0;\n" +
                     "            padding: 0;\n" +
                     "            background-color: #f4f4f4;\n" +
@@ -51,7 +51,7 @@ public class UserService {
                     "            width: 100%;\n" +
                     "            max-width: 600px;\n" +
                     "            margin: 20px auto;\n" +
-                    "            background-color: #ffffff;\n" +
+                    "            background-color: lightblue;\n" +
                     "            border-radius: 8px;\n" +
                     "            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n" +
                     "            overflow: hidden;\n" +
@@ -72,7 +72,7 @@ public class UserService {
                     "            padding: 20px;\n" +
                     "            font-size: 12px;\n" +
                     "            color: #777;\n" +
-                    "        }\n" +
+                    "        }\n" +".p{\ncolor:black;\n}"+"h2{\ncolor:black;\n}"+
                     "    </style>\n" +
                     "</head>\n" +
                     "<body>\n" +
