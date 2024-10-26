@@ -64,7 +64,9 @@ body {
 #mobile {
     visibility: hidden; /* Mobile view container */
 }
-
+#doubtsHeading{
+    color: black !important;
+}
 .styled-hr {
     border: 1px; /* Removes the default border */
     height: 2px; /* Sets the height */
