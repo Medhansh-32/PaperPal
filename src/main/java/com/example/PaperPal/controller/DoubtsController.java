@@ -26,10 +26,8 @@ public class DoubtsController {
     }
 
     @PostMapping("/addReply")
-    public ResponseEntity<?> postDoubtReply(@RequestBody DoubtsService.Reply reply){
-        doubtsService.addReply(reply);
-
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<String> postDoubtReply(@RequestBody DoubtsService.Reply reply){
+        return new ResponseEntity<>(doubtsService.addReply(reply),HttpStatus.OK);
     }
 
     @GetMapping("/getReply/{id}")

@@ -76,7 +76,7 @@ public class DoubtsService {
         }
     }
 
-    public boolean addReply(Reply reply) {
+    public String addReply(Reply reply) {
         try {
             Optional<Doubts> doubts = doubtsRepository.findById(reply.id);
             if (doubts.isPresent()) {
@@ -84,13 +84,13 @@ public class DoubtsService {
                    String userName = authentication.getName();
                     doubts.get().getReplies().add(userName + " : " + reply.message);
                     doubtsRepository.save(doubts.get());
-                    return true;
+                    return userName+" : "+reply.message;
             } else {
-                return false;
+                return null;
             }
         } catch (Exception e) {
             log.error(e.getMessage());
-            return false;
+            return null;
         }
     }
     public List<String> getReply(ObjectId id){

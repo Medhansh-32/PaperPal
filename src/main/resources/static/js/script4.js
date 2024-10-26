@@ -30,5 +30,5 @@ function goBack() {
     window.history.back();
     setTimeout(function() {
         window.location.reload(); // Refresh the page after going back
-    }, 2000);
+    }, 1000);
 }

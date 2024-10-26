@@ -28,22 +28,25 @@ function postReply(button) {
                 if (!response.ok) {
                     throw new Error('Network response was not ok.');
                 }
-                return response.json(); // Assuming your backend returns some response
+                console.log(response)
+                return response.text()// Assuming your backend returns some response
             })
             .then(data => {
+                console.log(data)
+                const repliesDiv = cardElement.querySelector('.replies');
                 // Create a new paragraph element for the reply
-                const newReply = document.createElement('p');
-                newReply.className = 'card-text text-light';
-                newReply.textContent = replyText;
 
                 // Find the replies div and append the new reply to it
-                const repliesDiv = cardElement.querySelector('.replies'); // Find the correct replies container
-                repliesDiv.appendChild(newReply); // Append the new reply to the replies section
-                repliesDiv.style.display = 'block'; // Ensure replies are visible after adding
+                const replyDiv = document.createElement('div');
+                replyDiv.textContent = data// Set the text content to the reply
+                repliesDiv.appendChild(replyDiv);
+                repliesDiv.style.display = 'block';
 
                 // Clear the textarea and hide the reply box
-                replyTextArea.value = ""; // Clear the textarea
-                button.parentElement.style.display = 'none'; // Hide the reply box after posting
+                replyTextArea.setAttribute("placeholder","") // Clear the textarea
+                replyTextArea.value=""
+                replyTextArea.ariaPlaceholder="Enter your reply..."
+                // Hide the reply box after posting
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
@@ -76,8 +79,10 @@ function showReplies(button) {
                         repliesDiv.appendChild(replyDiv);
                         repliesDiv.style.display = 'block';
                         replyDiv.style.fontStyle="italic"
+                    }else {
+                        return response.json();
                     }
-                    return response.json(); // Parse the JSON data from the response
+                     // Parse the JSON data from the response
                 })
                 .then(data => {
                     // Clear existing replies

@@ -3,7 +3,6 @@
 <link id="theme-style" rel="stylesheet" href="/css/style-dark.css">
 <!-- Desktop navigation -->
 <div th:replace="~{fragments/navbar2 :: navbar2}"></div>
-<br><br><br><br>
 <div class="main-content">
 
     <div class="container">
@@ -17,6 +16,7 @@
             </div>
         </div>
         <div th:if="${#lists.isEmpty(links)}">
+            <br>
             <p>Sorry, not available. We are trying to get it soon..</p>
         </div>
         <br>

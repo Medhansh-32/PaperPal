@@ -20,15 +20,18 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures body takes up at least full viewport height */
+    min-height: 100vh;
+    margin-top: 8rem/* Ensures body takes up at least full viewport height */
 }
 
 #mobile {
     visibility: hidden; /* Mobile view container */
 }
-
+#doubtsHeading{
+    color: black !important;
+}
 .styled-hr {
-    border: 0.5px; /* Removes the default border */
+    border: 1px; /* Removes the default border */
     height: 2px; /* Sets the height */
     background: black; /* Sets the color */
     margin-bottom: 1px;
