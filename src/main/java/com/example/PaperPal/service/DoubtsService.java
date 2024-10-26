@@ -31,6 +31,8 @@ import java.util.Optional;
 @Slf4j
 public class DoubtsService {
 
+
+
     @Builder
     @AllArgsConstructor
     @Data
@@ -57,6 +59,15 @@ public class DoubtsService {
         }
     }
 
+    public boolean deleteDoubtsById(ObjectId id) {
+        try {
+            doubtsRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            log.error(e.getMessage());
+            return false;
+        }
+    }
 
     public boolean addDoubts(@RequestBody Doubts doubts) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -100,5 +111,14 @@ public class DoubtsService {
             log.info(e.getMessage());
             return Collections.emptyList();
         }
+    }
+    public List<Doubts> getDoubtsByName(String username) {
+
+        try {
+           return doubtsRepository.findByUserName(username);
+        }catch (Exception e){
+            return Collections.emptyList();
+        }
+
     }
 }

@@ -35,6 +35,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()// Require authentication for other requests
                 )
               //  .httpBasic(Customizer.withDefaults())
+
                 .formLogin(form -> form
                         .loginPage("/login") // Specify custom login page
                         .permitAll() // Allow all users to access the login page

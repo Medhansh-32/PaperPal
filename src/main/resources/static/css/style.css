@@ -24,12 +24,47 @@ body {
     margin-top: 8rem/* Ensures body takes up at least full viewport height */
 }
 
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+.card-header {
+    background-color: #f1f1f1;
+    color: #333;
+}
+.card-body {
+    color: #5a5a5a;
+}
+.text-muted {
+    color: #6c757d;
+}
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+.alert-info {
+    background-color: #e9f7fc;
+    color: #0c5460;
+    border-color: #bee5eb;
+}
+.reply-box {
+    display: none;
+    margin-top: 10px;
+}
+.replies {
+    display: none;
+    margin-top: 15px;
+}
+
 #mobile {
     visibility: hidden; /* Mobile view container */
 }
-#doubtsHeading{
-    color: black !important;
-}
+
 .styled-hr {
     border: 1px; /* Removes the default border */
     height: 2px; /* Sets the height */

@@ -2,11 +2,14 @@ package com.example.PaperPal.controller;
 
 import com.example.PaperPal.entity.Doubts;
 import com.example.PaperPal.service.DoubtsService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -47,6 +50,41 @@ public class DoubtsController {
             return new ResponseEntity<>("Doubt posted successfully", HttpStatus.OK);
         }else{
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/allDoubts")
+    public ResponseEntity<?> getAllDoubts() {
+      List<Doubts> doubts= doubtsService.getAllDoubts();
+      if(!doubts.isEmpty()) {
+          return new ResponseEntity<>(doubts, HttpStatus.OK);
+      }else{
+          return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+      }
+    }
+
+    @DeleteMapping("/deleteDoubt/{id}")
+    public ResponseEntity<String> deleteDoubt(@PathVariable ObjectId id){
+        boolean isDeleted=doubtsService.deleteDoubtsById(id);
+        if(isDeleted){
+            return new ResponseEntity<>("Doubt deleted successfully", HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/myDoubts")
+    public ResponseEntity<List<Doubts>> myDoubts(){
+
+        log.info("Req received..");
+
+        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+        String username=authentication.getName();
+        List<Doubts> doubts=doubtsService.getDoubtsByName(username);
+        if(!doubts.isEmpty()) {
+            return new ResponseEntity<>(doubts, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }

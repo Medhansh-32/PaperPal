@@ -6,20 +6,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
+
 import java.util.List;
 import java.util.Map;
 
@@ -28,8 +25,12 @@ import java.util.Map;
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
 
-        @Autowired
+
         private UserRepository userRepository; // Your user repository for DB operations
+
+        public CustomOAuth2UserService(UserRepository userRepository) {
+            this.userRepository = userRepository;
+        }
 
         private final OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
 
@@ -48,9 +49,9 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
             // Retrieve existing user or create a new one
             Users user = userRepository.findByEmail(email);
             // Create new user if not found
-if(user==null){
-  user=createUser(username, email);
-}
+            if(user==null){
+              user=createUser(username, email);
+            }
             // Return a CustomOAuth2User
             return new CustomOAuth2User(oAuth2User, user.getEmail(), user.getUserName());
         }
