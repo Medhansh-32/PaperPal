@@ -312,7 +312,12 @@ input[type="text"], input[type="file"], select {
 .dropdown-list li {
     margin: 0; /* No margin */
 }
-
+.btn{
+    border-radius: 8px;
+}
+textarea{
+    border-radius: 4px;
+}
 .dropdown-list li a {
     display: block; /* Block display for links */
     padding: 10px; /* Padding for dropdown items */
@@ -328,7 +333,16 @@ input[type="text"], input[type="file"], select {
 #dropdown-checkbox:checked ~ .dropdown-list {
     display: block; /* Show dropdown on checkbox checked */
 }
-
+.replies {
+    display: none;
+    margin-top: 15px;
+    border-radius: 8px;
+    height: 200px;           /* Set the desired height */
+    overflow-y: auto;       /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+    padding: 10px;          /* Optional: Add some padding */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
 /* Button Styling */
 button, .button, a.button {
     display: inline-block; /* Inline block display */

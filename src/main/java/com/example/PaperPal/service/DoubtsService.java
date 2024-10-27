@@ -38,6 +38,7 @@ public class DoubtsService {
     @Data
     public static class Reply{
         private ObjectId id;
+        private String repliedBy;
         private String message;
 
     }
@@ -87,15 +88,16 @@ public class DoubtsService {
         }
     }
 
-    public String addReply(Reply reply) {
+    public DoubtsService.Reply addReply(Reply reply) {
         try {
             Optional<Doubts> doubts = doubtsRepository.findById(reply.id);
             if (doubts.isPresent()) {
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
                    String userName = authentication.getName();
-                    doubts.get().getReplies().add(userName + " : " + reply.message);
+                    reply.setRepliedBy(userName);
+                    doubts.get().getReplies().add(reply);
                     doubtsRepository.save(doubts.get());
-                    return userName+" : "+reply.message;
+                    return reply;
             } else {
                 return null;
             }
@@ -104,7 +106,7 @@ public class DoubtsService {
             return null;
         }
     }
-    public List<String> getReply(ObjectId id){
+    public List<DoubtsService.Reply> getReply(ObjectId id){
         try {
             return doubtsRepository.findById(id).get().getReplies();
         }catch(Exception e){

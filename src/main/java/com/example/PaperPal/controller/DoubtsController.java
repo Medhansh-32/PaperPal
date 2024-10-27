@@ -29,13 +29,13 @@ public class DoubtsController {
     }
 
     @PostMapping("/addReply")
-    public ResponseEntity<String> postDoubtReply(@RequestBody DoubtsService.Reply reply){
+    public ResponseEntity<DoubtsService.Reply> postDoubtReply(@RequestBody DoubtsService.Reply reply){
         return new ResponseEntity<>(doubtsService.addReply(reply),HttpStatus.OK);
     }
 
     @GetMapping("/getReply/{id}")
     public ResponseEntity<?> getDoubtReply(@PathVariable ObjectId id){
-        List<String> replies=doubtsService.getReply(id);
+        List<DoubtsService.Reply> replies=doubtsService.getReply(id);
     if(!replies.isEmpty()) {
         return new ResponseEntity<>(replies, HttpStatus.OK);
         }else{

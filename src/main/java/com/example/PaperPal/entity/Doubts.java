@@ -1,5 +1,6 @@
 package com.example.PaperPal.entity;
 
+import com.example.PaperPal.service.DoubtsService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +26,6 @@ public class Doubts {
     private String doubtTitle;
     private String doubtDescription;
     private Date doubtDate;
-    private List<String> replies=new ArrayList<>();
+    private List<DoubtsService.Reply> replies=new ArrayList<>();
     private boolean doubtStatus;
 }
