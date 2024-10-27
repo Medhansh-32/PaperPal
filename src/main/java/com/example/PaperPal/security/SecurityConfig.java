@@ -40,8 +40,8 @@ public class SecurityConfig {
                         .loginPage("/login") // Specify custom login page
                         .permitAll() // Allow all users to access the login page
                 )
-                .oauth2Login(form->
-                        form.loginPage("/login")
+                .oauth2Login(outh2->
+                         outh2.loginPage("/login")
                                 .userInfoEndpoint(service->
                                         service.userService(customOAuth2UserService))
                 )

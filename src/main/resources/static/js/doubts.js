@@ -3,7 +3,7 @@ function showReplyBox(button) {
     const replyBox = button.parentElement.querySelector('.reply-box');
     replyBox.style.display = replyBox.style.display === 'none' || replyBox.style.display === '' ? 'block' : 'none';
 }
-
+const doubtContainer=document.getElementById("doubtsContainer")
 // Function to post a reply
 function postReply(button) {
     const cardElement = button.closest('.card');

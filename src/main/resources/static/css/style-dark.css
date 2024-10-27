@@ -464,6 +464,8 @@ body {
 }
 textarea{
     border-radius: 4px;
+    background-color: rgba(60, 60, 60, 0.9) !important;
+    color: white !important;
 }
 .alert-info {
     background-color: #2c2c2c;
