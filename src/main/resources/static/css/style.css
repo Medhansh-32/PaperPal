@@ -441,7 +441,7 @@ footer button a:hover {
 
 @media (max-width: 768px) {
     .container {
-        padding: 10px; /* Padding for smaller screens */
+        padding: 1.5rem /* Padding for smaller screens */
     }
 
     #mobile {

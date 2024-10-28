@@ -14,8 +14,8 @@ function toggleTheme() {
 }
 
 // Add event listeners for both PC and mobile theme toggles
-document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
-document.getElementById('theme-toggles').addEventListener('click', toggleTheme);
+// document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+// document.getElementById('theme-toggles').addEventListener('click', toggleTheme);
 
 // Load saved theme from localStorage on page load
 window.addEventListener('load', () => {

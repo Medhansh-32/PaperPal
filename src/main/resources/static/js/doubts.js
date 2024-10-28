@@ -3,7 +3,7 @@ function showReplyBox(button) {
     const replyBox = button.parentElement.querySelector('.reply-box');
     replyBox.style.display = replyBox.style.display === 'none' || replyBox.style.display === '' ? 'block' : 'none';
 }
-const doubtContainer=document.getElementById("doubtsContainer")
+const doubtsContainer=document.getElementById("doubtsContainer")
 // Function to post a reply
 function postReply(button) {
     const cardElement = button.closest('.card');
@@ -193,12 +193,12 @@ function showMyDoubts(button) {
                     <div class="card-footer">
                         <a href="javascript:void(0)" class="btn btn-primary" onclick="showReplyBox(this)">Reply</a>
                         <button class="btn btn-secondary ml-2" onclick="showReplies(this)">Show Replies</button>
+                        ${isMyDoubts ? '<button onclick="clearDoubt(this)" class="btn btn-primary" style="background-color: red!important;">Clear</button>' : ''}   
                         <div class="reply-box mt-2" style="display: none;">
                             <textarea class="form-control mb-2" placeholder="Enter your reply"></textarea>
                             <button class="btn btn-success btn-sm" onclick="postReply(this)">Post</button>
                         </div>
-                        ${isMyDoubts ? '<button onclick="clearDoubt(this)" class="btn btn-primary">Clear</button>' : ''}
-                        <div class="replies"></div>
+                           <div class="replies"></div>
                     </div>
                 </div>`;
                 doubtsContainer.appendChild(colDiv);

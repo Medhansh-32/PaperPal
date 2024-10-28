@@ -23,7 +23,7 @@
 
         </div>
         <a href="/" class="button">Home <i class="fa-sharp fa-solid fa-house"></i></a>
-        <button id="theme-toggle" class="navbar-btn">Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
+        <a href="javascript:void(0)" onclick="toggleTheme()" id="theme-toggle" class="button">Theme <i class="fa-solid fa-circle-half-stroke"></i></a>
         <a href="/logout" class="button">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
 
     </nav>
@@ -36,7 +36,7 @@
         <!-- Dropdown for mobile using checkbox -->
         <div id="dropdown-container">
             <input type="checkbox" id="dropdown-checkbox">
-            <label class="dropdown-label" for="dropdown-checkbox"><i class="fa-solid fa-bars"></i></label>
+            <label class="dropdown-label temp" for="dropdown-checkbox"><i class="fa-solid fa-bars"></i></label>
             <ul class="dropdown-list">
                 <li><a href="https://github.com/Medhansh-32">GitHub</a></li>
                 <li><a href="https://github.com/Medhansh-32/PaperPal/blob/main/README.md">Description</a></li>
@@ -44,8 +44,8 @@
                 <li><a href="/logout" class="button">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
             </ul>
         </div>
-        <a href="/" class="button"><i class="fa-sharp fa-solid fa-house"></i></a>
-        <button id="theme-toggles" class="navbar-btn"><i class="fa-solid fa-circle-half-stroke"></i></button>
+        <a href="/" class="dropdown-label"><i class="fa-sharp fa-solid fa-house"></i></a>
+        <a href="javascript:void(0)" onclick="toggleTheme()" id="theme-toggles" class="dropdown-label"><i class="fa-solid fa-circle-half-stroke"></i></a>
 
     </nav>
 </div>

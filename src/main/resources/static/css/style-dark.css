@@ -10,7 +10,6 @@
 html, body {
     height: 100%; /* Ensures that the body takes full viewport height */
     font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
     color: deepskyblue; /* Light text color */
     text-decoration: none; /* Removed underline from all elements by default */
 }
@@ -407,7 +406,7 @@ button:active {
 
 @media (max-width: 768px) {
     .container {
-        padding: 10px; /* Padding for smaller screens */
+        padding: 1.5rem; /* Padding for smaller screens */
     }
 
     h1 {
@@ -493,7 +492,7 @@ textarea{
 @media (max-width: 480px) {
 
     .container {
-        padding: 5px; /* Padding for smallest screens */
+        padding: 8px; /* Padding for smallest screens */
     }
 
     h1 {
