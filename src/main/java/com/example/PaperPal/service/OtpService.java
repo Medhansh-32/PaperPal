@@ -5,6 +5,7 @@ import com.example.PaperPal.entity.Users;
 import com.example.PaperPal.repository.UserRepository;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -17,6 +18,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
+@Slf4j
 public class OtpService {
     private final UserRepository userRepository;
     private JavaMailSender mailSender;
@@ -72,7 +74,7 @@ public class OtpService {
         helper.setText(emailContent, true); // true indicates HTML
 
         mailSender.send(message);
-
+        log.info(otpDetails.getOtp());
         otpCache.put(otpDetails.getOtpId(),otpDetails);
         return otpDetails;
     }
@@ -84,7 +86,7 @@ public class OtpService {
         String otpId=user.getUserName()+user.getEmail();
 
         OtpDetails otpDetails=otpCache.get(otpId);
-
+        log.info(otpDetails.getOtp());
         if(otpDetails.getExpiryTime().after(new Date())
                 && otpDetails.getOtp().equals(otp)){
             //otpCache.remove(otpId);

@@ -4,17 +4,18 @@ import com.example.PaperPal.entity.ExamFile;
 import com.example.PaperPal.entity.UserResponse;
 import com.example.PaperPal.service.UserResponseService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.http.ResponseEntity;
 
 @Controller
-@RequestMapping("userresponse")
+@RequestMapping("/userresponse")
 public class UserResponseController {
 
     private final UserResponseService userResponseService;
@@ -24,7 +25,8 @@ public class UserResponseController {
     }
 
     @PostMapping
-    public String sendData(
+    @ResponseBody
+    public ResponseEntity sendData(
             @RequestParam("course") String course,
             @RequestParam("branch") String branch,
             @RequestParam("semester") String semester,
@@ -38,19 +40,19 @@ public class UserResponseController {
             if (userResponseService.getExamLinkByUserResponse(userResponse) == null) {
                 List<ExamFile> examFiles = userResponseService.saveUserResponse(userResponse, file).getExamFile();
                 if (examFiles.size() > 0) {
-                    return "succesfull";
+                    return new ResponseEntity<>(HttpStatus.OK) ;
                 } else {
-                    return "unsuccesfull";
+                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
                 }
 
             } else {
                 userResponseService.addFileToUser(userResponse, file);
-                return "succesfull";
+                return new ResponseEntity<>(HttpStatus.OK);
             }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            return "unsuccesfull";
+            return  new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
@@ -77,7 +79,7 @@ public class UserResponseController {
         return "links-exam";
     }
     @PostMapping("/addfile")
-    public String addFileToUserResponse(
+    public ResponseEntity addFileToUserResponse(
             @RequestParam("course") String course,
             @RequestParam("branch") String branch,
             @RequestParam("semester") String semester,
@@ -89,27 +91,27 @@ public class UserResponseController {
         userResponse.setSemester(Integer.parseInt(semester));
         userResponse = userResponseService.addFileToUser(userResponse, file);
         if (userResponse != null) {
-            return "succesfull";
+            return new ResponseEntity<>(HttpStatus.OK) ;
         }else{
-            return "unsuccesfull";
+            return  new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @PostMapping("/delete")
-    public String deleteUserResponse(
+    public ResponseEntity deleteUserResponse(
             @RequestParam("course") String course,
             @RequestParam("branch") String branch,
             @RequestParam("semester") String semester
     ) throws JsonProcessingException {
         try {
-
             UserResponse userResponse = new UserResponse();
             userResponse.setCourse(course);
             userResponse.setBranch(branch);
             userResponse.setSemester(Integer.parseInt(semester));
-            return "succesfull";
+            userResponseService.deleteByUserResponse(userResponse);
+            return new ResponseEntity<>(HttpStatus.OK) ;
         }catch (Exception e){
-            return "unsuccesfull";
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

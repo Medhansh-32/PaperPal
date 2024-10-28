@@ -27,8 +27,5 @@ window.addEventListener('load', () => {
     }
 });
 function goBack() {
-    window.history.back();
-    setTimeout(function() {
-        window.location.reload(); // Refresh the page after going back
-    }, 1000);
-}
+    location.href = "/getlinks";
+};

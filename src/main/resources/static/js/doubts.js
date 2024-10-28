@@ -132,6 +132,7 @@ doubtForm.addEventListener('submit', async function (event) {
 
         if (response.ok) {
             posting.innerText = await response.text();
+            posting.style.color="green"
             setTimeout(() => {
                 posting.innerText = "";
             }, 1000);
@@ -140,6 +141,7 @@ doubtForm.addEventListener('submit', async function (event) {
         } else {
             const errorData = await response.text();
             posting.innerText = errorData;
+            posting.style.color="red"
             console.error('Error response:', errorData);
         }
     } catch (error) {

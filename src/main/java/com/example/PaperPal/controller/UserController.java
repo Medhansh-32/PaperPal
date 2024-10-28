@@ -81,7 +81,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/otp")
+    @PostMapping("/user/otp")
     public ResponseEntity validateOtp(@RequestParam String email,
                                       @RequestParam String otp,
                                       HttpServletResponse response,
@@ -98,7 +98,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/setNewPassword")
+    @PostMapping("/user/setNewPassword")
     public ResponseEntity setNewPassword(@RequestBody UserDto userDto,HttpSession session){
         log.info(userDto.getEmail());
         if(session!=null && session.getAttribute("otpVerified")!=null){

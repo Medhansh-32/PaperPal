@@ -1,5 +1,6 @@
 <title>Upload User Response</title>
 <link id="theme-style" rel="stylesheet" href="/css/style-dark.css">
+<link rel="icon" href="/images/logo.png" alt="PaperPal Logo">
 <div th:replace="~{fragments/navbar2 :: navbar2}"></div>
 
 
@@ -36,6 +37,8 @@
         <input type="file" id="file" name="file" required>
         <br>
         <br>
+        <p id="uploadStatus"></p>
+        <br>
         <button type="submit">Upload <i class="fa-solid fa-file-arrow-up"></i></button>
     </form>
     <br>
@@ -43,6 +46,7 @@
 </div>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
+<script src="/js/userResponse.js"></script>
 <script src="/js/script2.js" defer></script>
 <script src="/js/script4.js"></script>
 
