@@ -26,6 +26,7 @@ public class Doubts {
     private String doubtTitle;
     private String doubtDescription;
     private Date doubtDate;
+    @Builder.Default
     private List<DoubtsService.Reply> replies=new ArrayList<>();
     private boolean doubtStatus;
 }

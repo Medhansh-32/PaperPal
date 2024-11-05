@@ -65,7 +65,8 @@ public class DoubtsController {
 
     @DeleteMapping("/deleteDoubt/{id}")
     public ResponseEntity<String> deleteDoubt(@PathVariable ObjectId id){
-        boolean isDeleted=doubtsService.deleteDoubtsById(id);
+        String name=SecurityContextHolder.getContext().getAuthentication().getName();
+        boolean isDeleted=doubtsService.deleteDoubtsById(id,name);
         if(isDeleted){
             return new ResponseEntity<>("Doubt deleted successfully", HttpStatus.OK);
         }else{

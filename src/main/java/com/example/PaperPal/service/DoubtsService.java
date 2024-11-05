@@ -60,14 +60,17 @@ public class DoubtsService {
         }
     }
 
-    public boolean deleteDoubtsById(ObjectId id) {
-        try {
-            doubtsRepository.deleteById(id);
-            return true;
-        }catch (Exception e){
-            log.error(e.getMessage());
-            return false;
+    public boolean deleteDoubtsById(ObjectId id,String name) {
+        if(doubtsRepository.findById(id).get().getUserName()==name){
+            try {
+                doubtsRepository.deleteById(id);
+                return true;
+            }catch (Exception e){
+                log.error(e.getMessage());
+                return false;
+            }
         }
+return false;
     }
 
     public boolean addDoubts(@RequestBody Doubts doubts) {
