@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/user/**").permitAll()// Allow registration without authentication
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers("/swagger-ui/**","/v3/**").permitAll()
                         .anyRequest().authenticated()// Require authentication for other requests
                 )
               //  .httpBasic(Customizer.withDefaults())

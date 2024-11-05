@@ -19,7 +19,7 @@ function postReply(button) {
 
         // Send the POST request to add the reply
         fetch('/doubts/addReply', {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },

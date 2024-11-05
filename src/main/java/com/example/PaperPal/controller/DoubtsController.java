@@ -28,7 +28,7 @@ public class DoubtsController {
         this.doubtsService=doubtsService;
     }
 
-    @PostMapping("/addReply")
+    @PatchMapping("/addReply")
     public ResponseEntity<DoubtsService.Reply> postDoubtReply(@RequestBody DoubtsService.Reply reply){
         return new ResponseEntity<>(doubtsService.addReply(reply),HttpStatus.OK);
     }

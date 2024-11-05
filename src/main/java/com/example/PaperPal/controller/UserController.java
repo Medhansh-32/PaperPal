@@ -98,7 +98,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/user/setNewPassword")
+    @PutMapping("/user/setNewPassword")
     public ResponseEntity setNewPassword(@RequestBody UserDto userDto,HttpSession session){
         log.info(userDto.getEmail());
         if(session!=null && session.getAttribute("otpVerified")!=null){

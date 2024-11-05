@@ -32,7 +32,7 @@ passwordForm.addEventListener('submit', function(event) {
 
     // Send POST request with the new password to the backend
     fetch(`/user/setNewPassword`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json' // Set content type to application/json
         },
