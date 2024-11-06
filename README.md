@@ -104,7 +104,7 @@ The `ExamFileController` handles operations related to uploading, downloading, a
 
 The `DoubtsController` manages the posting, replying, and viewing of doubts.
 
-<img src="src/main/resources/static/images/PostDoubt.png">
+<img src="src/main/resources/static/images/PostDoubt.png" height="40px" width="80px">
 
 - **POST /doubts/postDoubts**: Allows a user to post a new doubt.
     - **Request Parameters**: `course`, `branch`, `semester`, `question`
