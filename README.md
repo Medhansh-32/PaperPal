@@ -33,6 +33,9 @@ The **PaperPal** application is built using **Spring Boot** and provides a web i
 
 ## Controllers 🕹️
 
+###Login-Page
+<br>
+<img src="src/main/resources/static/images/login.png">
 ### UserController 🧑‍💻
 
 The `UserController` handles user-related actions such as password management and redirects.
