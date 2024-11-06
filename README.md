@@ -1,90 +1,123 @@
 # PaperPal Application 🎓📁
 
-Welcome to the PaperPal application! This project is designed to manage and interact with exam files and user responses. It provides functionalities for uploading, downloading, and managing exam-related files, as well as handling user responses and associated files.
+Welcome to the **PaperPal** application! This project is designed to manage and interact with exam files, handle user responses, and assist with posting and resolving doubts. The application also integrates an AI assistant for answering general questions. It provides functionalities for uploading, downloading, and managing exam-related files, posting and replying to doubts, and interacting with an AI assistant.
 
 ## Table of Contents
 
-- [Project Overview]
-- [Controllers]
-  - [HomeController]
-  - [ExamFileController]
-  - [UserResponseController]
-  - [Mistral AI]
-- [Running the Application]
-- [Contributing]
+- [Project Overview](#project-overview-)
+- [Features](#features-)
+- [Controllers](#controllers-)
+    - [UserController](#usercontroller-)
+    - [UserResponseController](#userresponsecontroller-)
+    - [ExamFileController](#examfilecontroller-)
+    - [DoubtsController](#doubtscontroller-)
+    - [AIController](#aicontroller-)
+    - [Healthcheck](#healthcheck-)
+- [Running the Application](#running-the-application-)
+- [Contributing](#contributing-)
 
 ## Project Overview 🏠
 
-The PaperPal application is built using Spring Boot and provides a web interface for users to upload, manage, and download exam files. It also supports managing user responses and linking exam files to these responses. Additionally, users can interact with an AI feature on the home page, allowing them to ask questions similar to ChatGPT, enhancing their experience and providing instant support.
+The **PaperPal** application is built using **Spring Boot** and provides a web interface for users to upload, manage, and download exam files. It supports managing user responses and linking those responses to exam files. Additionally, users can interact with an AI assistant powered by **Ollama Mistral** via the home page. The application also allows users to post and resolve doubts related to exams, fostering better learning and communication.
 
-# My Project
+## Features 🌟
 
-Here are some images of my project! 🌟📸 :
+1. **Question Paper Upload and Download**:
+    - Users can upload exam files and download them by accessing the file details through the application.
 
-<div style="display: flex; justify-content: center; align-items: center;">
-    <img src="/src/main/resources/static/images/Home.png" alt="Home Image" width="500" style="margin-right: 10px;" />
-    <img src="/src/main/resources/static/images/DownloadingFile.png" alt="Downloading File Image" width="500" />
-    <img src="/src/main/resources/static/images/UploadingFile.png" alt="Uploading File" width="500" style="margin-right: 20px;" />
-    <img src="/src/main/resources/static/images/ExamFileDetail.png" alt="Exam File Detail" width="500" />
-    <img src="/src/main/resources/static/images/Ai.png" alt="Alt text" width="500" />
-</div>
+2. **Ask AI**:
+    - The integrated AI assistant allows users to ask questions, similar to ChatGPT, to get instant responses for better learning and problem-solving.
 
-
+3. **Doubts Postings**:
+    - Users can post doubts, respond to others' doubts, and manage their doubts effectively. This feature promotes collaboration and clarity among students.
 
 ## Controllers 🕹️
 
-### HomeController 🏠
+### UserController 🧑‍💻
 
-The `HomeController` manages the main navigation of the application.
+The `UserController` handles user-related actions such as password management and redirects.
 
-- **GET /home**: Returns the `home` view.
-- **GET /upload**: Returns the `upload` view for uploading files.
-- **GET /getlinks**: Returns the `getlinks` view for retrieving file links.
-- **GET /addfile**: Returns the `addfile` view for adding files.
-- **GET /delete**: Returns the `deleteresponse` view for deleting responses.
-
-
-### ExamFileController 📄
-
-The `ExamFileController` handles operations related to exam files.
-
-- **POST /file**: Uploads an exam file.
-  - **Request Body**: `MultipartFile file`
-  - **Response**: `ExamFile` object with details of the uploaded file.
-
-- **GET /file/{id}**: Downloads an exam file by its ID.
-  - **Path Variable**: `ObjectId id`
-  - **Response**: File content as `ByteArrayResource` with `Content-Disposition` header for download.
-
-- **DELETE /file/{id}**: Deletes an exam file by its ID.
-  - **Path Variable**: `ObjectId id`
-  - **Response**: HTTP Status Code indicating success or failure.
+- **POST /user/otp**: Sends an OTP for user verification.
+- **POST /user/changePassword**: Changes the user's password.
+- **PUT /user/setNewPassword**: Sets a new password after verification.
+- **POST /user/redirectHome**: Redirects the user to the home page after login or registration.
 
 ### UserResponseController 🧑‍🎓
 
-The `UserResponseController` manages user responses and associated files.
+The `UserResponseController` manages user responses, file uploads, and deletion of responses.
 
 - **POST /userresponse**: Submits user response data and an exam file.
-  - **Request Parameters**: `course`, `branch`, `semester`, `file`
-  - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
+    - **Request Parameters**: `course`, `branch`, `semester`, `file`
+    - **Response**: Redirects to `successful` or `unsuccessful` view based on the outcome.
 
 - **GET /userresponse/getlinks**: Retrieves download links for exam files based on user response details.
-  - **Request Parameters**: `course`, `branch`, `semester`
-  - **Response**: `links-exam` view with file download links.
+    - **Request Parameters**: `course`, `branch`, `semester`
+    - **Response**: `links-exam` view with file download links.
 
 - **POST /userresponse/addfile**: Adds an additional file to an existing user response.
-  - **Request Parameters**: `course`, `branch`, `semester`, `file`
-  - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
+    - **Request Parameters**: `course`, `branch`, `semester`, `file`
+    - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
 
 - **POST /userresponse/delete**: Deletes a user response.
-  - **Request Parameters**: `course`, `branch`, `semester`
-  - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
+    - **Request Parameters**: `course`, `branch`, `semester`
+    - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
 
+### ExamFileController 📄
 
-### AI Assistance 🤖
+The `ExamFileController` handles operations related to uploading, downloading, and deleting exam files.
 
-The PaperPal application features a general AI capability powered by **Ollama Mistral** integrated with **Spring AI**. Users can interact with this AI directly on the home page, allowing them to ask a variety of questions and receive instant responses, similar to ChatGPT. This feature enhances user experience by providing immediate assistance and information on a wide range of topics.
+- **POST /file**: Uploads an exam file.
+    - **Request Body**: `MultipartFile file`
+    - **Response**: `ExamFile` object with details of the uploaded file.
 
+- **GET /file/{id}**: Downloads an exam file by its ID.
+    - **Path Variable**: `ObjectId id`
+    - **Response**: File content as `ByteArrayResource` with `Content-Disposition` header for download.
+
+- **DELETE /file/{id}**: Deletes an exam file by its ID.
+    - **Path Variable**: `ObjectId id`
+    - **Response**: HTTP Status Code indicating success or failure.
+
+### DoubtsController 🤔
+
+The `DoubtsController` manages the posting, replying, and viewing of doubts.
+
+- **POST /doubts/postDoubts**: Allows a user to post a new doubt.
+    - **Request Parameters**: `course`, `branch`, `semester`, `question`
+    - **Response**: Redirects to the doubt posting status page.
+
+- **PATCH /doubts/addReply**: Adds a reply to an existing doubt.
+    - **Request Parameters**: `doubtId`, `reply`
+    - **Response**: Redirects to the reply status page.
+
+- **GET /doubts/myDoubts**: Retrieves all doubts posted by the logged-in user.
+    - **Response**: List of the user's doubts.
+
+- **GET /doubts/getReply/{id}**: Retrieves all replies for a specific doubt by its ID.
+    - **Path Variable**: `id` of the doubt
+    - **Response**: List of replies for the given doubt.
+
+- **GET /doubts/allDoubts**: Retrieves all posted doubts.
+    - **Response**: List of all doubts in the system.
+
+- **DELETE /doubts/deleteDoubt/{id}**: Deletes a specific doubt.
+    - **Path Variable**: `id` of the doubt
+    - **Response**: Status of the deletion operation.
+
+### AIController 🤖
+
+The `AIController` allows users to interact with the AI assistant.
+
+- **GET /ai/gen**: Generates a response from the AI based on user input.
+    - **Request Parameters**: `query` (the question or prompt)
+    - **Response**: The AI-generated response to the query.
+
+### Healthcheck 🔍
+
+The `Healthcheck` endpoint is used to monitor the health status of the application.
+
+- **GET /health**: Returns the health status of the application.
+    - **Response**: HTTP Status Code `200 OK` if the application is healthy.
 
 ## Running the Application 🚀
 
@@ -108,13 +141,13 @@ To run the application locally, follow these steps:
     ./mvnw spring-boot:run
     ```
 
-    or
+   or
 
     ```sh
     ./gradlew bootRun
     ```
 
-4. Access the application at `http://localhost:8080` for the homepage (`http://localhost:8080/home`).
+4. Access the application(Homepage) at `http://localhost:8080`.
 
 ## Contributing 🤝
 
@@ -124,4 +157,4 @@ For any issues or feature requests, please create an issue in the GitHub reposit
 
 ---
 
-Thank you for using PaperPal! If you have any questions, feel free to reach out or open an issue on GitHub. 😊
+Thank you for using **PaperPal**! If you have any questions, feel free to reach out or open an issue on GitHub. 😊
