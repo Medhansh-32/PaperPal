@@ -33,7 +33,7 @@ The **PaperPal** application is built using **Spring Boot** and provides a web i
 
 ## Controllers 🕹️
 
-###Login-Page
+### Login-Page
 <br>
 <img src="src/main/resources/static/images/login.png">
 ### UserController 🧑‍💻
@@ -49,10 +49,11 @@ The `UserController` handles user-related actions such as password management an
 
 The `UserResponseController` manages user responses, file uploads, and deletion of responses.
 
+<img src="src/main/resources/static/images/upload.png">
 - **POST /userresponse**: Submits user response data and an exam file.
     - **Request Parameters**: `course`, `branch`, `semester`, `file`
     - **Response**: Redirects to `successful` or `unsuccessful` view based on the outcome.
-
+<img src="src/main/resources/static/images/linkList.png">
 - **GET /userresponse/getlinks**: Retrieves download links for exam files based on user response details.
     - **Request Parameters**: `course`, `branch`, `semester`
     - **Response**: `links-exam` view with file download links.
@@ -85,14 +86,17 @@ The `ExamFileController` handles operations related to uploading, downloading, a
 
 The `DoubtsController` manages the posting, replying, and viewing of doubts.
 
+<img src="src/main/resources/static/images/PostDoubt.png">
 - **POST /doubts/postDoubts**: Allows a user to post a new doubt.
     - **Request Parameters**: `course`, `branch`, `semester`, `question`
     - **Response**: Redirects to the doubt posting status page.
+
 
 - **PATCH /doubts/addReply**: Adds a reply to an existing doubt.
     - **Request Parameters**: `doubtId`, `reply`
     - **Response**: Redirects to the reply status page.
 
+<img src="src/main/resources/static/images/MyDoubt.png">
 - **GET /doubts/myDoubts**: Retrieves all doubts posted by the logged-in user.
     - **Response**: List of the user's doubts.
 
@@ -100,6 +104,7 @@ The `DoubtsController` manages the posting, replying, and viewing of doubts.
     - **Path Variable**: `id` of the doubt
     - **Response**: List of replies for the given doubt.
 
+<img src="src/main/resources/static/images/Doubts.png">
 - **GET /doubts/allDoubts**: Retrieves all posted doubts.
     - **Response**: List of all doubts in the system.
 
@@ -111,6 +116,7 @@ The `DoubtsController` manages the posting, replying, and viewing of doubts.
 
 The `AIController` allows users to interact with the AI assistant.
 
+<img src="src/main/resources/static/images/Ai.png">
 - **GET /ai/generateStream**: Generates a response from the AI based on user input.
     - **Request Parameters**: `query` (the question or prompt)
     - **Response**: The AI-generated response to the query.
@@ -149,8 +155,14 @@ To run the application locally, follow these steps:
     ```sh
     ./gradlew bootRun
     ```
+### Home Page
+Dark Theme
+<img src="src/main/resources/static/images/home.png">
 
+Light Theme
+<img src="src/main/resources/static/images/Light-Theme(Home).png">
 4. Access the application(Homepage) at `http://localhost:8080`.
+
 
 ## Contributing 🤝
 
