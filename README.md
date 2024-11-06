@@ -33,15 +33,30 @@ The **PaperPal** application is built using **Spring Boot** and provides a web i
 
 ## Controllers 🕹️
 
+### Register
+
+<img src="src/main/resources/static/images/register.png">
+
 ### Login-Page
-<br>
+
 <img src="src/main/resources/static/images/login.png">
+
+
+
 ### UserController 🧑‍💻
 
 The `UserController` handles user-related actions such as password management and redirects.
 
+<img src="src/main/resources/static/images/resetEmail.png">
+
 - **POST /user/otp**: Sends an OTP for user verification.
+
+<img src="src/main/resources/static/images/otp.png">
+
 - **POST /user/changePassword**: Changes the user's password.
+
+<img src="src/main/resources/static/images/newPassword.png">
+
 - **PUT /user/setNewPassword**: Sets a new password after verification.
 - **POST /user/redirectHome**: Redirects the user to the home page after login or registration.
 
@@ -50,10 +65,13 @@ The `UserController` handles user-related actions such as password management an
 The `UserResponseController` manages user responses, file uploads, and deletion of responses.
 
 <img src="src/main/resources/static/images/upload.png">
+
 - **POST /userresponse**: Submits user response data and an exam file.
     - **Request Parameters**: `course`, `branch`, `semester`, `file`
     - **Response**: Redirects to `successful` or `unsuccessful` view based on the outcome.
+
 <img src="src/main/resources/static/images/linkList.png">
+
 - **GET /userresponse/getlinks**: Retrieves download links for exam files based on user response details.
     - **Request Parameters**: `course`, `branch`, `semester`
     - **Response**: `links-exam` view with file download links.
@@ -87,6 +105,7 @@ The `ExamFileController` handles operations related to uploading, downloading, a
 The `DoubtsController` manages the posting, replying, and viewing of doubts.
 
 <img src="src/main/resources/static/images/PostDoubt.png">
+
 - **POST /doubts/postDoubts**: Allows a user to post a new doubt.
     - **Request Parameters**: `course`, `branch`, `semester`, `question`
     - **Response**: Redirects to the doubt posting status page.
@@ -97,6 +116,7 @@ The `DoubtsController` manages the posting, replying, and viewing of doubts.
     - **Response**: Redirects to the reply status page.
 
 <img src="src/main/resources/static/images/MyDoubt.png">
+
 - **GET /doubts/myDoubts**: Retrieves all doubts posted by the logged-in user.
     - **Response**: List of the user's doubts.
 
@@ -105,6 +125,7 @@ The `DoubtsController` manages the posting, replying, and viewing of doubts.
     - **Response**: List of replies for the given doubt.
 
 <img src="src/main/resources/static/images/Doubts.png">
+
 - **GET /doubts/allDoubts**: Retrieves all posted doubts.
     - **Response**: List of all doubts in the system.
 
@@ -117,6 +138,7 @@ The `DoubtsController` manages the posting, replying, and viewing of doubts.
 The `AIController` allows users to interact with the AI assistant.
 
 <img src="src/main/resources/static/images/Ai.png">
+
 - **GET /ai/generateStream**: Generates a response from the AI based on user input.
     - **Request Parameters**: `query` (the question or prompt)
     - **Response**: The AI-generated response to the query.
