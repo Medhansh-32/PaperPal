@@ -54,7 +54,7 @@ The `UserResponseController` manages user responses, file uploads, and deletion 
     - **Request Parameters**: `course`, `branch`, `semester`
     - **Response**: `links-exam` view with file download links.
 
-- **POST /userresponse/addfile**: Adds an additional file to an existing user response.
+- **POST /userresponse/addfile**: Adds a file to an existing user response.
     - **Request Parameters**: `course`, `branch`, `semester`, `file`
     - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
 
@@ -108,7 +108,7 @@ The `DoubtsController` manages the posting, replying, and viewing of doubts.
 
 The `AIController` allows users to interact with the AI assistant.
 
-- **GET /ai/gen**: Generates a response from the AI based on user input.
+- **GET /ai/generateStream**: Generates a response from the AI based on user input.
     - **Request Parameters**: `query` (the question or prompt)
     - **Response**: The AI-generated response to the query.
 
@@ -126,7 +126,7 @@ To run the application locally, follow these steps:
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/yourusername/PaperPal.git
+    git clone https://github.com/Medhansh-32/PaperPal.git
     ```
 
 2. Navigate to the project directory:
