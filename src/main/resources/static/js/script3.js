@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             // Send the prompt to the backend
             const response = await fetch('/ai/generateStream?prompt='+prompt, {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },

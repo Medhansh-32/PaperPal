@@ -60,13 +60,13 @@ public class UserResponseController {
     public String getExamFileLink(
             @RequestParam("course") String course,
             @RequestParam("branch") String branch,
-            @RequestParam("semester") String semester,
+            @RequestParam("semester")int semester,
             Model model
     ) {
         UserResponse userResponse = new UserResponse();
         userResponse.setCourse(course);
         userResponse.setBranch(branch);
-        userResponse.setSemester(Integer.parseInt(semester));
+        userResponse.setSemester(semester);
         List<ExamFile> examFiles = userResponseService.getExamLinkByUserResponse(userResponse);
         List<String> links = new ArrayList<>();
         if (examFiles != null) {
