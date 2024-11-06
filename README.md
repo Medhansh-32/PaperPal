@@ -110,6 +110,7 @@ The `DoubtsController` manages the posting, replying, and viewing of doubts.
     - **Request Parameters**: `course`, `branch`, `semester`, `question`
     - **Response**: Redirects to the doubt posting status page.
 
+<img src="src/main/resources/static/images/completeDoubt.png">
 
 - **PATCH /doubts/addReply**: Adds a reply to an existing doubt.
     - **Request Parameters**: `doubtId`, `reply`
