@@ -107,7 +107,7 @@ The `DoubtsController` manages the posting, replying, and viewing of doubts.
 <img src="src/main/resources/static/images/PostDoubt.png" height="500px" width="350px">
 
 - **POST /doubts/postDoubts**: Allows a user to post a new doubt.
-    - **Request Parameters**: `course`, `branch`, `semester`, `question`
+    - **Request Parameters**: `Doubt Title`, `Doubt Description`
     - **Response**: Redirects to the doubt posting status page.
 
 <img src="src/main/resources/static/images/completeDoubt.png">
