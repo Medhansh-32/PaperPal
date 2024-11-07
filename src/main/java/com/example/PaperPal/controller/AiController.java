@@ -26,9 +26,9 @@ public class AiController {
 
     @PostMapping("/generateStream")
     public ResponseEntity<String> generateStream(@RequestParam("prompt") String prompt) {
-        log.info("Prompt : " + prompt);
+        log.info("Prompt : {}", prompt);
         String response = chatModel.call(prompt);
-        log.info("Response : " , response);
+        log.info("Response : {}" , response);
         return ResponseEntity.ok(response);
     }
 }
