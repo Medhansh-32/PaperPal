@@ -61,8 +61,9 @@ public class DoubtsService {
     }
 
     public boolean deleteDoubtsById(ObjectId id,String name) {
-        if(doubtsRepository.findById(id).get().getUserName()==name){
+        if(doubtsRepository.findById(id).get().getUserName().equals(name)){
             try {
+                log.info("deleting doubt {}",id);
                 doubtsRepository.deleteById(id);
                 return true;
             }catch (Exception e){
@@ -70,6 +71,7 @@ public class DoubtsService {
                 return false;
             }
         }
+        log.error("doubt not deleted",id);
 return false;
     }
 
