@@ -1,6 +1,6 @@
 const passwordForm = document.getElementById('passwordForm');
 const passwordError = document.getElementById('passwordError');
-const emailName=document.getElementById("email-name");
+const emailName = document.getElementById("email-name");
 
 // Function to show error messages
 function showError(element, message) {
@@ -24,6 +24,12 @@ passwordForm.addEventListener('submit', function(event) {
     // Clear previous error messages
     hideError(passwordError);
 
+    // Check if the password is at least 8 characters long
+    if (newPassword.length < 8) {
+        showError(passwordError, 'Password must be at least 8 characters long.');
+        return;
+    }
+
     // Check if passwords match
     if (newPassword !== confirmPassword) {
         showError(passwordError, 'Passwords do not match. Please try again.');
@@ -40,15 +46,14 @@ passwordForm.addEventListener('submit', function(event) {
     })
         .then(response => {
             if (response.ok) {
-                console.log("Password updated successfully")
-                window.location.href='/'
+                console.log("Password updated successfully");
+                window.location.href = '/';
             } else {
-                window.location.href='/user/forgotPassword'
+                window.location.href = '/user/forgotPassword';
                 console.error("Failed to update password");
             }
         })
         .catch(error => {
             console.error("Error:", error);
         });
-
 });

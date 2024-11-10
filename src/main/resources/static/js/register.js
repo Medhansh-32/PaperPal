@@ -12,6 +12,12 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     const errorMessage = document.getElementById('error-message');
     errorMessage.textContent = '';
 
+    // Check if the password is at least 8 characters long
+    if (password.length < 8) {
+        errorMessage.textContent = 'Password must be at least 8 characters long.';
+        return;
+    }
+
     // Check if passwords match before submitting
     if (password !== confirmPassword) {
         errorMessage.textContent = 'Passwords do not match. Please ensure both passwords are the same.';
@@ -31,7 +37,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     };
 
     try {
-        // Send POST request to /user/redirect
+        // Send POST request to /user/redirectHome
         const response = await fetch('/user/redirectHome', {
             method: 'POST',
             headers: {
@@ -42,7 +48,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
         // Check the response status
         if (response.ok) {
-            console.log("Ok")
+            console.log("Ok");
             // Handle success, e.g., redirect to a success page
             window.location.href = '/'; // Adjust the redirect URL as necessary
         } else if (response.status === 400) {
