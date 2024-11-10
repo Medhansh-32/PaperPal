@@ -43,14 +43,13 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
             String username = (String) oAuth2User.getAttributes().get("login"); // GitHub username
             log.info(email);
             if(email ==null){
-
                 throw new OAuth2AuthenticationException("email is null");
             }
             // Retrieve existing user or create a new one
             Users user = userRepository.findByEmail(email);
             // Create new user if not found
             if(user==null){
-              user=createUser(username, email);
+             throw new OAuth2AuthenticationException("user not found");
             }
             // Return a CustomOAuth2User
             return new CustomOAuth2User(oAuth2User, user.getEmail(), user.getUserName());
