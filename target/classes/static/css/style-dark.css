@@ -1,0 +1,514 @@
+/* Base Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%; /* Ensures that the body takes full viewport height */
+    font-family: 'Roboto', sans-serif;
+    color: deepskyblue; /* Light text color */
+    text-decoration: none; /* Removed underline from all elements by default */
+}
+
+/* Layout */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures body takes up at least full viewport height */
+}
+
+
+
+.styled-hr {
+    border: 0.5px; /* Removes the default border */
+    height: 2px; /* Sets the height */
+    background: white; /* Sets the color */
+    margin-bottom: 1px;
+}
+
+.container {
+    flex: 1; /* Ensures the container takes up the remaining space */
+    width: 90%;
+    max-width: 1200px; /* Max width for the container */
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(40, 40, 40, 0.9); /* Dark, semi-transparent background */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); /* Shadow effect */
+    backdrop-filter: blur(8px); /* Slight glassmorphism effect */
+}
+#mobile {
+    visibility: hidden; /* Mobile view container */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(33, 37, 41, 1); /* Dark background */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* On top of other elements */
+}
+
+/* Logo Styling */
+.navbar-brand {
+    font-family: 'Lobster', cursive; /* Beautiful cursive font for the logo */
+    font-size: 2.5rem; /* Logo font size */
+    color: #ffffff; /* White text for visibility */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Navigation Links */
+.navbar-links {
+    text-decoration: none;
+    display: flex;
+    gap: 20px; /* Space between links */
+}
+
+.navbar-links a {
+    color: #ffffff; /* White text for links */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.2rem; /* Font size for links */
+    padding: 10px 15px; /* Padding for links */
+    transition: background-color 0.3s, color 0.3s; /* Transition effects */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.navbar-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white background on hover */
+    color: #72cd44; /* Bright yellow-green on hover */
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; /* Stack items vertically */
+        padding: 10px 20px; /* Padding adjustment */
+    }
+
+    .navbar-links {
+        flex-direction: column; /* Stack links vertically */
+        gap: 15px; /* Space between links */
+    }
+
+    .navbar-btn {
+        margin-top: 10px; /* Margin for button */
+        text-decoration: none; /* Remove underline */
+    }
+}
+
+.navbarmini {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1b1b1b; /* Darker background for mini navbar */
+    padding: 10px 20px; /* Padding */
+    width: 100%; /* Ensure it spans the full width */
+    top: 0; /* Fixed at the top */
+    z-index: 1000; /* On top of other elements */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8); /* Shadow effect */
+}
+
+.navbarmini a {
+    color: #ffffff; /* White text for mini navbar */
+    text-decoration: none; /* Remove underline */
+    font-size: 18px; /* Font size for links */
+}
+
+/* Style for dropdown checkbox */
+#dropdown-container {
+    position: relative; /* Position for dropdown */
+}
+
+#dropdown-checkbox {
+    display: none; /* Hide checkbox */
+}
+
+/* Label for the dropdown checkbox (acts like a toggle button) */
+.dropdown-label {
+    cursor: pointer; /* Pointer on hover */
+    padding: 10px 15px; /* Padding */
+    background-color: #343a40; /* Dark background */
+    color: #ffffff; /* White text */
+    border-radius: 5px; /* Rounded corners */
+    display: inline-block; /* Inline display */
+}
+
+/* Dropdown list - Hidden by default */
+.dropdown-list {
+    display: none; /* Initially hidden */
+    position: absolute; /* Absolute positioning */
+    top: 100%; /* Position below the label */
+    left: 0; /* Align to the left */
+    background-color: #343a40; /* Darker background for dropdown */
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* No padding */
+    margin: 0; /* No margin */
+    width: 200px; /* Width of dropdown */
+    z-index: 1001; /* On top of other elements */
+}
+
+.dropdown-list li {
+    margin: 0; /* No margin */
+}
+
+.dropdown-list li a {
+    display: block; /* Block display for links */
+    padding: 10px; /* Padding for dropdown items */
+    color: #ffffff; /* White text */
+    text-decoration: none; /* Remove underline */
+}
+
+.dropdown-list li a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Lighter background on hover */
+}
+
+/* Show the dropdown list when checkbox is checked */
+#dropdown-checkbox:checked ~ .dropdown-list {
+    display: block; /* Show dropdown on checkbox checked */
+}
+
+footer {
+    position: sticky; /* Sticky footer */
+    top: 100%; /* Position at the bottom */
+    background: rgba(33, 37, 41, 0.9); /* Dark background */
+    color: #ffffff; /* Light text */
+    padding: 20px; /* Padding */
+    text-align: center; /* Center text */
+    border-top: 4px solid #444444; /* Top border */
+    width: 100%; /* Full width */
+    margin-top: auto; /* Ensure footer sticks to the bottom when content is short */
+}
+
+footer p {
+    margin-bottom: 10px; /* Margin for footer paragraph */
+}
+
+footer a {
+    color: #4caf50; /* Green link color */
+    text-decoration: none; /* Remove underline */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* LinkedIn Button Styling */
+footer button {
+    padding: 10px 20px; /* Padding for footer button */
+    background: linear-gradient(45deg, #0072b1, #00aaff); /* LinkedIn colors */
+    border: none; /* No border */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s ease; /* Transition effect */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Shadow effect */
+}
+
+footer button:hover {
+    background: linear-gradient(45deg, #00aaff, #0072b1); /* Hover gradient */
+}
+
+footer button a {
+    color: #ffffff; /* White text for button links */
+    text-decoration: none; /* Remove underline */
+}
+
+footer button a:hover {
+    text-decoration: none; /* No underline on hover */
+}
+
+@media (max-width: 768px) {
+    #mobile {
+        visibility: visible; /* Show mobile view */
+    }
+
+    .navbarmini {
+        display: flex; /* Flex display for mini navbar */
+        justify-content: space-between; /* Space between items */
+    }
+
+    .navbar-brandmini {
+        font-family: 'Lobster', cursive; /* Cursive font for mini navbar */
+        color: #ffffff; /* White text */
+        text-decoration: none; /* Remove underline */
+    }
+
+    #pc {
+        display: none; /* Hide desktop view */
+    }
+}
+
+@media (max-width: 480px) {
+    #pc {
+        visibility: hidden; /* Hide desktop view */
+    }
+
+    #mobile {
+        visibility: visible; /* Show mobile view */
+        margin-top: 0rem; /* No margin */
+    }
+}
+
+/* AI Assistance Section */
+#ai-response {
+    padding: 15px;
+    background-color: rgba(40, 40, 40, 0.9); /* Matches the container background */
+    font-size: 16px;
+    border-radius: 4px;
+    min-height: 50px; /* Minimum height */
+    display: block; /* Ensure it's visible */
+    margin-bottom: 10px;
+}
+
+#loading-message {
+    font-size: 14px; /* Font size for loading message */
+    text-align: center;
+    color: white; /* Loading message color */
+}
+
+/* General Input Field */
+input[type="text"], input[type="file"], select {
+    width: 100%; /* Full width of the form-group */
+    padding: 10px;
+    border: 1px solid #666; /* Dark border */
+    border-radius: 6px;
+    background: rgba(60, 60, 60, 0.9); /* Dark background for input fields */
+    color: #f0f0f0; /* Light text color */
+    font-size: 1rem; /* Default font size */
+    transition: border-color 0.3s ease; /* Transition effect */
+}
+
+/* Shorter AI Prompt Input Field */
+#prompt {
+    width: 50%; /* Width for the prompt input field */
+}
+
+/* Navbar Styling */
+.main-container {
+    padding-top: -10px;
+    display: flex; /* Align children in a row */
+    justify-content: space-around; /* Space between columns */
+
+}
+#description {
+    width: 100%; /* Full width to fit the container */
+    padding: 12px; /* Padding inside the textarea for comfort */
+    font-size: 1rem; /* Font size for the text */
+    line-height: 1.4; /* Improve readability */
+    border: 1px solid #666; /* Dark border */
+    border-radius: 8px; /* Smooth rounded corners */
+    background-color: rgba(60, 60, 60, 0.9); /* Dark background matching other inputs */
+    color: #f0f0f0; /* Light text color for readability */
+    resize: vertical; /* Allow vertical resizing */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+#description:focus {
+    border-color: #4caf50; /* Green border on focus */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Slight shadow on focus */
+    outline: none; /* Remove the default outline */
+}
+
+#description::placeholder {
+    color: #ccc; /* Lighter color for the placeholder text */
+    font-style: italic; /* Placeholder in italics */
+}
+
+.left-column {
+    flex: 0 0 75%; /* Decrease width to 25% for post of doubts */
+   /* Space between columns */
+}
+
+.right-column {
+    flex: 0 0 25%; /* Increase width to 75% for Ask AI and Home */
+
+    /* Space between columns */
+}
+
+/* Button Styling */
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+
+    .main-container {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: stretch; /* Ensure columns take full width */
+    }
+
+    .left-column {
+        flex: 0 0 auto; /* Default size based on content */
+        width: 100%; /* Full width for the post doubts section */
+        margin-bottom: 20px; /* Space between sections */
+    }
+
+    .right-column {
+        flex: 0 0 auto; /* Default size based on content */
+        width: 100%; /* Full width for the Ask AI and Home sections */
+    }
+}
+
+/* Style for the navbar */
+/* Button Styling */
+button, .button, a.button {
+    display: inline-block; /* Inline block display */
+    padding: 12px 24px; /* Button padding */
+    font-size: 1rem; /* Font size for buttons */
+    color: #fff; /* White text */
+    background: linear-gradient(45deg, #009688, #80cbc4); /* Teal and light green */
+    border: none; /* No border */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition effects */
+    margin: 10px; /* Margin around buttons */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); /* Shadow effect */
+}
+
+button:hover, .button:hover, a.button:hover {
+    background: linear-gradient(45deg, #80cbc4, #009688); /* Hover gradient */
+    transform: scale(1.05); /* Scale effect on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
+}
+
+button:active {
+    background-color: #00796b; /* Darker shade on active */
+}
+
+/* Footer Styling */
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .container {
+        padding: 15px; /* Padding for medium screens */
+    }
+
+    h1 {
+        font-size: 2.2rem; /* Title size */
+    }
+
+    h2 {
+        font-size: 1.8rem; /* Subtitle size */
+    }
+
+    h3 {
+        font-size: 1.5rem; /* Sub-subtitle size */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem; /* Padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 2rem; /* Title size */
+    }
+
+    h2 {
+        font-size: 1.6rem; /* Subtitle size */
+    }
+
+    h3 {
+        font-size: 1.4rem; /* Sub-subtitle size */
+    }
+
+    button, .button, a.button {
+        padding: 10px 20px; /* Padding for smaller buttons */
+        font-size: 0.9rem; /* Font size for smaller buttons */
+    }
+}
+
+body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #f0f0f0;
+    background-color: #0056b3;
+    margin-top: 8rem; /* Remove default margin */
+}
+
+.card {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+}
+.card-header {
+    background-color: #333;
+    color: #fff;
+}
+.card-body {
+    color: #e0e0e0;
+}
+.text-muted {
+    color: #bbbbbb;
+}
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+.btn{
+    border-radius: 1.2rem;
+}
+textarea{
+    border-radius: 4px;
+    background-color: rgba(60, 60, 60, 0.9) !important;
+    color: white !important;
+}
+.alert-info {
+    background-color: #2c2c2c;
+    color: #d1ecf1;
+    border-color: #17a2b8;
+}
+.reply-box {
+    display: none;
+    margin-top: 10px;
+}
+.replies {
+    display: none;
+    margin-top: 15px;
+    height: 200px;           /* Set the desired height */
+    overflow-y: auto;       /* Enable vertical scrolling */
+    border: 1px solid #ccc;
+    border-radius: 8px;   /* Optional: Add a border for better visibility */
+    padding: 10px;          /* Optional: Add some padding */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
+
+/* Add this rule to ensure Bootstrap's background doesn't interfere */
+
+
+@media (max-width: 480px) {
+
+    .container {
+        padding: 8px; /* Padding for smallest screens */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Title size */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Subtitle size */
+    }
+
+    h3 {
+        font-size: 1.3rem; /* Sub-subtitle size */
+    }
+
+    button, .button, a.button {
+        padding: 8px 16px; /* Padding for smallest buttons */
+        font-size: 0.8rem; /* Font size for smallest buttons */
+    }
+}

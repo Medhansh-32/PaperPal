@@ -1,0 +1,168 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #003366, #0066cc);
+    color: #f0f0f0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: center; /* Center the brand title */
+    background-color: #282828; /* Set navbar background color to solid */
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+input[type="email"]{
+    width: 20rem;
+}
+.navbar .brand-title {
+    color: #f0f0f0;
+    font-family: 'Lobster', cursive; /* Apply Lobster font */
+    font-size: 3rem; /* Adjust font size for the brand title */
+}
+
+/* Form Container */
+form {
+    margin: 50px auto; /* Reduced margin for mobile */
+    padding: 40px; /* Increased padding for a larger form */
+    background: rgba(40, 40, 40, 0.9); /* Same background as navbar */
+    border-radius: 12px;
+    max-width: 800px; /* Increased max-width for larger screens */
+    width: 95%; /* Set width for mobile to be smaller */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    animation: slideDown 0.5s ease-out forwards;
+    text-align: left;
+}
+
+/* Heading Styles */
+h2 {
+    color: #ffeb3b;
+    font-size: 3rem; /* Increased font size for larger screens */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Slogan */
+h3 {
+    color: #ffeb3b;
+    font-size: 1.8rem; /* Increased font size for larger screens */
+    margin-bottom: 10px; /* Reduced margin below slogan */
+    text-align: center;
+}
+
+/* Horizontal Rule */
+hr {
+    border: none; /* Remove default border */
+    height: 2px; /* Set the height of the line */
+    background-color: #ffeb3b; /* Color of the line */
+    margin: 20px auto; /* Center and space it out */
+    width: 95%; /* Increased width of the line */
+}
+
+/* Flexbox for Name Fields */
+.name-fields {
+    display: flex;
+    flex-direction: column; /* Change to column for mobile */
+    margin-bottom: 20px;
+}
+
+.name-fields input {
+    width: 100%; /* Full width for inputs */
+    margin-bottom: 20px; /* Space below each input field */
+    padding: 15px; /* Increased padding for larger inputs */
+    font-size: 1rem; /* Adjusted font size for larger screens */
+}
+
+/* Label Styling */
+label {
+    display: block;
+    font-size: 1.2rem; /* Slightly smaller font size for labels */
+    margin-bottom: 10px;
+    color: #f0f0f0;
+}
+
+/* Input Fields Styling */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px; /* Increased padding for larger inputs */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #666;
+    border-radius: 8px;
+    font-size: 1rem; /* Adjusted font size for larger screens */
+    color: #f0f0f0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 8px #00ffcc;
+    outline: none;
+}
+
+/* Button Styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px; /* Increased padding for larger button */
+    background: linear-gradient(135deg, #009688, #80cbc4);
+    color: #fff;
+    font-size: 1.2rem; /* Increased font size for button */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    margin: 20px auto; /* Center the button */
+    display: block; /* Make button block-level to center it */
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #80cbc4, #009688);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 255, 204, 0.6);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 255, 204, 0.4);
+}
+
+/* Error Message */
+.error {
+    color: red;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    form {
+        width: 90%; /* Slightly smaller width for mobile */
+        padding: 20px; /* Reduced padding for a more compact form */
+    }
+    input[type="email"]{
+      width: 19.5rem;
+    }
+    h2 {
+        font-size: 2.5rem; /* Adjusted font size for smaller screens */
+    }
+
+    h3 {
+        font-size: 1.5rem; /* Adjusted font size for smaller screens */
+    }
+}

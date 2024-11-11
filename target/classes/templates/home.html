@@ -1,0 +1,73 @@
+<link id="theme-style" rel="stylesheet" href="/css/style-dark.css">
+<title>Home</title>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<br>
+
+
+<div class="main-container">
+    <!-- Left side: Home and Ask AI sections -->
+    <div class="left-column">
+        <div class="container">
+            <h1>Home</h1>
+            <hr class="styled-hr">
+
+            <!-- Upload and get links buttons -->
+            <div class="button-group">
+                <a href="/upload" class="button">Upload Question Paper <i class="fa-solid fa-file-arrow-up"></i></a>
+                <br><br>
+                <a href="/getlinks" class="button">Get Exam File Links <i class="fa-sharp fa-solid fa-file-arrow-down"></i></a>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2>Ask AI</h2>
+            <hr class="styled-hr">
+
+            <div id="ai-response" style="margin-bottom: 10px;"></div>
+            <div id="loading-message" style="font-style: italic; color: gray;"></div>
+
+            <form id="ai-form" onsubmit="getAiResponse(event)">
+                <i id="prompt-logo" class="fa-brands fa-rocketchat"></i>
+                <input type="text" id="prompt" name="prompt" placeholder="Enter the prompt..." required>
+                <button type="submit">Get</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Right side: Post Your Doubts section -->
+    <div class="right-column">
+        <div class="container">
+            <h1>Post Your Doubts</h1>
+            <hr class="styled-hr">
+            <br>
+            <div class="post-section">
+                <form id="doubtForm">
+                    <label for="title" style="font-size: 1.2rem">Doubt Title :</label>
+                    <input type="text" id="title" placeholder="Enter doubt title" required>
+                    <br>
+                    <br>
+                    <label for="description" style="font-size: 1.2rem">Doubt Description :</label>
+                    <textarea id="description" rows="4" placeholder="Describe your doubt in detail" required></textarea>
+                    <br>
+                    <br>
+                    <p id="posting"></p>
+                    <br>
+                    <button idtype="submit">Post Doubt</button>
+                    <button onclick="solveDoubts(this)">Solve Doubts</button>
+
+                </form>
+
+            </div>
+
+            <div id="doubtList">
+                <!-- Doubts will be displayed here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer section -->
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script src="/js/doubts.js"></script>
+<script src="/js/script3.js"></script>
+<script src="/js/script4.js"></script>
