@@ -50,7 +50,9 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         if (response.ok) {
             console.log("Ok");
             // Handle success, e.g., redirect to a success page
-            window.location.href = '/'; // Adjust the redirect URL as necessary
+            errorMessage.textContent = 'Confirm the registration by clicking the link send to your e-mail.';
+            errorMessage.style.color='green'
+            errorMessage.style.fontSize="20px"
         } else if (response.status === 400) {
             // Handle specific case of username or email already registered
             const result = await response.json();

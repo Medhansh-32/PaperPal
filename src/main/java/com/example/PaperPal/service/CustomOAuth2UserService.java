@@ -49,7 +49,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
             Users user = userRepository.findByEmail(email);
             // Create new user if not found
             if(user==null){
-             throw new OAuth2AuthenticationException("user not found");
+             userRepository.save(Users.builder().userName(username).email(email).build());
             }
             // Return a CustomOAuth2User
             return new CustomOAuth2User(oAuth2User, user.getEmail(), user.getUserName());
