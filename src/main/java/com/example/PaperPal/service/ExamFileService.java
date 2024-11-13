@@ -53,7 +53,6 @@ public class ExamFileService {
                 .path("/file/")
                 .path(examFile.getExamId().toString())  // Convert the examId to string and append it to the path
                 .toUriString();
-        secureRequest=secureRequest.replace("http","https");
         return secureRequest;
     }
     public ResponseEntity<?> deleteExamFile(ObjectId id) {
