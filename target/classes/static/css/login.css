@@ -1,0 +1,257 @@
+/* Base Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #003366, #0066cc); /* Gradient background */
+    color: #f0f0f0;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* Smooth scrolling */
+
+}
+
+/* Navbar Styling */
+.navbar {
+    background: rgba(40, 40, 40, 0.9); /* Dark background for navbar */
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar h1 {
+    color: #ffeb3b; /* Bright yellow text for contrast */
+    font-size: 2.5rem; /* Font size for navbar */
+    margin: 0;
+    font-family: 'Lobster', cursive; /* Applied Lobster font */
+}
+
+/* Container Styling */
+.container {
+    margin: 100px auto; /* Adjusted margin for better centering */
+    padding: 50px; /* Increased padding for larger form */
+    background: rgba(40, 40, 40, 0.9); /* Dark, transparent background */
+    border-radius: 12px;
+    max-width: 600px; /* Increased width for a broader form */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px); /* Glassmorphism effect */
+    animation: slideDown 0.5s ease-out forwards; /* Adjusted duration for a quicker animation */
+    text-align: left; /* Align text to the left */
+}
+
+/* Slide Down Animation */
+@keyframes slideDown {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Heading Styling */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffeb3b; /* Bright yellow text for contrast */
+    font-size: 1.3rem; /* Slightly smaller than heading */
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #f0f0f0;
+}
+
+/* Input Fields Styling */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px; /* Increased padding for larger input fields */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #666;
+    border-radius: 8px;
+    font-size: 1.1rem; /* Increased font size */
+    color: #f0f0f0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 8px #00ffcc; /* Neon focus glow */
+    outline: none;
+}
+
+/* Button Styling */
+.button {
+    width: 100%;
+    padding: 14px 20px; /* Increased padding for button */
+    background: linear-gradient(135deg, #009688, #80cbc4); /* Teal gradient */
+    color: #fff;
+    font-size: 1.2rem; /* Larger button text */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.button:hover {
+    background: linear-gradient(135deg, #80cbc4, #009688);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 255, 204, 0.6); /* Neon hover glow */
+}
+
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 255, 204, 0.4);
+}
+
+/* Horizontal Line Styling */
+.styled-hr {
+    border: 0;
+    height: 2px;
+    background: #ffeb3b; /* Bright yellow line */
+    margin: 20px 0;
+}
+
+/* Link Buttons (Sign Up / Forgot Password) */
+.navbar-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px;
+    color: #fff;
+    background: linear-gradient(135deg, #ff6b6b, #ff7f50); /* Coral gradient */
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-btn:hover {
+    background: linear-gradient(135deg, #ff7f50, #ff6b6b);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(255, 123, 123, 0.6); /* Subtle hover effect */
+}
+
+.navbar-btn:active {
+    transform: translateY(0);
+}
+
+/* Footer Styling */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #f0f0f0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        max-width: 90%;
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.1rem;
+    }
+
+    .button {
+        font-size: 1rem;
+    }
+    .navbar-btn{
+        width: 8.5rem;
+        font-size: 1rem;
+    }
+}
+/* GitHub Button Styling */
+.github-btn {
+    display: inline-block;
+    width: 100%;
+}
+
+.github-button {
+    background: #333; /* Dark GitHub color */
+    color: #fff;
+    padding: 14px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.github-button:hover {
+    background: #24292e; /* Slightly lighter GitHub color */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 255, 204, 0.6); /* Glow effect */
+}
+.or-divider {
+    text-align: center; /* Center the text */
+    margin: 1.5rem 0; /* Add some vertical spacing */
+}
+
+.or-divider p {
+    display: inline-block; /* Make sure it behaves like inline */
+    background: rgba(255, 255, 255, 0.1); /* Optional: Background for visibility */
+    padding: 0.5rem 1rem; /* Optional: Add some padding for emphasis */
+    border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.github-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 255, 204, 0.4);
+}
+.or-divider {
+    text-align: center; /* Center the text */
+    margin: 1.5rem 0; /* Add some vertical spacing */
+}
+
+.or-divider p {
+    display: inline-block; /* Make sure it behaves like inline */
+    background: rgba(255, 255, 255, 0.1); /* Optional: Background for visibility */
+    padding: 0.5rem 1rem; /* Optional: Add some padding for emphasis */
+    border-radius: 8px; /* Optional: Rounded corners */
+}
+
+.password{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:1.5rem;
+}
+/* Optional GitHub icon styling */
+.github-button::before {
+    content: " ";
+    background-image: url('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
+    background-size: 20px 20px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
