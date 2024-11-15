@@ -106,7 +106,7 @@ public class UserController {
                            "        .button {\n" +
                            "            display: inline-block;\n" +
                            "            padding: 12px 24px;\n" +
-                           "            color: #ffffff;\n" +
+                           "            color: #007bff;\n" +
                            "            background-color: #f4f4f4;\n" +
                            "            text-decoration: none;\n" +
                            "            border-radius: 5px;\n" +
