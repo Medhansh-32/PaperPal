@@ -192,6 +192,28 @@ footer {
     display: inline-block;
     width: 100%;
 }
+@media (max-width: 650px) {
+    h1{
+        font-size: 1.5rem;
+    }
+    h2{
+        font-size: 1.8rem;
+    }
+    .navbar-btn{
+        padding: 10px 8px;
+        font-size: 1rem;
+    }
+.space2{
+    margin-left: 4px;
+}
+.space{
+    margin-right: 2px;
+    margin-left: -4px;
+}
+    .container{
+        max-width: 500px;
+    }
+}
 
 .github-button {
     background: #333; /* Dark GitHub color */

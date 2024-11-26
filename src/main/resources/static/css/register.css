@@ -156,7 +156,7 @@ button[type="submit"]:active {
         padding: 20px; /* Reduced padding for a more compact form */
     }
     input[type="email"]{
-      width: 19.5rem;
+      width: 18.5rem;
     }
     h2 {
         font-size: 2.5rem; /* Adjusted font size for smaller screens */
