@@ -1,0 +1,37 @@
+
+<title>Download Files</title>
+<link id="theme-style" rel="stylesheet" href="/css/style-dark.css">
+<!-- Desktop navigation -->
+<div th:replace="~{fragments/navbar2 :: navbar2}"></div>
+<div class="main-content">
+
+    <div class="container">
+        <h1>Exam File Links</h1>
+        <hr class="styled-hr">
+        <div th:if="${not #lists.isEmpty(links)}">
+            <div class="links-container">
+                <br>
+                <a th:each="link, stat : ${links}" th:href="${link}" class="button" target="_blank" style="display: block; margin-bottom: 1.2rem;height: 3rem;width: 13rem">Download PDF [[${stat.index} + 1]]</a>
+                <br>
+            </div>
+        </div>
+        <div th:if="${#lists.isEmpty(links)}">
+            <br>
+            <p>Sorry, not available. We are trying to get it soon..</p>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div id="unsuccess">
+            <button onclick="goBack()" class="back-button">Go Back</button>
+            <br>
+            <br>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script src="/js/script4.js" ></script>
+</body>
+</html>

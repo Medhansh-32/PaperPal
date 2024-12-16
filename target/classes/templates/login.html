@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="icon" href="/images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&display=swap" rel="stylesheet"> <!-- Added Lobster font -->
+</head>
+<body>
+<style>
+
+</style>
+
+<!-- Navbar -->
+<div class="navbar">
+    <h1>PaperPal</h1>
+</div>
+
+<div class="container">
+    <h2>Welcome Back!</h2>
+    <h2>Your Partner in Academic Success</h2> <!-- Added slogan to match previous heading -->
+    <form action="/login" method="POST"> <!-- Adjust action URL as needed -->
+        <div class="form-group">
+            <label for="username">E-mail / Username:</label>
+            <input type="text" id="username" name="username" required placeholder="Enter your username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+        </div>
+        <button type="submit" class="button">Login</button>
+    </form>
+    <div class="styled-hr"></div>
+    <div class="password">
+        <p><a href="/user/register" class="navbar-btn space">Don't have an account?</a></p>
+        <p><a href="user/forgotPassword" class="navbar-btn space2">Forgot your password?</a></p>
+    </div>
+    <div class="or-divider">
+        <p>Or continue with</p>
+    </div>
+
+    <a href="/oauth2/authorization/github">
+        <button type="button" class="button github-button"><i class="fa-brands fa-github"></i> Login with GitHub</button>
+    </a>
+</div>
+<footer>
+    <p>&copy; 2024 PaperPal. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
