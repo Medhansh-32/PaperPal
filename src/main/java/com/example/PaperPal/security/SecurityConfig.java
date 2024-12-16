@@ -35,7 +35,7 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/**","/v3/**").permitAll()
                         .anyRequest().authenticated()// Require authentication for other requests
                 )
-              //  .httpBasic(Customizer.withDefaults())
+                .httpBasic(Customizer.withDefaults())
 
                 .formLogin(form -> form
                         .loginPage("/login") // Specify custom login page

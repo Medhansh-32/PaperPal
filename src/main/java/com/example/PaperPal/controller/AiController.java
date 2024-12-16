@@ -1,14 +1,9 @@
 package com.example.PaperPal.controller;
 
+import com.example.PaperPal.service.AiService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.ai.ollama.OllamaChatModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 @Slf4j
@@ -16,19 +11,14 @@ import java.util.Map;
 @RequestMapping("/ai")
 public class AiController {
 
-    private final OllamaChatModel chatModel;
+    private AiService aiService;
 
-    @Autowired
-    public AiController(OllamaChatModel chatModel) {
-        this.chatModel = chatModel;
+    AiController(AiService aiService) {
+        this.aiService = aiService;
     }
-
 
     @PostMapping("/generateStream")
     public ResponseEntity<String> generateStream(@RequestParam("prompt") String prompt) {
-        log.info("Prompt : {}", prompt);
-        String response = chatModel.call(prompt);
-        log.info("Response : {}" , response);
-        return ResponseEntity.ok(response);
+       return aiService.getAiResponse(prompt);
     }
 }
