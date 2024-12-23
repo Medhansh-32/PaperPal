@@ -34,7 +34,7 @@ public class ExamFileController {
         if(data!=null) {
             ByteArrayResource resource = new ByteArrayResource(data);
             HttpHeaders headers = new HttpHeaders();
-            headers.add(HttpHeaders.CONTENT_DISPOSITION , "attachment; filename=examFile.pdf");
+            headers.add(HttpHeaders.CONTENT_DISPOSITION , "attachment; filename=File.pdf");
             headers.setContentType(MediaType.APPLICATION_PDF); // Adjust based on file type
             headers.setContentLength(data.length);
             return ResponseEntity.ok()
