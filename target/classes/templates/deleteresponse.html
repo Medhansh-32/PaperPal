@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete User Response</title>
+    <link id="theme-style" rel="stylesheet" href="/css/style-dark.css"> <!-- Default light theme -->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/images/SRM_University,_Haryana_logo.png" alt="University Logo">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+<!-- Desktop navigation -->
+<div id="pc">
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">PaperPal</a>
+        <div class="navbar-links">
+            <a href="https://github.com/Medhansh-32">GitHub</a><br>
+            <a href="https://github.com/Medhansh-32/PaperPal/blob/main/README.md">Description</a><br>
+            <a href="mailto:sharmamedhansh21@gmail.com">FeedBack</a>
+
+        </div>
+        <a href="/" class="button">Home <i class="fa-sharp fa-solid fa-house"></i></a>
+        <button id="theme-toggle" class="navbar-btn">Theme <i class="fa-solid fa-circle-half-stroke"></i></button>
+        <a href="/logout" class="button">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+
+    </nav>
+</div>
+
+<!-- Mobile navigation -->
+<div id="mobile">
+    <nav class="navbarmini">
+        <a href="#" class="navbar-brandmini" style="font-size: 2rem">PaperPal</a>
+        <!-- Dropdown for mobile using checkbox -->
+        <div id="dropdown-container">
+            <input type="checkbox" id="dropdown-checkbox">
+            <label class="dropdown-label" for="dropdown-checkbox"><i class="fa-solid fa-bars"></i></label>
+            <ul class="dropdown-list">
+                <li><a href="https://github.com/Medhansh-32">GitHub</a></li>
+                <li><a href="https://github.com/Medhansh-32/PaperPal/blob/main/README.md">Description</a></li>
+                <li><a href="mailto:sharmamedhansh21@gmail.com">FeedBack</a></li>
+                <li><a href="/logout" class="button">Logout <i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+            </ul>
+        </div>
+        <a href="/" class="button"><i class="fa-sharp fa-solid fa-house"></i></a>
+        <button id="theme-toggles" class="navbar-btn"><i class="fa-solid fa-circle-half-stroke"></i></button>
+
+    </nav>
+</div>
+
+<!-- JavaScript for theme toggle -->
+
+<div class="container">
+    <h1>Delete User Response</h1>
+    <form id="deleteForm" action="/userresponse/delete" method="post">
+        <label for="getcourse">Course:</label>
+        <select id="getCourse" name="course" required>
+            <option value="" disabled selected>Select your course</option>
+            <option value="Bachelor of Technology">Bachelor of Technology</option>
+            <option value="Bachelor of Laws or Bachelor of Legislative Laws">Bachelor of Laws or Bachelor of Legislative Laws</option>
+            <option value="Bachelor of Business Administration">Bachelor of Business Administration</option>
+            <option value="Bachelor of Arts">Bachelor of Arts</option>
+            <option value="Bachelor of Science">Bachelor of Science</option>
+            <!-- Add more courses as needed -->
+        </select>
+        <br>
+        <label for="getbranch">Branch:</label>
+        <select id="getBranch" name="branch" required>
+            <option value="" disabled selected>Select your branch</option>
+            <!-- Branch options will be populated based on selected course -->
+        </select>
+        <br>
+        <label for="getsemester">Semester:</label>
+        <select id="getSemester" name="semester" required>
+            <option value="" disabled selected>Select your semester</option>
+            <!-- Semester options will be populated based on selected course -->
+        </select>
+        <br>
+        <button type="submit">Delete</button>
+    </form>
+    <a href="/home" class="button">Back to Home <i class="fa-sharp fa-solid fa-house"></i></a>
+</div>
+<footer>
+    <div class="footer-content">
+        <p>Developed By - <strong>Medhansh Sharma</strong></p>
+        <p>
+            <a href="https://www.linkedin.com/in/medhansh-sharma-a3a9a2284/" target="_blank" class="linkedin-link">Connect with me on LinkedIn <i class="fa-brands fa-linkedin"></i></a>
+        </p>
+        <p>
+            Upload papers if you have and contribute in helping juniors.
+        </p>
+    </div>
+</footer>
+<script src="/js/script.js" defer></script>
+<script src="/js/script4.js"></script>
+</body>
+
+</html>

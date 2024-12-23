@@ -1,0 +1,63 @@
+<title>Upload User Response</title>
+<link id="theme-style" rel="stylesheet" href="/css/style-dark.css">
+<link rel="icon" href="/images/logo.png" alt="PaperPal Logo">
+<div th:replace="~{fragments/navbar2 :: navbar2}"></div>
+
+
+<!-- JavaScript for theme toggle -->
+<div class="container">
+    <h1>Upload Material</h1>
+    <hr class="styled-hr">
+    <br>
+    <form id="uploadForm" action="/userresponse" method="post" enctype="multipart/form-data">
+        <label for="getCourse">Course:</label>
+        <select id="getCourse" name="course" required>
+            <option value="" disabled selected>Select your course</option>
+            <option value="Bachelor of Technology">Bachelor of Technology</option>
+            <option value="Bachelor of Laws or Bachelor of Legislative Laws">Bachelor of Laws or Bachelor of Legislative Laws</option>
+            <option value="Bachelor of Business Administration">Bachelor of Business Administration</option>
+            <option value="Bachelor of Arts">Bachelor of Arts</option>
+            <option value="Bachelor of Science">Bachelor of Science</option>
+        </select>
+        <br>
+        <br>
+        <label for="getBranch">Branch:</label>
+        <select id="getBranch" name="branch" required>
+            <option value="" disabled selected>Select your branch</option>
+        </select>
+        <br>
+        <br>
+        <label for="getSemester">Semester:</label>
+        <select id="getSemester" name="semester" required>
+            <option value="" disabled selected>Select your semester</option>
+        </select>
+        <br>
+        <br>
+        <label for="getType">Type: </label>
+        <select id="getType" name="fileType" required>
+            <option value="" disabled selected>Select File type</option>
+            <option value="pyq">Previous Year Question Paper</option>
+            <option value="study material">Study Material</option>
+        </select>
+        <br>
+        <br>
+        <label for="file">File: (file < 15MB)</label>
+        <input type="file" id="file" name="file" required>
+        <br>
+        <br>
+        <p id="uploadStatus"></p>
+        <br>
+        <button type="submit">Upload <i class="fa-solid fa-file-arrow-up"></i></button>
+    </form>
+    <br>
+    <br>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script src="/js/userResponse.js"></script>
+<script src="/js/script2.js" defer></script>
+<script src="/js/script4.js"></script>
+
+</body>
+
+</html>

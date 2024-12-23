@@ -1,8 +1,5 @@
 HELP.md
-target/
-!**/src/main/**/target/
-!**/src/test/**/target/
-src/main/resources/application.properties
+
 ### STS ###
 .apt_generated
 .classpath
