@@ -16,7 +16,7 @@
         <br>
         <div th:if="${not #maps.isEmpty(links)}">
             <div th:if="${links.containsValue('pyq')}">
-                <h2>Previous Year Questions</h2>
+                <h2>Previous Year Questions :</h2>
                 <div class="links-container">
                     <a th:each="link : ${links.entrySet()}"
                        th:if="${link.value == 'pyq'}"
