@@ -27,11 +27,11 @@ public class ExamFileService {
     ExamFileService(ExamFileRepository examFileRepository) {
         this.examFileRepository=examFileRepository;
     }
-    public ExamFile uploadExamFile(MultipartFile file) throws IOException {
+    public ExamFile uploadExamFile(MultipartFile file,String fileType) throws IOException {
         ExamFile examFile=new ExamFile();
         examFile.setFileName(file.getOriginalFilename());
         examFile.setFilePath(filePath+file.getOriginalFilename());
-        examFile.setContentType(file.getContentType());
+        examFile.setContentType(fileType);
         examFile.setFileData(file.getBytes());
         ExamFile oldFile=examFileRepository.save(examFile);
         oldFile.setDownloadLink(createDownloadLink(examFile));

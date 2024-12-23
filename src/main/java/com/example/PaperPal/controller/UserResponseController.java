@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 
@@ -30,6 +31,7 @@ public class UserResponseController {
             @RequestParam("course") String course,
             @RequestParam("branch") String branch,
             @RequestParam("semester") String semester,
+            @RequestParam("fileType") String fileType,
             @RequestParam("file") MultipartFile file
     ) {
         try {
@@ -38,7 +40,7 @@ public class UserResponseController {
             userResponse.setBranch(branch);
             userResponse.setSemester(Integer.parseInt(semester));
             if (userResponseService.getExamLinkByUserResponse(userResponse) == null) {
-                List<ExamFile> examFiles = userResponseService.saveUserResponse(userResponse, file).getExamFile();
+                List<ExamFile> examFiles = userResponseService.saveUserResponse(userResponse, file,fileType).getExamFile();
                 if (examFiles.size() > 0) {
                     return new ResponseEntity<>(HttpStatus.OK) ;
                 } else {
@@ -46,7 +48,7 @@ public class UserResponseController {
                 }
 
             } else {
-                userResponseService.addFileToUser(userResponse, file);
+                userResponseService.addFileToUser(userResponse, file,fileType);
                 return new ResponseEntity<>(HttpStatus.OK);
             }
 
@@ -68,10 +70,10 @@ public class UserResponseController {
         userResponse.setBranch(branch);
         userResponse.setSemester(semester);
         List<ExamFile> examFiles = userResponseService.getExamLinkByUserResponse(userResponse);
-        List<String> links = new ArrayList<>();
+        HashMap<String,String> links = new HashMap<>();
         if (examFiles != null) {
             for (ExamFile examFile : examFiles) {
-                links.add(examFile.getDownloadLink());
+                links.put(examFile.getDownloadLink(),examFile.getContentType());
             }
             model.addAttribute("links", links);
             return "links-exam";
@@ -83,13 +85,14 @@ public class UserResponseController {
             @RequestParam("course") String course,
             @RequestParam("branch") String branch,
             @RequestParam("semester") String semester,
+            @RequestParam("fileType") String fileType,
             @RequestParam("file") MultipartFile file
     ) throws IOException {
         UserResponse userResponse = new UserResponse();
         userResponse.setCourse(course);
         userResponse.setBranch(branch);
         userResponse.setSemester(Integer.parseInt(semester));
-        userResponse = userResponseService.addFileToUser(userResponse, file);
+        userResponse = userResponseService.addFileToUser(userResponse, file,fileType);
         if (userResponse != null) {
             return new ResponseEntity<>(HttpStatus.OK) ;
         }else{

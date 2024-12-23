@@ -6,7 +6,7 @@
 
 <!-- JavaScript for theme toggle -->
 <div class="container">
-    <h1>Upload Question Paper</h1>
+    <h1>Upload Material</h1>
     <hr class="styled-hr">
     <br>
     <form id="uploadForm" action="/userresponse" method="post" enctype="multipart/form-data">
@@ -30,6 +30,14 @@
         <label for="getSemester">Semester:</label>
         <select id="getSemester" name="semester" required>
             <option value="" disabled selected>Select your semester</option>
+        </select>
+        <br>
+        <br>
+        <label for="getType">Type: </label>
+        <select id="getType" name="fileType" required>
+            <option value="" disabled selected>Select File type</option>
+            <option value="pyq">Previous Year Question Paper</option>
+            <option value="study material">Study Material</option>
         </select>
         <br>
         <br>

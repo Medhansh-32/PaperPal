@@ -28,11 +28,6 @@ public class ExamFileController {
 
     }
 
-    @PostMapping
-    public ResponseEntity<ExamFile> uploadExamFile(@RequestBody MultipartFile file) throws IOException {
-        return  new ResponseEntity<>(examFileService.uploadExamFile(file),HttpStatus.ACCEPTED);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<ByteArrayResource> downloadExamFile(@PathVariable ObjectId id) throws IOException {
         byte[] data = examFileService.downloadExamFile(id).getBody();
