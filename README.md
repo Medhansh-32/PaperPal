@@ -67,13 +67,13 @@ The `UserResponseController` manages user responses, file uploads, and deletion 
 <img src="src/main/resources/static/images/upload.png">
 
 - **POST /userresponse**: Submits user response data and an exam file.
-    - **Request Parameters**: `course`, `branch`, `semester`, `type`,`file`
+    - **Request Parameters**: `course`, `branch`, `semester`, `type`, `file`
     - **Response**: Redirects to `successful` or `unsuccessful` view based on the outcome.
 
 <img src="src/main/resources/static/images/linkList.png">
 
 - **GET /userresponse/getlinks**: Retrieves download links for exam files based on user response details.
-    - **Request Parameters**: `course`, `branch`, `semester`,`type`
+    - **Request Parameters**: `course`, `branch`, `semester`
     - **Response**: `links-exam` view with file download links.
 
 - **POST /userresponse/addfile**: Adds a file to an existing user response.
