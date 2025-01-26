@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -92,12 +93,24 @@ public class UserService {
                     "</body>\n" +
                     "</html>\n";
             mimeMessageHelper.setText(emailText,true);
-            mailSender.send(mimeMessage);
 
+            sendMail(mimeMessage);
+            log.info("New Thread Started and response sent.....");
             return true;
         }catch (Exception e){
         log.error(e.getMessage());
             return false;
+        }
+
+    }
+
+    @Async
+    public void sendMail(MimeMessage mimeMessage){
+        try {
+            log.info(Thread.currentThread().getName().toString()," Running Right Now ");
+            mailSender.send(mimeMessage);
+        }catch (Exception e){
+            log.error(e.getMessage());
         }
 
     }

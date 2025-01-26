@@ -23,11 +23,13 @@ public class OtpService {
     private final UserRepository userRepository;
     private JavaMailSender mailSender;
     private Map<String,OtpDetails> otpCache = new ConcurrentHashMap<>();
+    private UserService userService;
 
     @Autowired
-    public OtpService(JavaMailSender mailSender, UserRepository userRepository) {
+    public OtpService(JavaMailSender mailSender, UserRepository userRepository, UserService userService) {
         this.mailSender = mailSender;
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     public OtpDetails sendOtp(String email) throws MessagingException {
@@ -73,7 +75,7 @@ public class OtpService {
         helper.setSubject("Request for changing the password.");
         helper.setText(emailContent, true); // true indicates HTML
 
-        mailSender.send(message);
+        userService.sendMail(message);
         log.info(otpDetails.getOtp());
         otpCache.put(otpDetails.getOtpId(),otpDetails);
         return otpDetails;
@@ -89,7 +91,7 @@ public class OtpService {
         log.info(otpDetails.getOtp());
         if(otpDetails.getExpiryTime().after(new Date())
                 && otpDetails.getOtp().equals(otp)){
-            //otpCache.remove(otpId);
+            otpCache.remove(otpId);
             return true;
 
             }else{

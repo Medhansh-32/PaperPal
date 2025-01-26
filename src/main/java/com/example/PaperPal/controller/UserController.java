@@ -21,14 +21,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
@@ -43,6 +40,7 @@ public class UserController {
     private final AuthenticationProvider authenticationProvider;
     private final DoubtsRepository doubtsRepository;
     private final JavaMailSender javaMailSender;
+
 
 
     public UserController(UserService userService, OtpService otpService, UserRepository userRepository, AuthenticationProvider authenticationProvider, DoubtsRepository doubtsRepository, JavaMailSender javaMailSender) {
@@ -146,8 +144,8 @@ public class UserController {
            );
 
            mimeMessageHelper.setSubject("Registration Confirmation");
-           javaMailSender.send(mimeMessage);
-           log.info("email sent....");
+           userService.sendMail(mimeMessage);
+           log.info("New Thread Started and response sent.....");
            storeCode.put(uniqueCode,user);
            return new ResponseEntity<>(HttpStatus.OK);
        }catch (Exception e){
