@@ -8,6 +8,7 @@ com\example\PaperPal\service\OtpService.class
 com\example\PaperPal\service\UserResponseService.class
 com\example\PaperPal\controller\UserResponseController.class
 com\example\PaperPal\service\AiService$1.class
+com\example\PaperPal\service\MailService.class
 com\example\PaperPal\entity\OtpDetails$OtpDetailsBuilder.class
 com\example\PaperPal\entity\UserDto.class
 com\example\PaperPal\service\ExamFileService.class
@@ -18,6 +19,7 @@ com\example\PaperPal\service\DoubtsService$Reply.class
 com\example\PaperPal\entity\OtpDetails.class
 com\example\PaperPal\repository\UserResponseRepository.class
 com\example\PaperPal\controller\DoubtsController.class
+com\example\PaperPal\service\Pdfanalyzer$1.class
 com\example\PaperPal\controller\AiController.class
 com\example\PaperPal\controller\UserController.class
 com\example\PaperPal\security\CustomOAuth2User.class
@@ -27,6 +29,7 @@ com\example\PaperPal\Healthcheck.class
 com\example\PaperPal\controller\ExamFileController.class
 com\example\PaperPal\entity\UserDto$UserDtoBuilder.class
 com\example\PaperPal\security\SecurityConfig.class
+com\example\PaperPal\service\Pdfanalyzer.class
 com\example\PaperPal\service\CustomOAuth2UserService$1.class
 com\example\PaperPal\service\AiService.class
 com\example\PaperPal\entity\Doubts.class

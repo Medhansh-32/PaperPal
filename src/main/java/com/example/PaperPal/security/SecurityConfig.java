@@ -30,7 +30,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http, CustomOAuth2UserService customOAuth2UserService) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/user/**").permitAll()// Allow registration without authentication
+                        .requestMatchers("/user/**","/aiTest").permitAll()// Allow registration without authentication
                         .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/swagger-ui/**","/v3/**").permitAll()
                         .anyRequest().authenticated()// Require authentication for other requests

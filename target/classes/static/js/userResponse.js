@@ -4,10 +4,6 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
     // Gather form data
     const formData = new FormData(this);
     const statusMessage = document.getElementById('uploadStatus');
-    statusMessage.textContent = "uploading file, may take few seconds.....";
-    statusMessage.style.color = "white";
-    statusMessage.style.fontStyle="italic"
-    statusMessage.style.fontSize="1rem"
     try {
         // Send POST request with form data
         const response = await fetch('/userresponse', {
@@ -18,12 +14,12 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
         // Display the response status
 
         if (response.ok) {
-            statusMessage.textContent = "File uploaded successfully!";
+            statusMessage.textContent = "Your material will be first examined and if successful, then it will be uploaded, Thank You";
             statusMessage.style.color = "green";
             statusMessage.style.fontSize="1rem"
             setTimeout(()=>{
                 statusMessage.textContent = "";
-            },2000)
+            },4000)
 
         } else {
             statusMessage.textContent = "Failed to upload file. Please try again.";

@@ -2,9 +2,11 @@ package com.example.PaperPal.controller;
 
 import com.example.PaperPal.entity.ExamFile;
 import com.example.PaperPal.entity.UserResponse;
+import com.example.PaperPal.service.Pdfanalyzer;
 import com.example.PaperPal.service.UserResponseService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +23,11 @@ public class UserResponseController {
 
     private final UserResponseService userResponseService;
 
-    public UserResponseController(UserResponseService userResponseService) {
+    private Pdfanalyzer pdfanalyzer;
+
+    public UserResponseController(UserResponseService userResponseService, Pdfanalyzer pdfanalyzer) {
         this.userResponseService = userResponseService;
+        this.pdfanalyzer = pdfanalyzer;
     }
 
     @PostMapping
@@ -33,31 +38,17 @@ public class UserResponseController {
             @RequestParam("semester") String semester,
             @RequestParam("fileType") String fileType,
             @RequestParam("file") MultipartFile file
-    ) {
-        try {
-            UserResponse userResponse = new UserResponse();
-            userResponse.setCourse(course);
-            userResponse.setBranch(branch);
-            userResponse.setSemester(Integer.parseInt(semester));
-            if (userResponseService.getExamLinkByUserResponse(userResponse) == null) {
-                List<ExamFile> examFiles = userResponseService.saveUserResponse(userResponse, file,fileType).getExamFile();
-                if (examFiles.size() > 0) {
-                    return new ResponseEntity<>(HttpStatus.OK) ;
-                } else {
-                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-                }
+    ) throws IOException {
+        UserResponse userResponse = new UserResponse();
+        userResponse.setCourse(course);
+        userResponse.setBranch(branch);
+        userResponse.setSemester(Integer.parseInt(semester));
+        String name= SecurityContextHolder.getContext().getAuthentication().getName();
+        pdfanalyzer.analyzePdf(userResponse,fileType,file,name);
 
-            } else {
-                userResponseService.addFileToUser(userResponse, file,fileType);
-                return new ResponseEntity<>(HttpStatus.OK);
-            }
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return  new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
+        return new ResponseEntity<>(HttpStatus.OK);
     }
+
     @GetMapping("/getlinks")
     public String getExamFileLink(
             @RequestParam("course") String course,
