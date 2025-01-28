@@ -43,7 +43,13 @@ public class Pdfanalyzer {
 
     private MailService mailService;
 
-    public Pdfanalyzer(RestTemplate restTemplate, @Value("${url}") String url, @Value("${apiKey}") String api_key, @Value("${prompt}") String prompt, UserResponseService userResponseService, MailService mailService) {
+    public Pdfanalyzer(RestTemplate restTemplate,
+                       @Value("${url}") String url,
+                       @Value("${apiKey}") String api_key,
+                       @Value("${prompt}") String prompt,
+                       UserResponseService userResponseService,
+                       MailService mailService) {
+
         this.restTemplate = restTemplate;
         this.userResponseService = userResponseService;
         this.mailService = mailService;
