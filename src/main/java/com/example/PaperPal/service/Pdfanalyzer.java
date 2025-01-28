@@ -15,7 +15,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.HashMap;
@@ -51,9 +54,11 @@ public class Pdfanalyzer {
 
 
     @Async
-    public void analyzePdf(UserResponse userResponse, String fileType, MultipartFile file,String userName) throws IOException {
+    public void analyzePdf(UserResponse userResponse, String fileType,String userName,byte[] fileBytes) throws IOException {
 
-        String fileBytes = Base64.getEncoder().encodeToString(file.getBytes());
+
+        String fileBytesArray = Base64.getEncoder().encodeToString(fileBytes);
+
 
         String requestBody = "{\n" +
                 "  \"contents\": [{\n" +
@@ -61,7 +66,7 @@ public class Pdfanalyzer {
                 "      {\n" +
                 "        \"inline_data\": {\n" +
                 "          \"mime_type\": \"application/pdf\",\n" +
-                "          \"data\": \"" + fileBytes + "\"\n" +
+                "          \"data\": \"" + fileBytesArray + "\"\n" +
                 "        }\n" +
                 "      },\n" +
                 "      {\n" +
@@ -98,9 +103,9 @@ public class Pdfanalyzer {
                     if (fileUploadable) {
                         log.info("if-else "+fileUploadable.toString());
                         if (userResponseService.getExamLinkByUserResponse(userResponse) == null) {
-                            userResponseService.saveUserResponse(userResponse, file, fileType).getExamFile();
+                            userResponseService.saveUserResponse(userResponse, fileBytes, fileType);
                         } else {
-                            userResponseService.addFileToUser(userResponse, file, fileType);
+                            userResponseService.addFileToUser(userResponse, fileBytes, fileType);
                         }
                         log.info("file uploaded");
                         mailService.mailAboutUpload("Your file has been successfully uploaded to PaperPal. Thank you for helping others by sharing valuable study material!",userName, true);
@@ -108,7 +113,7 @@ public class Pdfanalyzer {
                     mailService.mailAboutUpload("Your file could not be uploaded as it contains inappropriate content. Please ensure your material aligns with our guidelines.", userName,false);
                 }
                 }catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    System.out.println(e);
                 }
             } else {
                 log.info("PDF Analyzer failed");

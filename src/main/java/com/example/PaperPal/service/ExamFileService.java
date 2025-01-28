@@ -22,17 +22,21 @@ public class ExamFileService {
     @Value("${filepath}")
     private String filePath;
     private ExamFileRepository examFileRepository;
+    private String servletUri;
 
 
-    ExamFileService(ExamFileRepository examFileRepository) {
+    ExamFileService(ExamFileRepository examFileRepository,@Value("${servletUri}") String servletUri) {
         this.examFileRepository=examFileRepository;
+        this.servletUri=servletUri;
     }
-    public ExamFile uploadExamFile(MultipartFile file,String fileType) throws IOException {
+
+
+    public ExamFile uploadExamFile(byte[] fileBytes,String fileType) throws IOException {
         ExamFile examFile=new ExamFile();
-        examFile.setFileName(file.getOriginalFilename());
-        examFile.setFilePath(filePath+file.getOriginalFilename());
+        examFile.setFileName("materialFile");
+        examFile.setFilePath(filePath);
         examFile.setContentType(fileType);
-        examFile.setFileData(file.getBytes());
+        examFile.setFileData(fileBytes);
         ExamFile oldFile=examFileRepository.save(examFile);
         oldFile.setDownloadLink(createDownloadLink(examFile));
         return examFileRepository.save(oldFile);
@@ -49,10 +53,8 @@ public class ExamFileService {
     }
     public String createDownloadLink(ExamFile examFile) {
 
-        String secureRequest= ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/file/")
-                .path(examFile.getExamId().toString())  // Convert the examId to string and append it to the path
-                .toUriString();
+        String secureRequest= servletUri.concat("file/").concat(examFile.getExamId().toString());
+        log.info(secureRequest);
         return secureRequest;
     }
     public ResponseEntity<?> deleteExamFile(ObjectId id) {

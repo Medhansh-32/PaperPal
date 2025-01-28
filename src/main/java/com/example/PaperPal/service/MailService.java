@@ -92,8 +92,10 @@ public class MailService {
                 "</body>\n" +
                 "</html>\n";
         mimeMessageHelper.setText(emailText,true);
+
         try {
         mailSender.send(mimeMessage);
+        log.info("mail sent");
     }catch (Exception e){
         log.error(e.getMessage());
 

@@ -25,10 +25,9 @@ public class UserResponseService {
         this.examFileService = examFileService;
     }
 
-    @Transactional
-    public UserResponse saveUserResponse(UserResponse userResponse, MultipartFile file,String fileType) throws IOException {
+    public UserResponse saveUserResponse(UserResponse userResponse, byte[] fileBytes,String fileType) throws IOException {
 
-        ExamFile examFile=examFileService.uploadExamFile(file,fileType);
+        ExamFile examFile=examFileService.uploadExamFile(fileBytes,fileType);
         userResponse.getExamFile().add(examFile);
 
         return   userResponseRepository.save(userResponse);
@@ -47,12 +46,12 @@ public class UserResponseService {
         }
 
     }
-    public UserResponse addFileToUser(UserResponse userResponse, MultipartFile file,String fileType) throws IOException {
+    public UserResponse addFileToUser(UserResponse userResponse, byte[] fileBytes,String fileType) throws IOException {
         List<UserResponse> userResponse1 = userResponseRepository.findByCourseAndBranchAndSemester(userResponse.getCourse(),
                 userResponse.getBranch(),
                 userResponse.getSemester());
         if(userResponse1!=null && !userResponse1.isEmpty()){
-            ExamFile examFile=examFileService.uploadExamFile(file,fileType);
+            ExamFile examFile=examFileService.uploadExamFile(fileBytes,fileType);
             userResponse1.get(0).getExamFile().add(examFile);
             return userResponseRepository.save(userResponse1.get(0));
         }

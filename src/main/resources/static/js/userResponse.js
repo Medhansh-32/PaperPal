@@ -14,9 +14,9 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
         // Display the response status
 
         if (response.ok) {
-            statusMessage.textContent = "Your material will be first examined and if successful, then it will be uploaded, Thank You";
+            statusMessage.textContent = "Your material will be first examined and if successful, then it will be uploaded, Thank You. ";
             statusMessage.style.color = "green";
-            statusMessage.style.fontSize="1rem"
+            statusMessage.style.fontSize="1.3rem"
             setTimeout(()=>{
                 statusMessage.textContent = "";
             },4000)
@@ -24,7 +24,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
         } else {
             statusMessage.textContent = "Failed to upload file. Please try again.";
             statusMessage.style.color = "red";
-            statusMessage.style.fontSize="1rem"
+            statusMessage.style.fontSize="1.3rem"
             setTimeout(()=>{
                 statusMessage.textContent = "";
             },2000)
