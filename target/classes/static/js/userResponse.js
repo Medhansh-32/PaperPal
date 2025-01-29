@@ -4,7 +4,10 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
     // Gather form data
     const formData = new FormData(this);
     const statusMessage = document.getElementById('uploadStatus');
+
     try {
+        statusMessage.textContent = "Please Wait...";
+        statusMessage.style.fontSize="1.3rem"
         // Send POST request with form data
         const response = await fetch('/userresponse', {
             method: 'POST',
@@ -19,7 +22,8 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
             statusMessage.style.fontSize="1.3rem"
             setTimeout(()=>{
                 statusMessage.textContent = "";
-            },4000)
+                statusMessage.style.color = "white";
+                },4000)
 
         } else {
             statusMessage.textContent = "Failed to upload file. Please try again.";
@@ -27,6 +31,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
             statusMessage.style.fontSize="1.3rem"
             setTimeout(()=>{
                 statusMessage.textContent = "";
+                statusMessage.style.color = "white";
             },2000)
 
         }
@@ -34,9 +39,10 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
         const statusMessage = document.getElementById('uploadStatus');
         statusMessage.textContent = "Failed to upload file. Please try again.";
         statusMessage.style.color = "red";
-        statusMessage.style.fontSize="1rem"
+        statusMessage.style.fontSize="1.3rem"
         setTimeout(()=>{
             statusMessage.textContent = "";
+            statusMessage.style.color = "white";
         },2000)
 
     }
