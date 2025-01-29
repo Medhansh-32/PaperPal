@@ -1,6 +1,6 @@
 # PaperPal Application 🎓📁
 
-Welcome to the **PaperPal** application! This project is designed to manage and interact with exam files, handle user responses, and assist with posting and resolving doubts. The application also integrates an AI assistant for answering general questions. It provides functionalities for uploading, downloading, and managing exam-related files, posting and replying to doubts, and interacting with an AI assistant.
+Welcome to the **PaperPal** application! This project is designed to manage and interact with study material files, handle user responses, and assist with posting and resolving doubts. The application also integrates an AI assistant for answering general questions. It provides functionalities for uploading, downloading, and managing exam-related files, posting and replying to doubts, and interacting with an AI assistant.
 
 ## Table of Contents
 
@@ -18,7 +18,9 @@ Welcome to the **PaperPal** application! This project is designed to manage and 
 
 ## Project Overview 🏠
 
-The **PaperPal** application is built using **Spring Boot** and provides a web interface for users to upload, manage, and download exam files. It supports managing user responses and linking those responses to exam files. Additionally, users can interact with an AI assistant powered by **Ollama Mistral** via the home page. The application also allows users to post and resolve doubts related to exams, fostering better learning and communication.
+The **PaperPal** application is built using **Spring Boot** and provides a web interface for users to upload, manage, and download exam files. It supports managing user responses and linking those responses to exam files. Additionally, users can interact with an AI assistant powered by **Google Gemini** via the home page. The application also allows users to post and resolve doubts related to exams, fostering better learning and communication.  
+
+Moreover, when a PDF is uploaded, it is analyzed by AI to ensure it meets the required guidelines. If the document does not comply, it gets rejected automatically, reducing manual effort in the review process.
 
 ## Features 🌟
 
