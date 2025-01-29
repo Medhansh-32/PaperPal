@@ -26,6 +26,8 @@ Moreover, when a PDF is uploaded, it is analyzed by AI to ensure it meets the re
 
 1. **Question Paper Upload and Download**:
     - Users can upload exam files and download them by accessing the file details through the application.
+    - When a user uploads a PDF, it is analyzed by Google Gemini AI in parallel using multithreading to ensure the file meets guidelines and is study-related.
+    - If the file is not related to study materials, it is automatically rejected, reducing manual effort.
 
 2. **Ask AI**:
     - The integrated AI assistant allows users to ask questions, similar to ChatGPT, to get instant responses for better learning and problem-solving.
