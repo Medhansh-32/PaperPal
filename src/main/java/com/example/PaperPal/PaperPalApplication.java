@@ -1,21 +1,16 @@
 package com.example.PaperPal;
 
 import com.example.PaperPal.service.ExamFileService;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.MongoTransactionManager;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @EnableTransactionManagement
 @SpringBootApplication
@@ -42,5 +37,13 @@ public class PaperPalApplication {
 	public RestTemplate restTemplate(){
 		return new RestTemplate();
 	}
+	@Bean
+	public WebClient webClient(){
+		return WebClient.builder().build();
+	}
+
+
+
+
 
 }

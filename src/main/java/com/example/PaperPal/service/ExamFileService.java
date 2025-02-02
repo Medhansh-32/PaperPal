@@ -31,9 +31,9 @@ public class ExamFileService {
     }
 
 
-    public ExamFile uploadExamFile(byte[] fileBytes,String fileType) throws IOException {
+    public ExamFile uploadExamFile(byte[] fileBytes,String fileType,String fileName) throws IOException {
         ExamFile examFile=new ExamFile();
-        examFile.setFileName("materialFile");
+        examFile.setFileName(fileName);
         examFile.setFilePath(filePath);
         examFile.setContentType(fileType);
         examFile.setFileData(fileBytes);

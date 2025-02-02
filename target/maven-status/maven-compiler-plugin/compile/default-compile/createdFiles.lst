@@ -9,6 +9,7 @@ com\example\PaperPal\service\UserResponseService.class
 com\example\PaperPal\controller\UserResponseController.class
 com\example\PaperPal\service\AiService$1.class
 com\example\PaperPal\service\MailService.class
+com\example\PaperPal\entity\UserResponse$UserResponseBuilder.class
 com\example\PaperPal\entity\OtpDetails$OtpDetailsBuilder.class
 com\example\PaperPal\entity\UserDto.class
 com\example\PaperPal\service\ExamFileService.class

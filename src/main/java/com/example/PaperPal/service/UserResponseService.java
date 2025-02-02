@@ -25,9 +25,9 @@ public class UserResponseService {
         this.examFileService = examFileService;
     }
 
-    public UserResponse saveUserResponse(UserResponse userResponse, byte[] fileBytes,String fileType) throws IOException {
+    public UserResponse saveUserResponse(UserResponse userResponse, byte[] fileBytes,String fileType,String fileName) throws IOException {
 
-        ExamFile examFile=examFileService.uploadExamFile(fileBytes,fileType);
+        ExamFile examFile=examFileService.uploadExamFile(fileBytes,fileType,fileName);
         userResponse.getExamFile().add(examFile);
 
         return   userResponseRepository.save(userResponse);
@@ -39,19 +39,19 @@ public class UserResponseService {
                 userResponse.getBranch(),
                 userResponse.getSemester());
 
-        if(!userResponses.isEmpty() && userResponses!=null){
+        if(!userResponses.isEmpty()){
             return  userResponses.get(0).getExamFile();
         }else{
             return null;
         }
 
     }
-    public UserResponse addFileToUser(UserResponse userResponse, byte[] fileBytes,String fileType) throws IOException {
+    public UserResponse addFileToUser(UserResponse userResponse, byte[] fileBytes,String fileType,String fileName) throws IOException {
         List<UserResponse> userResponse1 = userResponseRepository.findByCourseAndBranchAndSemester(userResponse.getCourse(),
                 userResponse.getBranch(),
                 userResponse.getSemester());
         if(userResponse1!=null && !userResponse1.isEmpty()){
-            ExamFile examFile=examFileService.uploadExamFile(fileBytes,fileType);
+            ExamFile examFile=examFileService.uploadExamFile(fileBytes,fileType,fileName);
             userResponse1.get(0).getExamFile().add(examFile);
             return userResponseRepository.save(userResponse1.get(0));
         }

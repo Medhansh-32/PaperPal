@@ -44,7 +44,8 @@ public class UserResponseController {
         userResponse.setBranch(branch);
         userResponse.setSemester(Integer.parseInt(semester));
         String name= SecurityContextHolder.getContext().getAuthentication().getName();
-        pdfanalyzer.analyzePdf(userResponse,fileType,name,file.getBytes());
+        String fileName=file.getOriginalFilename();
+        pdfanalyzer.analyzePdf(userResponse,fileType,name,file.getBytes(),fileName);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -83,7 +84,8 @@ public class UserResponseController {
         userResponse.setCourse(course);
         userResponse.setBranch(branch);
         userResponse.setSemester(Integer.parseInt(semester));
-        userResponse = userResponseService.addFileToUser(userResponse, file.getBytes(),fileType);
+        String fileName=file.getOriginalFilename();
+        userResponse = userResponseService.addFileToUser(userResponse, file.getBytes(),fileType,fileName);
         if (userResponse != null) {
             return new ResponseEntity<>(HttpStatus.OK) ;
         }else{

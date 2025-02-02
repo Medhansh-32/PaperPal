@@ -1,6 +1,7 @@
 package com.example.PaperPal.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
@@ -16,6 +17,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor  // Add this annotation for a no-argument constructor
 @AllArgsConstructor
+@Builder
 public class UserResponse {
     @Id
     private ObjectId id;
