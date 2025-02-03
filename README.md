@@ -1,6 +1,6 @@
 # PaperPal Application 🎓📁
 
-Welcome to the **PaperPal** application! This project is designed to manage and interact with exam files, handle user responses, and assist with posting and resolving doubts. The application also integrates an AI assistant for answering general questions. It provides functionalities for uploading, downloading, and managing exam-related files, posting and replying to doubts, and interacting with an AI assistant.
+Welcome to the **PaperPal** application! This project is designed to manage and interact with study material files, handle user responses, and assist with posting and resolving doubts. The application also integrates an AI assistant for answering general questions. It provides functionalities for uploading, downloading, and managing exam-related files, posting and replying to doubts, and interacting with an AI assistant.
 
 ## Table of Contents
 
@@ -18,12 +18,16 @@ Welcome to the **PaperPal** application! This project is designed to manage and 
 
 ## Project Overview 🏠
 
-The **PaperPal** application is built using **Spring Boot** and provides a web interface for users to upload, manage, and download exam files. It supports managing user responses and linking those responses to exam files. Additionally, users can interact with an AI assistant powered by **Ollama Mistral** via the home page. The application also allows users to post and resolve doubts related to exams, fostering better learning and communication.
+The **PaperPal** application is built using **Spring Boot** and provides a web interface for users to upload, manage, and download exam files. It supports managing user responses and linking those responses to exam files. Additionally, users can interact with an AI assistant powered by **Google Gemini** via the home page. The application also allows users to post and resolve doubts related to exams, fostering better learning and communication.  
+
+Moreover, when a PDF is uploaded, it is analyzed by AI to ensure it meets the required guidelines. If the document does not comply, it gets rejected automatically, reducing manual effort in the review process.
 
 ## Features 🌟
 
 1. **Question Paper Upload and Download**:
     - Users can upload exam files and download them by accessing the file details through the application.
+    - When a user uploads a PDF, it is analyzed by Google Gemini AI in parallel using multithreading to ensure the file meets guidelines and is study-related.
+    - If the file is not related to study materials, it is automatically rejected, reducing manual effort.
 
 2. **Ask AI**:
     - The integrated AI assistant allows users to ask questions, similar to ChatGPT, to get instant responses for better learning and problem-solving.
@@ -67,7 +71,7 @@ The `UserResponseController` manages user responses, file uploads, and deletion 
 <img src="src/main/resources/static/images/upload.png">
 
 - **POST /userresponse**: Submits user response data and an exam file.
-    - **Request Parameters**: `course`, `branch`, `semester`, `file`
+    - **Request Parameters**: `course`, `branch`, `semester`, `type`, `file`
     - **Response**: Redirects to `successful` or `unsuccessful` view based on the outcome.
 
 <img src="src/main/resources/static/images/linkList.png">
