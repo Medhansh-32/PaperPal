@@ -59,7 +59,7 @@ public class HomeController{
     @GetMapping("/user/newPassword")
     public String newPassword(@RequestParam String email, Model model) {
         model.addAttribute("email",email);
-        return "newPassword";
+        return "newpassword";
     }
     @GetMapping("/user/register")
     public String register() {
