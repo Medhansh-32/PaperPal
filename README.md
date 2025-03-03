@@ -3,22 +3,19 @@
 Welcome to the **PaperPal** application! This project is designed to manage and interact with study material files, handle user responses, and assist with posting and resolving doubts. The application also integrates an AI assistant for answering general questions. It provides functionalities for uploading, downloading, and managing exam-related files, posting and replying to doubts, and interacting with an AI assistant.
 
 ## Table of Contents
-
 - [Project Overview](#project-overview-)
 - [Features](#features-)
-- [Controllers](#controllers-)
-    - [UserController](#usercontroller-)
-    - [UserResponseController](#userresponsecontroller-)
-    - [ExamFileController](#examfilecontroller-)
-    - [DoubtsController](#doubtscontroller-)
-    - [AIController](#aicontroller-)
-    - [Healthcheck](#healthcheck-)
+- [API Endpoints](#api-endpoints-)
+    - [Authentication API](#authentication-api-)
+    - [User API](#user-api-)
+    - [File Management API](#file-management-api-)
+    - [Doubts API](#doubts-api-)
+    - [AI Assistant API](#ai-assistant-api-)
 - [Running the Application](#running-the-application-)
-- [Contributing](#contributing-)
 
 ## Project Overview 🏠
 
-The **PaperPal** application is built using **Spring Boot** and provides a web interface for users to upload, manage, and download exam files. It supports managing user responses and linking those responses to exam files. Additionally, users can interact with an AI assistant powered by **Google Gemini** via the home page. The application also allows users to post and resolve doubts related to exams, fostering better learning and communication.  
+The **PaperPal** application has been refactored from HTML/CSS/JS to **React** with **TypeScript** for improved type safety and component-based architecture. The application provides a web interface for users to upload, manage, and download exam files. It supports managing user responses and linking those responses to exam files. Additionally, users can interact with an AI assistant powered by **Google Gemini** via the home page. The application also allows users to post and resolve doubts related to exams, fostering better learning and communication.
 
 Moreover, when a PDF is uploaded, it is analyzed by AI to ensure it meets the required guidelines. If the document does not comply, it gets rejected automatically, reducing manual effort in the review process.
 
@@ -35,168 +32,192 @@ Moreover, when a PDF is uploaded, it is analyzed by AI to ensure it meets the re
 3. **Doubts Postings**:
     - Users can post doubts, respond to others' doubts, and manage their doubts effectively. This feature promotes collaboration and clarity among students.
 
-## Controllers 🕹️
+## API Endpoints 🔌
 
-### Register
+### Authentication API 🔑
 
-<img src="src/main/resources/static/images/register.png">
+The Authentication API handles user registration, login, and authentication processes.
 
-### Login-Page
+- **POST /api/auth/register**: Registers a new user.
+  - **Request Body**: `{ username, email, password }`
+  - **Response**: `{ message, token }`
 
-<img src="src/main/resources/static/images/login.png">
+- **POST /api/auth/login**: Authenticates a user and provides a JWT token.
+  - **Request Body**: `{ email, password }`
+  - **Response**: `{ message, token, userData }`
 
+### User API 🧑‍💻
 
+The User API handles user-related actions such as password management and profile updates.
 
-### UserController 🧑‍💻
+- **POST /api/user/otp**: Sends an OTP for user verification.
+  - **Request Body**: `{ email }`
+  - **Response**: `{ message, success }`
 
-The `UserController` handles user-related actions such as password management and redirects.
+- **POST /api/user/verify-otp**: Verifies the OTP entered by the user.
+  - **Request Body**: `{ email, otp }`
+  - **Response**: `{ message, success }`
 
-<img src="src/main/resources/static/images/resetEmail.png">
+- **PUT /api/user/change-password**: Changes the user's password.
+  - **Request Body**: `{ email, newPassword }`
+  - **Response**: `{ message, success }`
 
-- **POST /user/otp**: Sends an OTP for user verification.
+- **GET /api/user/profile**: Retrieves the user's profile information.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Response**: `{ userData }`
 
-<img src="src/main/resources/static/images/otp.png">
+- **PUT /api/user/profile**: Updates the user's profile information.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Request Body**: `{ name, email, ... }`
+  - **Response**: `{ message, updatedData }`
 
-- **POST /user/changePassword**: Changes the user's password.
+### File Management API 📄
 
-<img src="src/main/resources/static/images/newPassword.png">
+The File Management API handles operations related to uploading, downloading, and managing exam files.
 
-- **PUT /user/setNewPassword**: Sets a new password after verification.
-- **POST /user/redirectHome**: Redirects the user to the home page after login or registration.
+- **POST /api/files/upload**: Uploads an exam file with associated metadata.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Request Body**: `FormData { course, branch, semester, type, file }`
+  - **Response**: `{ message, fileData, success }`
 
-### UserResponseController 🧑‍🎓
+- **GET /api/files/list**: Gets a list of files based on filter criteria.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Query Parameters**: `course, branch, semester`
+  - **Response**: `{ files }`
 
-The `UserResponseController` manages user responses, file uploads, and deletion of responses.
+- **GET /api/files/:id**: Downloads a specific file by ID.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Path Parameter**: `id`
+  - **Response**: File content (binary)
 
-<img src="src/main/resources/static/images/upload.png">
+- **DELETE /api/files/:id**: Deletes a specific file.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Path Parameter**: `id`
+  - **Response**: `{ message, success }`
 
-- **POST /userresponse**: Submits user response data and an exam file.
-    - **Request Parameters**: `course`, `branch`, `semester`, `type`, `file`
-    - **Response**: Redirects to `successful` or `unsuccessful` view based on the outcome.
+- **POST /api/files/validate**: Validates a file using AI to ensure it meets guidelines.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Request Body**: `FormData { file }`
+  - **Response**: `{ valid, message }`
 
-<img src="src/main/resources/static/images/linkList.png">
+### Doubts API 🤔
 
-- **GET /userresponse/getlinks**: Retrieves download links for exam files based on user response details.
-    - **Request Parameters**: `course`, `branch`, `semester`
-    - **Response**: `links-exam` view with file download links.
+The Doubts API manages posting, replying to, and retrieving doubts.
 
-- **POST /userresponse/addfile**: Adds a file to an existing user response.
-    - **Request Parameters**: `course`, `branch`, `semester`, `file`
-    - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
+- **POST /api/doubts**: Creates a new doubt.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Request Body**: `{ title, description }`
+  - **Response**: `{ message, doubtData }`
 
-- **POST /userresponse/delete**: Deletes a user response.
-    - **Request Parameters**: `course`, `branch`, `semester`
-    - **Response**: Redirects to `successful` or `unsuccessful` view based on the operation outcome.
+- **GET /api/doubts**: Retrieves all doubts with optional filtering.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Query Parameters**: `user, solved` (optional)
+  - **Response**: `{ doubts }`
 
-### ExamFileController 📄
+- **GET /api/doubts/:id**: Retrieves a specific doubt with its replies.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Path Parameter**: `id`
+  - **Response**: `{ doubt, replies }`
 
-The `ExamFileController` handles operations related to uploading, downloading, and deleting exam files.
+- **POST /api/doubts/:id/reply**: Adds a reply to a doubt.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Path Parameter**: `id`
+  - **Request Body**: `{ content }`
+  - **Response**: `{ message, reply }`
 
-- **POST /file**: Uploads an exam file.
-    - **Request Body**: `MultipartFile file`
-    - **Response**: `ExamFile` object with details of the uploaded file.
+- **PUT /api/doubts/:id/status**: Updates the status of a doubt (solved/unsolved).
+  - **Headers**: `Authorization: {JWT token}`
+  - **Path Parameter**: `id`
+  - **Request Body**: `{ solved }`
+  - **Response**: `{ message, doubt }`
 
-- **GET /file/{id}**: Downloads an exam file by its ID.
-    - **Path Variable**: `ObjectId id`
-    - **Response**: File content as `ByteArrayResource` with `Content-Disposition` header for download.
+- **DELETE /api/doubts/:id**: Deletes a specific doubt.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Path Parameter**: `id`
+  - **Response**: `{ message, success }`
 
-- **DELETE /file/{id}**: Deletes an exam file by its ID.
-    - **Path Variable**: `ObjectId id`
-    - **Response**: HTTP Status Code indicating success or failure.
+### AI Assistant API 🤖
 
-### DoubtsController 🤔
+The AI Assistant API provides interaction with the integrated AI assistant.
 
-The `DoubtsController` manages the posting, replying, and viewing of doubts.
+- **POST /api/ai/ask**: Sends a query to the AI assistant and receives a response.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Request Body**: `{ query }`
+  - **Response**: `{ answer }`
 
-<img src="src/main/resources/static/images/PostDoubt.png" height="500px" width="350px">
+- **GET /api/ai/stream**: Establishes a stream connection for real-time AI responses.
+  - **Headers**: `Authorization: {JWT token}`
+  - **Query Parameters**: `query`
+  - **Response**: Server-Sent Events (SSE) stream with AI responses
 
-- **POST /doubts/postDoubts**: Allows a user to post a new doubt.
-    - **Request Parameters**: `Doubt Title`, `Doubt Description`
-    - **Response**: Redirects to the doubt posting status page.
+## Frontend Components 🖼️
 
-<img src="src/main/resources/static/images/completeDoubt.png">
+The PaperPal application's frontend is built using React with TypeScript, featuring the following key components:
 
-- **PATCH /doubts/addReply**: Adds a reply to an existing doubt.
-    - **Request Parameters**: `doubtId`, `reply`
-    - **Response**: Redirects to the reply status page.
+### Authentication Components
 
-<img src="src/main/resources/static/images/MyDoubt.png">
+- **RegisterForm**: Handles user registration with form validation
+- **LoginForm**: Manages user login and authentication
+- **PasswordReset**: Facilitates the password reset flow with OTP verification
 
-- **GET /doubts/myDoubts**: Retrieves all doubts posted by the logged-in user.
-    - **Response**: List of the user's doubts.
+### Navigation Components
 
-- **GET /doubts/getReply/{id}**: Retrieves all replies for a specific doubt by its ID.
-    - **Path Variable**: `id` of the doubt
-    - **Response**: List of replies for the given doubt.
+- **Navbar**: Main navigation with responsive design for both mobile and desktop
+- **Sidebar**: Context-aware sidebar that changes based on the current section
+- **ThemeToggle**: Switches between light and dark themes
 
-<img src="src/main/resources/static/images/Doubts.png">
+### File Management Components
 
-- **GET /doubts/allDoubts**: Retrieves all posted doubts.
-    - **Response**: List of all doubts in the system.
+- **FileUpload**: Multi-step form for uploading exam files with metadata
+- **FileList**: Displays filterable list of available files with download options
+- **FileViewer**: Preview component for PDF files
 
-- **DELETE /doubts/deleteDoubt/{id}**: Deletes a specific doubt.
-    - **Path Variable**: `id` of the doubt
-    - **Response**: Status of the deletion operation.
+### Doubts Components
 
-### AIController 🤖
+- **DoubtsList**: Displays all doubts with filtering and sorting options
+- **DoubtDetail**: Shows a single doubt with all replies and actions
+- **DoubtForm**: Form for creating new doubts
+- **ReplyForm**: Component for adding replies to existing doubts
 
-The `AIController` allows users to interact with the AI assistant.
+### AI Assistant Components
 
-<img src="src/main/resources/static/images/Ai.png">
+- **AIChatInterface**: Real-time chat interface for interacting with the AI assistant
+- **QueryHistory**: Shows previous AI interactions
 
-- **GET /ai/generateStream**: Generates a response from the AI based on user input.
-    - **Request Parameters**: `query` (the question or prompt)
-    - **Response**: The AI-generated response to the query.
+### Common Components
 
-### Healthcheck 🔍
-
-The `Healthcheck` endpoint is used to monitor the health status of the application.
-
-- **GET /health**: Returns the health status of the application.
-    - **Response**: HTTP Status Code `200 OK` if the application is healthy.
+- **Button**: Reusable button component with various states
+- **Modal**: Reusable modal for confirmations and forms
+- **Dropdown**: Custom dropdown component for selections
+- **Toast**: Notification system for success/error messages
+- **LoadingSpinner**: Visual indicator for loading states
 
 ## Running the Application 🚀
 
 To run the application locally, follow these steps:
 
-1. Clone the repository:
+## 1. Clone the repository:
 
-    ```sh
-    git clone https://github.com/Medhansh-32/PaperPal.git
-    ```
+`git clone https://github.com/Medhansh-32/PaperPal.git`
+   
+## 2. Navigate to the project directory:
 
-2. Navigate to the project directory:
+### For frontend
+1. `cd Frontend`
+2. `npm install`
+3. `npm run dev`
 
-    ```sh
-    cd PaperPal
-    ```
+### For backend
+1. `cd Backend`
+2. Add the data required in `application.properties`
+3. `mvn clean install`
+4. `java -jar target/PaperPal-0.0.1-SNAPSHOT.jar`
 
-3. Build and run the application using Maven or Gradle:
+## 3. You are now ready to proceed:
 
-    ```sh
-    ./mvnw spring-boot:run
-    ```
+- The frontend is available at: [http://localhost:5173](http://localhost:5173)
+- The backend is available at: [http://localhost:8080](http://localhost:8080)
 
-   or
+## 4. Enjoy using the project?
 
-    ```sh
-    ./gradlew bootRun
-    ```
-### Home Page
-Dark Theme
-<img src="src/main/resources/static/images/home.png">
-
-Light Theme
-<img src="src/main/resources/static/images/Light-Theme(Home).png">
-4. Access the application(Homepage) at `http://localhost:8080`.
-
-
-## Contributing 🤝
-
-If you would like to contribute to this project, please fork the repository and submit a pull request. Make sure to include tests for any new features or bug fixes.
-
-For any issues or feature requests, please create an issue in the GitHub repository.
-
----
-
-Thank you for using **PaperPal**! If you have any questions, feel free to reach out or open an issue on GitHub. 😊
+If you find this project helpful or interesting, don't forget to give it a ⭐ on GitHub! Your support is greatly appreciated and helps the project grow!
